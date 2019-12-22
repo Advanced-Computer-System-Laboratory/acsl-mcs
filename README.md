@@ -1,9 +1,8 @@
-# acsl-mcs
+![ACSL Logo](images/logo.png)
+Format: ![Alt Text](url)
 
 Selamat datang di repository praktikum Mobile Computing System. 
 
-![ACSL Logo](images/logo.png)
-Format: ![Alt Text](url)
 
 ```java
    MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();

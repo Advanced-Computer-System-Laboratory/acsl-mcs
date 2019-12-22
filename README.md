@@ -1,5 +1,9 @@
 # acsl-mcs
-Official Advanced Computer System Laboratory MCS Learning Module.
+
+Selamat datang di repository praktikum Mobile Computing System. 
+
+![ACSL Logo](images/logo.png)
+Format: ![Alt Text](url)
 
 ```java
    MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();

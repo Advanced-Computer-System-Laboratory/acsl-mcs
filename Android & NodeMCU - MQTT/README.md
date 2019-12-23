@@ -163,6 +163,10 @@ void setup() {
   
   // Print teks "connected" pada serial monitor jika koneksi ke WiFi berhasil.
   Serial.println("connected"); 
+  
+  // Menghubungkan NodeMCU kepada 
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
 }
 
 void loop() {
@@ -207,5 +211,127 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+}
+```
+
+8. Setalahnya, tambahkan fungsi `reconnect()` yang digunakan untuk memastikan perangkat NodeMCU dapat terhubung dengan broker MQTT. 
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+...
+
+void setup_wifi() {
+ 
+ ...
+ 
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  ...
+}
+
+void reconnect() {
+  // Melakukan perulangan hingga NodeMCU berhasil terhubung dengan broker MQTT.
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    
+    // Membuat client ID secara acak 
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+   
+    // Percobaan koneksi ke Broker MQTT.
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      
+      // Mencoba publish message ke Broker dengan topic "data" setelah terhubung  
+      client.publish("data", "hello world");
+      
+      // Melakukan subscribe ke topik "command". 
+      // Topik "command" berisikan perintah dari perangkat Android.
+      client.subscribe("command");
+      
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      
+      // Delay 5 detik sebelum melakukan koneksi ulang.
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  ...
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+```
+
+9. Maka sekarang kita bisa mengisikan baris kode pada fungsi `loop()`. Fungsi `loop()` akan menjalankan semua baris program didalamnya secara terus menerus selama perangkat hidup. 
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+...
+
+void setup_wifi() {
+ ...
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  ...
+}
+
+void reconnect() {
+  ...
+}
+
+void setup() {
+  ...
+}
+
+void loop() {
+  
+  // Memanggil fungsi reconnect() jika perangkat belum terhubung dengan MQTT Broker. 
+  if (!client.connected()) {
+    reconnect();
+  }
+  
+  client.loop();
+
+  // Mendapatkan waktu hidup perangkat dalam satuan millisecond.
+  long now = millis();
+  
+  // Jika selisih waktu sudah 500 millisecond, maka jalankan perintah didalam blok if. 
+  if (now - lastMsg > 500) {
+    lastMsg = now;
+
+    // Membaca nilai tegangan dari LDR dalam rentang 0-1023.
+    int sensorValue = analogRead(A0);   // read the input on analog pin 0
+
+    // Melakukan konversi satuan hasil baca analog (0-1023) menjadi voltage (0-5V). 
+    float voltage = sensorValue * (3.3 / 1023.0);   
+
+    // konversi nilai float tengangan menjadi array Char.
+    char buf[8];
+    sprintf(buf, "%f", voltage);
+
+    // Menggabungkan nilai tegangan LDR dengan ID pengenal Perangkat. 
+    char messageDelivered[10];
+    strcpy(messageDelivered,"2");
+    strcat(messageDelivered," ");
+    strcat(messageDelivered,buf);
+      
+    // Mencetak message yang akan di publish ke broker pada serial monitor 
+    Serial.print("Publish message: ");
+    Serial.println(messageDelivered);
+    
+    // Publish message ke topic "data"
+    client.publish("data", messageDelivered);
+  }
 }
 ```

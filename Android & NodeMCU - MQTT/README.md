@@ -30,7 +30,7 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 
 ## Codelab NodeMCU
 1. Buatlah sketch baru pada Arduino IDE. Sehingga akan muncul tampilan awal seperti ini : 
-
+<img align="left" src="images/ss_arduino_ide.png" width="400">
 
 2. Tambahkan library `ESP8266Wifi` dan `PubSubClient` pada sketch yang sudah dibuat.
 

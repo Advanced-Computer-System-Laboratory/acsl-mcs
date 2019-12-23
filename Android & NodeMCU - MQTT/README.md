@@ -5,7 +5,7 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada percobaan Bab ini, kalian akan memahami bagaimana perangkat Android dapat berkomunikasi dengan perangkat sensor (NodeMCU) melalui protokol MQTT. Terdapat dua codelab, yaitu codelab NodeMCU dan Android. 
+Pada percobaan Bab ini, kalian akan memahami bagaimana perangkat Android dapat berkomunikasi dengan tiga perangkat sensor (NodeMCU) melalui protokol MQTT. Terdapat dua codelab, yaitu codelab NodeMCU dan Android. 
 
 ## Aplikasi Pada Kehidupan Sehari-hari.
 1. a
@@ -24,14 +24,23 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 (IMG VISUALISASI PUBLISH SUBSCRIBE BROKER)
 <hr/>
 
-## CodeLab Komunikasi Android dan NodeMCU dengan MQTT
-- Setup MQTT 
-  - Broker MQTT sudah tersedia. Tanyakan kepada asisten untuk alamat IP broker MQTT. Pastikan perangkat smartphone **terhubung pada jaringan WiFi lab** sebelum melakukan running test. 
-  - Referensi installasi Broker dan Client MQTT pada Ubuntu : https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04
-  
+## Setup MQTT 
+- Broker MQTT sudah tersedia. Tanyakan kepada asisten untuk alamat IP broker MQTT. Pastikan perangkat smartphone **terhubung pada jaringan WiFi lab** sebelum melakukan running test. 
+- Referensi installasi Broker dan Client MQTT pada Ubuntu : https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04
 
-  
-  
+## Codelab NodeMCU
+1. Buatlah sketch baru pada Arduino IDE. Tambahkan baris kode dibawah untuk memuat library yang dibutuhkan
+```c++
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
 
+void setup() {
+  // put your setup code here, to run once:
 
+}
 
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```

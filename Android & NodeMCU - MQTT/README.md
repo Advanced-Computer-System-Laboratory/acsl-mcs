@@ -335,3 +335,4 @@ void loop() {
   }
 }
 ```
+10. Upload sketch ke perangkat NodeMCU. 

@@ -10,7 +10,7 @@ Pada percobaan Bab ini, kalian akan memahami bagaimana perangkat Android dapat b
 ## Aplikasi Materi Bab 8 Pada Kehidupan Sehari-hari.
 1. Sistem Kontrol Smart Home Berbasis Android.
 2. Monitoring Suhu Ruangan Melalui Perangkat Android
-...dan ribuan kemungkinan lainnya 😊. Cocok untuk bahan PI & Skripsi SK.
+3. ...dan ribuan kemungkinan lainnya 😊. Cocok untuk bahan PI & Skripsi SK.
 <hr/>
 
 ## Teori

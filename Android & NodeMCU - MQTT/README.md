@@ -8,8 +8,8 @@
 Pada percobaan Bab ini, kalian akan memahami bagaimana perangkat Android dapat berkomunikasi dengan tiga perangkat sensor (NodeMCU) melalui protokol MQTT. Terdapat dua codelab, yaitu codelab NodeMCU dan Android. 
 
 ## Aplikasi Pada Kehidupan Sehari-hari.
-1. a
-2. b 
+1. Sistem Kontrol Smart Home Berbasis Android.
+2. 
 3. c 
 <hr/>
 

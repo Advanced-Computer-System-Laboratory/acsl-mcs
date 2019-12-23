@@ -29,7 +29,10 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 - Referensi installasi Broker dan Client MQTT pada Ubuntu : https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04
 
 ## Codelab NodeMCU
-1. Buatlah sketch baru pada Arduino IDE. Tambahkan library `ESP8266Wifi` dan `PubSubClient` pada sketch yang sudah dibuat.
+1. Buatlah sketch baru pada Arduino IDE. Sehingga akan muncul tampilan awal seperti ini : 
+
+
+2. Tambahkan library `ESP8266Wifi` dan `PubSubClient` pada sketch yang sudah dibuat.
 
 ```c++
 #include <ESP8266WiFi.h>
@@ -47,3 +50,24 @@ void loop() {
 ```
 - Library `ESP8266Wifi` berfungsi untuk melakukan koneksi NodeMCU ke jaringan WiFi.
 - Library `PubSubClient` berfungsi untuk menjadikan NodeMCU sebagai client dari broker MQTT.
+
+3. Tambahkan beberapa variable yang dibutuhkan untuk konektifitas NodeMCU ke Wifi
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+const char* ssid = "SSID_WIFI";
+const char* password = "PASSWORD_WIFI";
+const char* mqtt_server = "ALAMAT_IP_BROKER";
+
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+- Tanyakan isian `SSID_WIFI`, `PASSWORD_WIFI`, dan `ALAMAT_IP_BROKER` kepada asisten.

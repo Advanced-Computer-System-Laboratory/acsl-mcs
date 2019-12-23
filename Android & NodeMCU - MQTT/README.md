@@ -51,7 +51,7 @@ void loop() {
 - Library `ESP8266Wifi` berfungsi untuk melakukan koneksi NodeMCU ke jaringan WiFi.
 - Library `PubSubClient` berfungsi untuk menjadikan NodeMCU sebagai client dari broker MQTT.
 
-3. Tambahkan beberapa variable yang dibutuhkan untuk konektifitas NodeMCU ke Wifi
+3. Tambahkan beberapa variable yang dibutuhkan untuk konektifitas NodeMCU ke Wifi dan state dari LED.
 ```c++ 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
@@ -59,6 +59,7 @@ void loop() {
 const char* ssid = "SSID_WIFI";
 const char* password = "PASSWORD_WIFI";
 const char* mqtt_server = "ALAMAT_IP_BROKER";
+bool ledState = LOW;
 
 void setup() {
   // put your setup code here, to run once:

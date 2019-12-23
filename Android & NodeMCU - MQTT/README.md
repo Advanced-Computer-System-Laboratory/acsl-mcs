@@ -160,7 +160,49 @@ void setup() {
   
   Serial.begin(115200); // Set baud-rate komunikasi serial monitor sebesar 115200 bps.  
   setup_wifi(); // Memanggil fungsi setup_wifi() yang sudah dibuat sebelumnya
-  Serial.println("connected"); // Print teks "connected" pada serial monitor jika koneksi ke WiFi berhasil.
+  
+  // Print teks "connected" pada serial monitor jika koneksi ke WiFi berhasil.
+  Serial.println("connected"); 
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+```
+
+7. Lalu, buatlah fungsi `callback()`. Fungsi ini diperuntukan untuk menangani pesan masuk dari Broker (Subscribe).
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+...
+
+void setup_wifi() {
+ 
+ ...
+ 
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+
+  // Switch on the LED if an 1 was received as first character
+  Serial.print("payload ");
+  Serial.println(payload[0]);
+  if (payload[0] == '2') {
+    if (payload[2] == 'a') digitalWrite(D5, !ledState);   
+    ledState = !ledState;
+  }
+}
+
+void setup() {
+  ...
 }
 
 void loop() {

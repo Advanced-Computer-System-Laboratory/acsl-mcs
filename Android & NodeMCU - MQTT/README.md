@@ -29,7 +29,8 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 - Referensi installasi Broker dan Client MQTT pada Ubuntu : https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04
 
 ## Codelab NodeMCU
-1. Buatlah sketch baru pada Arduino IDE. Tambahkan baris kode dibawah untuk memuat library yang dibutuhkan
+1. Buatlah sketch baru pada Arduino IDE. Tambahkan library `ESP8266Wifi` dan `PubSubClient` pada sketch yang sudah dibuat.
+
 ```c++
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
@@ -44,3 +45,5 @@ void loop() {
 
 }
 ```
+- Library `ESP8266Wifi` berfungsi untuk melakukan koneksi NodeMCU ke jaringan WiFi.
+- Library `PubSubClient` berfungsi untuk menjadikan NodeMCU sebagai client dari broker MQTT.

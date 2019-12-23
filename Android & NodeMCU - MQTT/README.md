@@ -26,4 +26,12 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 
 ## CodeLab Komunikasi Android dan NodeMCU dengan MQTT
 - Setup MQTT 
+  - Broker MQTT sudah tersedia. Tanyakan kepada asisten untuk alamat IP broker MQTT. Pastikan perangkat smartphone **terhubung pada jaringan WiFi lab** sebelum melakukan running test. 
+  - Referensi installasi Broker dan Client MQTT pada Ubuntu : https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04
+  
+
+  
+  
+
+
 

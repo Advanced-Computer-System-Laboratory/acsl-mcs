@@ -30,7 +30,7 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 
 ## Codelab NodeMCU
 1. Buatlah sketch baru pada Arduino IDE. Sehingga akan muncul tampilan awal seperti ini : 
-<img align="left" src="images/ss_arduino_ide.png" width="400">
+<img src="images/ss_arduino_ide.png" width="400">
 
 2. Tambahkan library `ESP8266Wifi` dan `PubSubClient` pada sketch yang sudah dibuat.
 
@@ -74,3 +74,96 @@ void loop() {
 }
 ```
 - Tanyakan isian `SSID_WIFI`, `PASSWORD_WIFI`, dan `ALAMAT_IP_BROKER` kepada asisten.
+
+4. Inisialisasikan library yang sudah dimuat dengan menambahkan dua baris dibawah :
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+const char* ssid = "Lab Lanjut 121";
+const char* password = "TanyaAsisten";
+const char* mqtt_server = "192.168.121.105";
+
+bool ledState = LOW;
+long lastMsg = 0;
+
+// tambahkan dua baris dibawah ini
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+
+5. Kemudian, buatlah fungsi `setup_wifi()` yang berfungsi untuk konfigurasi koneksi NodeMCU ke WiFi.
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+...
+
+void setup_wifi() {
+
+  delay(10);
+  
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  
+  // Mencoba koneksi ke WiFi
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  randomSeed(micros());
+
+  // Jika koneksi WiFi berhasil maka akan menampilkan teks dibawah pada Serial.
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void setup() {
+  // put your setup code here, to run once:
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+```
+6. Kemudian, tambahkan baris program dibawah pada fungsi `setup()`. 
+```c++ 
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+...
+
+void setup_wifi() {
+ 
+ ...
+ 
+}
+
+void setup() {
+  pinMode(D5, OUTPUT); // Menginisialisasikan pin D5 sebagai output
+  
+  Serial.begin(115200); // Set baud-rate komunikasi serial monitor sebesar 115200 bps.  
+  setup_wifi(); // Memanggil fungsi setup_wifi() yang sudah dibuat sebelumnya
+  Serial.println("connected"); // Print teks "connected" pada serial monitor jika koneksi ke WiFi berhasil.
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+```

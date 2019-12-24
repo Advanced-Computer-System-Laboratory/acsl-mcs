@@ -647,7 +647,8 @@ public class MainActivity extends AppCompatActivity {
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-        ...
+       
+       ...
         
         /*
           Jika menerima inputan click pada tombol ledSwitchRed, 
@@ -691,7 +692,142 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
+11. Sekarang kita akan membuat fungsi baru pada class `MainActivity` bernama `subscribeToTopic()`. Fungsi `subscribeToTopic()` menangani proses subscription perangkat Android ke Broker MQTT.
+
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        ...
+  }
+  
+    public void subscribeToTopic(){
+        try {
+            client.subscribe("test", 0, null, new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    Log.d("dari app","Subscribed!");
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                    Log.d("dari app","Failed to subscribe");
+                }
+            });
 
 
+            client.subscribe("test", 0, new IMqttMessageListener() {
+                @Override
+                public void messageArrived(String topic, MqttMessage message) throws Exception {
+                    // message Arrived!
+                    val = new String(message.getPayload());
+                    vals = val.split(" ");
+                    if(vals[0].equals("1")){
+                        runOnUiThread(new Runnable(){
+                            public void run() {
+                                textVoltageRed.setText(vals[1]);
+                            }
+                        });
+                    }else if(vals[0].equals("2")){
+                        runOnUiThread(new Runnable(){
+                            public void run() {
+                                textVoltageGreen.setText(vals[1]);
+                            }
+                        });
+                    }else{
+                        runOnUiThread(new Runnable(){
+                            public void run() {
+                                textVoltageWhite.setText(vals[1]);
+                            }
+                        });
+                    }
 
 
+                }
+            });
+
+        } catch (MqttException ex){
+            System.err.println("Exception whilst subscribing");
+            ex.printStackTrace();
+        }
+    }
+}
+```
+
+12. Kemudian kita akan membuat fungsi baru pada class `MainActivity` bernama `sendCommand()`. Fungsi `sendCommand()` menangani proses publish perintah yang dikirimkan perangkat Android ke MQTT Broker. Perhatikan bahwa pada bagian `onCreate` fungsi ini dipanggil ketika terjadi event click pada button LED ON.
+```java
+
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        ...
+  }
+  
+  public void subscribeToTopic(){
+        ...
+  }
+  
+   private void sendCommand (
+            final MqttAndroidClient client,
+            String clientId,
+            MemoryPersistence memPer){
+
+        Log.i("MSSG", "SMG");
+        try {
+            client.connect(null, new IMqttActionListener() {
+
+                @Override
+                public void onSuccess(IMqttToken mqttToken) {
+                    String messageToSend;
+
+                    messageToSend = color + " a";
+
+                    MqttMessage message = new MqttMessage(messageToSend.getBytes());
+                    message.setQos(2);
+                    message.setRetained(false);
+
+                    try {
+                        client.publish("testing", message);
+                        Log.i("MSSG", "Message published");
+                    } catch (MqttPersistenceException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    } catch (MqttException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(IMqttToken arg0, Throwable arg1) {
+                    // TODO Auto-generated method stub
+                    Log.i("MSSG", "Client connection failed: "+arg1.getMessage());
+
+                }
+            });
+        }
+        catch (MqttException e){
+            e.printStackTrace();
+        }
+    }
+  
+}
+```

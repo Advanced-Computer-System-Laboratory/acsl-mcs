@@ -56,9 +56,9 @@ void loop() {
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Lab Lanjut 121";
-const char* password = "TanyaAsisten";
-const char* mqtt_server = "192.168.121.105";
+const char* ssid = "SSID_WIFI";
+const char* password = "PASSWORD_WIFI";
+const char* mqtt_server = "ALAMAT_IP_BROKER";
 
 bool ledState = LOW;
 long lastMsg = 0;

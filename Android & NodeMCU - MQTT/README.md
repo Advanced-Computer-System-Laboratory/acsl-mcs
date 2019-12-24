@@ -505,6 +505,87 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
+7. Tambahkan baris kode dibawah ini untuk menambahkan variable yang dibutuhkan berkaitan dengan View, nilai warna LED, dan variable client MQTT. 
+```java
+package com.example.NAMA_PACKAGE;
 
+import ...
 
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  // Tambahkan baris dibawah ini
+  public String color;
+  public MqttAndroidClient client;
+  public TextView textVoltageRed;
+  public TextView textVoltageGreen;
+  public TextView textVoltageWhite;
+  public String val;
+  public String vals[];
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+  }
+}
+```
+
+8. Kemudian, tambahkan baris dibawah untuk menghubungkan view pada layout dengan kelas `MainActivity`. 
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        Button ledSwitchRed = (Button) findViewById(R.id.ledSwitchRed);
+        Button ledSwitchGreen = (Button) findViewById(R.id.ledSwitchGreen);
+        Button ledSwitchWhite = (Button) findViewById(R.id.ledSwitchWhite);
+
+        textVoltageRed = (TextView) findViewById(R.id.textViewRed);
+        textVoltageGreen = (TextView) findViewById(R.id.textViewGreen);
+        textVoltageWhite = (TextView) findViewById(R.id.textViewWhite);
+  }
+}
+```
+
+9. Kemudian tambahkan baris kode dibawah untuk menginisialisasikan `MemoryPresistent` dan kelas `MqttAndroidClient`. 
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        ...
+        
+        final MemoryPersistence memPer = new MemoryPersistence();
+        final String clientId = MqttClient.generateClientId();
+
+        client = new MqttAndroidClient(
+                this.getApplicationContext(),
+                "tcp://192.168.121.104:1883",
+                clientId,
+                memPer);
+  }
+}
+```
+- 
 

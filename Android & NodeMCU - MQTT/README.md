@@ -322,7 +322,17 @@ void loop() {
 
     // Menggabungkan nilai tegangan LDR dengan ID pengenal Perangkat. 
     char messageDelivered[10];
-    strcpy(messageDelivered,"2");
+     
+    /*
+    Nilai ID perangkat menurut Warna LED : 
+    
+     ID_PERANGKAT | Warna LED
+    --------------------------
+         1        |    RED
+         2        |    GREEN
+         3        |    WHITE 
+    */
+    strcpy(messageDelivered,"ID_PERANGKAT");
     strcat(messageDelivered," ");
     strcat(messageDelivered,buf);
       

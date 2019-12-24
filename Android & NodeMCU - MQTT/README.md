@@ -348,4 +348,135 @@ void loop() {
 10. Upload sketch ke perangkat NodeMCU. 
 
 ## Codelab Android MQTT Client
-1.
+1. Buatlah project baru pada Android Studio dengan kriteria sebagai berikut : 
+
+| Field     | Isian |
+| ---      | ---       |
+| Nama Project  | __MQTTClient__    |
+| Target & Minimum Target SDK  | __Phone and Tablet, Api level 21__  |
+| Tipe Activity | __Empty Activity__ |
+| Activity Name | __MainActivity__ | 
+| Language | __Java__ |
+
+2. Ganti keseluruhan kode pada `activity_main.xml` dengan kode berikut : 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/ledSwitchRed"
+        android:layout_width="100dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/buttonLEDRed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ledSwitchGreen"
+        android:layout_width="100dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:text="@string/buttonLEDGreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toEndOf="@+id/ledSwitchRed"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ledSwitchWhite"
+        android:layout_width="100dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/buttonLEDWhite"
+        app:layout_constraintEnd_toEndOf="@+id/ledSwitchGreen"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/ledSwitchRed"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Menunggu Tegangan LDR ESP Merah"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ledSwitchWhite" />
+
+    <TextView
+        android:id="@+id/textViewGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:text="Menunggu Tegangan LDR ESP Hijau"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRed" />
+
+    <TextView
+        android:id="@+id/textViewWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:text="Menunggu Tegangan LDR ESP Putih"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGreen" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+Sehingga tampilan layout activity_main menjadi seperti ini : 
+(IMG HERE)
+
+3. Tambahkan dua library `org.eclipse.paho.android.service-1.1.1.jar` dan `org.eclipse.paho.client.mqttv3-1.1.1.jar` pada folder libs. Kedua file tersebut tersedia pada folder libs di repository ini. Ikuti arahan dari asisten untuk melakukan clonning. 
+
+4. Tambahkan baris program dibawah pada build.gradle (App level) untuk implementasi library yang sudah ditambahkan pada folder libs project : 
+
+```gradle
+apply plugin: 'com.android.application'
+
+android {
+  ...
+    }
+    buildTypes {
+        release {
+            ...
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    
+    // Tambahkan dua baris progam dibawah ini
+    implementation files('libs/org.eclipse.paho.android.service-1.1.1.jar')
+    implementation files('libs/org.eclipse.paho.client.mqttv3-1.1.1.jar')
+}
+```
+5. Kemudian, Klik tulisan "Sync Now" pada pojok kanan atas untuk melakukan sinkronisasi ulang. 
+
+(IMG SYNC NOW DISINI)
+
+6. 
+
+
+

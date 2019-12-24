@@ -474,7 +474,7 @@ dependencies {
 ```
 5. Kemudian, Klik tulisan "Sync Now" pada pojok kanan atas untuk melakukan sinkronisasi ulang. 
 
-(IMG SYNC NOW DISINI)
+<img src="images/ss_sync_now.png" width="600">
 
 6. Sekarang saatnya kita menambahkan program pada file `MainActivity.java`. Import kelas-kelas yang dibutuhkan untuk melakukan koneksi MQTT dengan menambahkan baris-bari dibawah ini : 
 

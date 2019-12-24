@@ -478,6 +478,28 @@ dependencies {
 
 6. Sekarang saatnya kita menambahkan program pada file `MainActivity.java`. Import kelas-kelas yang dibutuhkan untuk melakukan koneksi MQTT dengan menambahkan baris-bari dibawah ini : 
 
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.DisconnectedBufferOptions;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+public class MainActivity extends AppCompatActivity {
+  ...
+}
+```
 
 
 

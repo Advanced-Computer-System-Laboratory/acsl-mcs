@@ -581,11 +581,117 @@ public class MainActivity extends AppCompatActivity {
 
         client = new MqttAndroidClient(
                 this.getApplicationContext(),
-                "tcp://192.168.121.104:1883",
+                "tcp://ALAMAT_IP_BROKER:1883",
                 clientId,
                 memPer);
   }
 }
 ```
-- 
+- MemoryPresistence berfungsi untuk
+- Tanyakan kepada asisten untuk mendapatkan ALAMAT_IP_BROKER
+
+10. Kemudian, tambahkan baris kode dibawah yang berfungsi untuk melakukan percobaan koneksi perangkat Android dengan MQTT broker.
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        ...
+        
+        try {
+            
+            client.connect(mqttConnectOptions, null, new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    DisconnectedBufferOptions disconnectedBufferOptions = new DisconnectedBufferOptions();
+                    disconnectedBufferOptions.setBufferEnabled(true);
+                    disconnectedBufferOptions.setBufferSize(100);
+                    disconnectedBufferOptions.setPersistBuffer(false);
+                    disconnectedBufferOptions.setDeleteOldestMessages(false);
+                    client.setBufferOpts(disconnectedBufferOptions);
+                    subscribeToTopic();
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+
+                }
+            });
+
+        } catch (MqttException ex){
+            ex.printStackTrace();
+        }
+        
+  }
+}
+```
+10. Kemudian, tambahkan baris kode dibawah yang berfungsi untuk menerima inputan pada masing-masing Button LED Switch.
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        ...
+        
+        /*
+          Jika menerima inputan click pada tombol ledSwitchRed, 
+          maka akan memerintahkan perangkat NodeMCU dengan ID "1" 
+          untuk menyalakan/mematikan LED nya. (LED Warna Merah)
+        */ 
+        ledSwitchRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = "1";
+                sendCommand(client, clientId, memPer);
+            }
+        });
+
+        /*
+          Jika menerima inputan click pada tombol ledSwitchGreen, 
+          maka akan memerintahkan perangkat NodeMCU dengan ID "2" 
+          untuk menyalakan/mematikan LED nya. (LED Warna Hijau)
+        */ 
+        ledSwitchGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = "2";
+                sendCommand(client, clientId, memPer);
+            }
+        });
+
+
+        /*
+          Jika menerima inputan click pada tombol ledSwitchWhite, 
+          maka akan memerintahkan perangkat NodeMCU dengan ID "3" 
+          untuk menyalakan/mematikan LED nya. (LED Warna Putih)
+        */ 
+        ledSwitchWhite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = "3";
+                sendCommand(client, clientId, memPer);
+            }
+        }); 
+  }
+}
+```
+
+
+
 

@@ -442,7 +442,7 @@ void loop() {
 Sehingga tampilan layout activity_main menjadi seperti ini : 
 (IMG HERE)
 
-3. Tambahkan dua library `org.eclipse.paho.android.service-1.1.1.jar` dan `org.eclipse.paho.client.mqttv3-1.1.1.jar` pada folder libs. Kedua file tersebut tersedia pada folder libs di repository ini. Ikuti arahan dari asisten untuk melakukan clonning. 
+3. Download dua library `org.eclipse.paho.android.service-1.1.1.jar` dan `org.eclipse.paho.client.mqttv3-1.1.1.jar` pada folder libs di repository ini. Kemudian tambahkan kedua file tersebut ke folder libs yang ada di project Android Studio.
 
 4. Tambahkan baris program dibawah pada build.gradle (App level) untuk implementasi library yang sudah ditambahkan pada folder libs project : 
 
@@ -476,7 +476,8 @@ dependencies {
 
 (IMG SYNC NOW DISINI)
 
-6. 
+6. Sekarang saatnya kita menambahkan program pada file `MainActivity.java`. Import kelas-kelas yang dibutuhkan untuk melakukan koneksi MQTT dengan menambahkan baris-bari dibawah ini : 
+
 
 
 

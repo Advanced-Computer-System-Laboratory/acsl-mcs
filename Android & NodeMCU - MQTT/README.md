@@ -28,7 +28,7 @@ MQTT merupakan protokol pengiriman pesan machine-to-machine (M2M)/"Internet of T
 - Broker MQTT sudah tersedia. Tanyakan kepada asisten untuk alamat IP broker MQTT. Pastikan perangkat smartphone **terhubung pada jaringan WiFi lab** sebelum melakukan running test. 
 - Referensi installasi Broker dan Client MQTT pada Ubuntu : https://www.vultr.com/docs/how-to-install-mosquitto-mqtt-broker-server-on-ubuntu-16-04
 
-## Codelab NodeMCU
+## Codelab NodeMCU MQTT Client
 1. Buatlah sketch baru pada Arduino IDE. Sehingga akan muncul tampilan awal seperti ini : 
 <img src="images/ss_arduino_ide.png" width="400">
 
@@ -346,3 +346,6 @@ void loop() {
 }
 ```
 10. Upload sketch ke perangkat NodeMCU. 
+
+## Codelab Android MQTT Client
+1.

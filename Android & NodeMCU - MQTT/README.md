@@ -80,9 +80,9 @@ void loop() {
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Lab Lanjut 121";
-const char* password = "TanyaAsisten";
-const char* mqtt_server = "192.168.121.105";
+const char* ssid = "SSID_WIFI";
+const char* password = "PASSWORD_WIFI";
+const char* mqtt_server = "ALAMAT_IP_BROKER";
 
 bool ledState = LOW;
 long lastMsg = 0;
@@ -830,4 +830,37 @@ public class MainActivity extends AppCompatActivity {
     }
   
 }
+```
+
+13. Terakhir, tambahkan ijin `WAKE_LOCK`, `INTERNET`, `ACCESS_NETWORK_STATE` dan `READ_PHONE_STATE` pada file `AndroidManifest.xml`. 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mqttpahoexample">
+
+    // Tambahkan permission ini pada file manifest project.
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <service android:name="org.eclipse.paho.android.service.MqttService"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
 ```

@@ -574,6 +574,7 @@ public class MainActivity extends AppCompatActivity {
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+  
         ...
         
         final MemoryPersistence memPer = new MemoryPersistence();
@@ -604,6 +605,7 @@ public class MainActivity extends AppCompatActivity {
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+  
         ...
         
         try {
@@ -707,7 +709,9 @@ public class MainActivity extends AppCompatActivity {
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+  
         ...
+        
   }
   
     public void subscribeToTopic(){

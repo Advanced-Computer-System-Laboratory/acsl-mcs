@@ -577,6 +577,10 @@ public class MainActivity extends AppCompatActivity {
   
         ...
         
+        MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+        mqttConnectOptions.setAutomaticReconnect(true);
+        mqttConnectOptions.setCleanSession(false);
+        
         final MemoryPersistence memPer = new MemoryPersistence();
         final String clientId = MqttClient.generateClientId();
 

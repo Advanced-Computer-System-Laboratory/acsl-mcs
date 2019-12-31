@@ -199,7 +199,17 @@ void callback(char* topic, byte* payload, unsigned int length) {
   // Switch on the LED if an 1 was received as first character
   Serial.print("payload ");
   Serial.println(payload[0]);
-  if (payload[0] == '2') {
+  
+  /*
+    Nilai ID perangkat menurut Warna LED : 
+    
+     ID_PERANGKAT | Warna LED
+    --------------------------
+         1        |    RED
+         2        |    GREEN
+         3        |    WHITE 
+    */
+  if (payload[0] == 'ID_PERANGKAT') {
     if (payload[2] == 'a') digitalWrite(D5, !ledState);   
     ledState = !ledState;
   }
@@ -720,7 +730,7 @@ public class MainActivity extends AppCompatActivity {
   
     public void subscribeToTopic(){
         try {
-            client.subscribe("test", 0, null, new IMqttActionListener() {
+            client.subscribe("data", 0, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     Log.d("dari app","Subscribed!");
@@ -733,7 +743,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-            client.subscribe("test", 0, new IMqttMessageListener() {
+            client.subscribe("data", 0, new IMqttMessageListener() {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     // message Arrived!
@@ -813,7 +823,7 @@ public class MainActivity extends AppCompatActivity {
                     message.setRetained(false);
 
                     try {
-                        client.publish("testing", message);
+                        client.publish("command", message);
                         Log.i("MSSG", "Message published");
                     } catch (MqttPersistenceException e) {
                         // TODO Auto-generated catch block

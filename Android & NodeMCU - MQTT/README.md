@@ -884,7 +884,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 14. Jalankan aplikasi pada perangkat smartphone. Jika mengalami force close maka coba buka logcat pada Android Studio untuk melihat log out error yang terjadi, jika tampilan pesan error yang muncul seperti ini : 
 
-(IMG HERE)
+<img src="images/ss_error.png" width="400">
 
 Maka tambahkan baris berikut pada ``buid.gradle`` app level : 
 

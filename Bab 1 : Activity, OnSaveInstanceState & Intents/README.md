@@ -20,7 +20,7 @@ Pada Bab ini kalian akan memahami komponen utama dalam aplikasi android yaitu ac
 ### Pengenalan Activity
 Activity dapat di katakan sebagai halaman/layar dalam aplikasi android. Terdapat berbagai macam komponen UI (User Interface) di dalamnya seperti tombol, gambar, list, dan text yang di definisikan di dalam file layout berformat _xml_. Pengguna dapat berinteraksi dengan komponen-komponen tersebut seperti mengubah text atau menekan tombol untuk memicu sebuah event. Sebuah Activity terdiri dari file Java Class `.java` dan file layout `.xml`.
 
-*Activity* merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
+Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
 
 ### Activity Lifecycle
 Setiap activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :

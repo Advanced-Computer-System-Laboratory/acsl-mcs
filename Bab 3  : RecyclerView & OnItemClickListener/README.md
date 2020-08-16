@@ -6,7 +6,7 @@
 <a href="https://github.com/fahmisbas">
   <img align="right" src="../images/Github.png" width="30">
 </a>
-<a href="https://www.linkedin.com/in/berninofalya/">
+<a href="https://www.linkedin.com/in/fahmisbas/">
   <img align="right" src="../images/LinkedIn.png" width="30">
 </a>
 <img align="right" src="../images/FahmiSulaimanBaswedan.png" width="250">

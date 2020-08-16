@@ -24,15 +24,13 @@ RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan kolek
   <img width="400" src="images/recyclerview vs listview.png">
 </p>
 
-Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur bagaimana koleksi data di tampilkan. Kita dapat menggunakan __LinearLayoutManager__ untuk menampilkan data dalam bentuk list (Vertically) dan __GridLayoutManager__ untuk menampilkan data dalam bentuk grid.
+Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur bagaimana koleksi data di tampilkan. Kita dapat menggunakan __LinearLayoutManager__ untuk menampilkan data dalam bentuk list (Vertically & Horizontally) dan __GridLayoutManager__ untuk menampilkan data dalam bentuk grid.
 
 <p align="center">
   <img width="460" src="images/RecyclerView.png">
 </p>
 
-RecyclerView membutuhkan sebuah Class _Adapter_ untuk dapat bekerja. Class _Adapter_ di gunakan untuk membuat tampilan individual item di dalam method `onCreateViewItem()`, kemudian menampilkan koleksi data di dalam method `onBindViewHolder()`. Koleksi data (Dataset) yang di gunakan dapat berupa _Array, List, dan Map._
-
-Views yang terdapat pada layout item di inisialisai di dalam class `ViewHolder`, setiap _ViewHolder_ bertugas untuk menampilkan satu item.
+RecyclerView membutuhkan sebuah komponen _Adapter_ untuk dapat bekerja. _Adapter_ di gunakan untuk membuat tampilan individual layout item, kemudian menampilkan koleksi data di dalam layout item tersebut. Koleksi data (Dataset) yang di gunakan dapat berupa _Array, List, dan Map._ Views yang terdapat pada layout item di inisialisai di dalam class `ViewHolder`, setiap _ViewHolder_ bertugas untuk menampilkan satu item.
 Misalnya, jika di dalam list menampilkan koleksi musik, maka masing-masing ViewHolder mewakili satu album. 
 
 ## Setup Project Baru

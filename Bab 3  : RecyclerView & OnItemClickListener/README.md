@@ -167,7 +167,7 @@ NetworkDevice(String name, String imageUrl) {
    this.imageUrl = imageUrl;
 }
 ```
-Buat getter dengan cara __Klik kanan -> generate -> getter__.
+Buat getter dengan cara __Klik kanan__ di dalam __NetworkDevice__ kemudian __generate -> getter__.
 
 <p align="left">
   <img width="200" src="images/generate.jpg">

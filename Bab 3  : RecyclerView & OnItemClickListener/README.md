@@ -2,6 +2,16 @@
 
 <img align="left" src="images/logo.png" width="400">
 <img align="left" src="images/logo_ug.jpg" width="60">
+
+<a href="https://github.com/fahmisbas">
+  <img align="right" src="../images/Github.png" width="30">
+</a>
+<a href="https://www.linkedin.com/in/fahmisbas/">
+  <img align="right" src="../images/LinkedIn.png" width="30">
+</a>
+<img align="right" src="../images/FahmiSulaimanBaswedan.png" width="250">
+
+
 <br/><br/><br/><br/>
 
 ## Tujuan
@@ -14,15 +24,13 @@ RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan kolek
   <img width="400" src="images/recyclerview vs listview.png">
 </p>
 
-Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur bagaimana koleksi data di tampilkan. Kita dapat menggunakan __LinearLayoutManager__ untuk menampilkan data dalam bentuk list (Vertically) dan __GridLayoutManager__ untuk menampilkan data dalam bentuk grid.
+Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur bagaimana koleksi data di tampilkan. Kita dapat menggunakan __LinearLayoutManager__ untuk menampilkan data dalam bentuk list (Vertically & Horizontally) dan __GridLayoutManager__ untuk menampilkan data dalam bentuk grid.
 
 <p align="center">
   <img width="460" src="images/RecyclerView.png">
 </p>
 
-RecyclerView membutuhkan sebuah Class _Adapter_ untuk dapat bekerja. Class _Adapter_ di gunakan untuk membuat tampilan individual item di dalam method `onCreateViewItem()`, kemudian menampilkan koleksi data di dalam method `onBindViewHolder()`. Koleksi data (Dataset) yang di gunakan dapat berupa _Array, List, dan Map._
-
-Views yang terdapat pada layout item di inisialisai di dalam class `ViewHolder`, setiap _ViewHolder_ bertugas untuk menampilkan satu item.
+RecyclerView membutuhkan sebuah komponen _Adapter_ untuk dapat bekerja. _Adapter_ di gunakan untuk membuat tampilan individual layout item, kemudian menampilkan koleksi data di dalam layout item tersebut. Koleksi data (Dataset) yang di gunakan dapat berupa _Array, List, dan Map._ Views yang terdapat pada layout item di inisialisai di dalam class `ViewHolder`, setiap _ViewHolder_ bertugas untuk menampilkan satu item.
 Misalnya, jika di dalam list menampilkan koleksi musik, maka masing-masing ViewHolder mewakili satu album. 
 
 ## Setup Project Baru
@@ -159,7 +167,7 @@ NetworkDevice(String name, String imageUrl) {
    this.imageUrl = imageUrl;
 }
 ```
-Buat getter dengan cara __Klik kanan -> generate -> getter__.
+Buat getter dengan cara __Klik kanan__ di dalam __NetworkDevice__ kemudian __generate -> getter__.
 
 <p align="left">
   <img width="200" src="images/generate.jpg">

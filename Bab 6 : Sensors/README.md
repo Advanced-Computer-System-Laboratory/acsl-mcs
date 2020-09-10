@@ -16,6 +16,7 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 
 ## Teori
 ### Accelerometer
+Accelerometer merupakan perangkat elektromekanikal yang berfungsi untuk mengukur besar gaya percepatan. Gaya percepatan dapat berupa statik seperti gaya percepeatan gravitasi atau hasil pergerakan atau getaran dinamis. Akselerasi merupakan ukuran perubahan kecepatan dibagi oleh waktu. 
 
 ## Codelab
 1. Buatlah project baru pada Android Studio dengan kriteria sebagai berikut : 

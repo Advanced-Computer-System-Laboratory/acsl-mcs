@@ -23,7 +23,7 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 | Field     | Isian |
 | ---      | ---       |
 | Nama Project  | **Sensors**   |
-| Target & Minimum Target SDK  | **Phone and Tablet, Api level 21**  |
+| Target & Minimum Target SDK  | **Phone and Tablet, API level 21**  |
 | Tipe Activity | **Empty Activity** |
 | Activity Name | **MainActivity** | 
 | Language | **Java** |
@@ -207,7 +207,66 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+4. Tambahkan baris berikut untuk mendeklarasikan variable yang dibutuhkan. Variable `sensorManager` berfungsi sebagai representasi keseluruhan sensor yang tertanam pada perangkat Android. Variable `accSensor` berfungsi sebagai representasi sensor Accelerometer, `lightSensor` sebagai representasi sensor cahaya, dan `proximitySensor` sebagai representasi sensor jarak (*proximity*). Variable `accType` hingga `lightVal` berfungsi sebagai representasi `TextView` pada layout `activity_main`.
 
+```java
+package com.example.NAMA_PACKAGE;
 
+import ...
 
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  private SensorManager sensorManager;
+  private Sensor accSensor;
+  private Sensor lightSensor;
+  private Sensor proximitySensor;
+
+  private TextView accType;
+  private TextView lightType;
+  private TextView proxType;
+  private TextView xAccVal;
+  private TextView yAccVal;
+  private TextView zAccVal;
+  private TextView proxVal;
+  private TextView lightVal;
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+  }
+}
+```
+
+5. Selanjutnya tambahkan baris dibawah untuk melakukan *assingment* pada beberapa variable yang bertugas sebagai representasi `TextView` pada layout `activity_main`. 
+
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        accType = findViewById(R.id.accType);
+        lightType = findViewById(R.id.lightType);
+        proxType = findViewById(R.id.proxType);
+        xAccVal = findViewById(R.id.xAccVal);
+        yAccVal = findViewById(R.id.yAccVal);
+        zAccVal = findViewById(R.id.zAccVal);
+        proxVal = findViewById(R.id.proxVal);
+        lightVal = findViewById(R.id.lightVal);
+  }
+}
+```
 

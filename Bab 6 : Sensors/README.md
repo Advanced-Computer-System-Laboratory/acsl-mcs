@@ -16,7 +16,19 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 
 ## Teori
 ### Accelerometer
-Accelerometer merupakan perangkat elektromekanikal yang berfungsi untuk mengukur besar gaya percepatan. Gaya percepatan dapat berupa statik seperti gaya percepeatan gravitasi atau hasil pergerakan atau getaran dinamis. Akselerasi merupakan ukuran perubahan kecepatan dibagi oleh waktu. 
+Accelerometer merupakan perangkat elektromekanikal yang berfungsi untuk mengukur besar gaya percepatan. Gaya percepatan dapat berupa statik seperti gaya percepeatan gravitasi atau hasil pergerakan atau getaran dinamis. Akselerasi merupakan ukuran perubahan kecepatan dibagi oleh waktu. <br />
+<img align="center" src="images/axis_device.png"><br />
+*Gambar 1 : Sistem Koordinat Pada Perangkat Android*<br />
+
+### Sensor Cahaya
+Sensor cahaya merupakan perangkat pasif yang mengkonversi energi cahaya menjadi sinyal listrik. Secara umum, sensor cahaya dikenal juga sebagai *photoelectronic devices* atau *photo sensors* dikarenakan sifatnya yang merubah cahaya (*photon*) menjadi listrik (*elektron*).<br />
+<img src="images/caraKerjasensorCahaya.jpg" align="center"><br />
+*Gambar 2 : Cara Kerja Sensor Cahaya*<br />
+
+### Sensor Jarak (*Proximity*)
+Sensor jarak merupakan sensor yang dapat mendeteksi keberadaan objek disekitarnya tanpa melakukan kontak fisik. Sensor jarak memancarkan gelombang elektromagnetik inframerah ke objek disekitarnya dan menerima perubahan dari gelombang yang dipancarkannya. <br />
+<img src="images/proximitySensor.png" align="center"><br />
+*Gambar 3 : Cara Kerja Sensor Jarak (Proximity)*<br />
 
 ## Codelab
 1. Buatlah project baru pada Android Studio dengan kriteria sebagai berikut : 

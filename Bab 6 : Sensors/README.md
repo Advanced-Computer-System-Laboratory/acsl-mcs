@@ -1,4 +1,4 @@
-# BAB 2 - ConstraintLayout, Style & Theme
+# BAB 3 - Acceleration, Light and Proximity Sensors
 
 <img align="left" src="../images/logo.png" width="400">
 <img align="left" src="../images/logo_ug.jpg" width="60">
@@ -12,7 +12,7 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada percobaan bab ini kalian akan memahamai cara mengakses sensor jarak, cahaya, serta akselerasi yang tertanam pada perangkat Android kalian.
+Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, jarak, serta cahaya yang tertanam pada perangkat Android kalian.
 
 ## Teori
 ### Accelerometer
@@ -21,9 +21,8 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor jarak, cahaya
   <img src="https://raw.githubusercontent.com/Fahmisbas/acsl/master/ConstraintLayout%2C%20Style%20%26%20Theme/images/anchor%20point.gif">
 </p>
 
-
-## Setup Project Baru
-Kita akan mengimpementasi teori diatas dengan membangun layout Login Screen. Sekarang buka Android Studio dan buat project baru dengan kriteria sebagai berikut.
+## Codelab
+1. Buatlah project baru pada Android Studio dengan kriteria sebagai berikut : 
 
 | Field     | Isian |
 | ---      | ---       |
@@ -33,9 +32,7 @@ Kita akan mengimpementasi teori diatas dengan membangun layout Login Screen. Sek
 | Activity Name | **MainActivity** | 
 | Language | **Java** |
 
-## Codelab
-
-1. Buka __activity_main.xml|__ dan ganti dengan kode di bawah ini.
+2. Ganti keseluruhan kode pada `activity_main.xml` dengan kode berikut : 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -269,4 +269,30 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
+6. Lakukan implementasi `SensorEventListener` pada kelas `MainActivity` dengan menambahkan `implements SensorEventListener` pada akhir deklarasi kelas `MainActivity`.
+
+7. Lakukan *assignment* pada variable `sensorManager`, `accSensor`, `lightSensor` dan `proximitySensor` dengan menambahkan baris berikut. Keluaran dari fungsi `sensorManager.getDefaultSensor` diperlukan oleh `accSensor`, `lightSensor` dan `proximitySensor` untuk mendapatkan representasi `Sensor` sesuai dengan tipe sensor yang diajukan melalui argumen fungsi. Sebagai contoh, variable `accSensor` membutuhkan representasi sensor akselerometer dengan memberikan argumen `Sensor.TYPE_ACCELEROMETER` ke fungsi `sensorManager.getDefaultSensor`. 
+```java
+package com.example.NAMA_PACKAGE;
+
+import ...
+
+...
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+         ...
+         
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+  }
+}
+```
 

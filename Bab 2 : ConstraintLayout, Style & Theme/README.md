@@ -15,11 +15,29 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada bab ini kalian akan memahamai penggunaan _ConstraintLayout_, yaitu salah satu _layout terbaru dari _Android Studio_. Dan juga _Style & Theme_ untuk mempermudah pembuatan layout aplikasi.
+Pada bab ini kalian akan memahamai penggunaan _ConstraintLayout_ yaitu salah satu layout terbaru dari _Android Studio_. Dan juga _Style & Theme_ untuk mempermudah pembuatan layout aplikasi.
 
 ## Teori
 ### ConstraintLayout
 _ConstraintLayout_ merupakan sebuah _layout_ yang banyak di gunakan oleh pengembang aplikasi android karena memiliki beberapa kelebihan, salah satunya adalah dapat mengatur _view_ secara flexible tanpa memerlukan _nested layout_ (Kelompok tampilan bertingkat) sehingga tercipta hierarki tampilan datar.
+
+Contoh _nested layout_ :
+```xml
+<LinearLayout>
+    <LinearLayout>
+        <TextView/>
+        <EditText/>
+    </LinearLayout>
+    <LinearLayout>
+        <TextView/>
+        <EditText/>
+    </LinearLayout>
+    <LinearLayout>
+        <TextView/>
+        <EditText/>
+    </LinearLayout>
+</LinearLayout>
+```
 
 Dengan _ConstraintLayout_ kita dapat mengatur layout menggunakan _Visual Layout Editor_ lebih mudah. Hanya dengan menarik _anchor point_ (Top, Bottom, Left, Right) yang terdapat pada view, lalu dihubungkan dengan parent atau view lainnya. 
 

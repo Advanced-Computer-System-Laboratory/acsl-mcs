@@ -184,7 +184,7 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 
 3. Tambahkan *dependencies* yang dibutuhkan pada kelas MainActivity.java dengan menuliskan baris-baris berikut : 
 ```java
-package com.example.NAMA_PACKAGE;
+package com.acsl.NAMA_PACKAGE;
 
 import ...
 
@@ -210,11 +210,9 @@ public class MainActivity extends AppCompatActivity {
 4. Tambahkan baris berikut untuk mendeklarasikan variable yang dibutuhkan. Variable `sensorManager` berfungsi sebagai representasi keseluruhan sensor yang tertanam pada perangkat Android. Variable `accSensor` berfungsi sebagai representasi sensor Accelerometer, `lightSensor` sebagai representasi sensor cahaya, dan `proximitySensor` sebagai representasi sensor jarak (*proximity*). Variable `accType` hingga `lightVal` berfungsi sebagai representasi `TextView` pada layout `activity_main`.
 
 ```java
-package com.example.NAMA_PACKAGE;
+package com.acsl.NAMA_PACKAGE;
 
 import ...
-
-...
 
 public class MainActivity extends AppCompatActivity {
   
@@ -243,11 +241,9 @@ public class MainActivity extends AppCompatActivity {
 5. Selanjutnya tambahkan baris dibawah untuk melakukan *assingment* pada beberapa variable yang bertugas sebagai representasi `TextView` pada layout `activity_main`. 
 
 ```java
-package com.example.NAMA_PACKAGE;
+package com.acsl.NAMA_PACKAGE;
 
 import ...
-
-...
 
 public class MainActivity extends AppCompatActivity {
   
@@ -269,15 +265,13 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
-6. Lakukan implementasi `SensorEventListener` pada kelas `MainActivity` dengan menambahkan `implements SensorEventListener` pada akhir deklarasi kelas `MainActivity`.
+6. Lakukan implementasi `SensorEventListener` pada kelas `MainActivity` dengan menambahkan `implements SensorEventListener` pada akhir deklarasi kelas `MainActivity`. 
 
 7. Lakukan *assignment* pada variable `sensorManager`, `accSensor`, `lightSensor` dan `proximitySensor` dengan menambahkan baris berikut. Keluaran dari fungsi `sensorManager.getDefaultSensor` diperlukan oleh `accSensor`, `lightSensor` dan `proximitySensor` untuk mendapatkan representasi `Sensor` sesuai dengan tipe sensor yang diajukan melalui argumen fungsi. Sebagai contoh, variable `accSensor` membutuhkan representasi sensor akselerometer dengan memberikan argumen `Sensor.TYPE_ACCELEROMETER` ke fungsi `sensorManager.getDefaultSensor`. 
 ```java
-package com.example.NAMA_PACKAGE;
+package com.acsl.NAMA_PACKAGE;
 
 import ...
-
-...
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
   
@@ -296,3 +290,240 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 }
 ```
 
+8. Tambahkan baris berikut untuk menampilkan tipe sensor yang tertanam pada perangkat Android di `TextView` layout `activity_main`. 
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import ...
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+         ...
+         
+        accType.setText(accSensor.getName());
+        lightType.setText(lightSensor.getName());
+        proxType.setText(proximitySensor.getName());
+  }
+}
+```
+
+9. Tambahkan baris berikut pada fungsi `onSensorChanged` untuk merespon masukan data hasil baca sensor. Terdapat kondisional untuk mengetahui jenis sensor yang memberikan masukan dikarenkan adanya perbedaan penanganan pada masing-masing tipe sensor. 
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import ...
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+         ...
+        
+  }
+  
+  @Override
+  public void onSensorChanged(SensorEvent sensorEvent) {
+
+      if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+          // apabila terdapat masukan data dari sensor Akselerometer
+          xAccVal.setText(String.valueOf(sensorEvent.values[0]));
+          yAccVal.setText(String.valueOf(sensorEvent.values[1]));
+          zAccVal.setText(String.valueOf(sensorEvent.values[2]));
+
+      }else if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT){
+          // apabila terdapat masukan data dari sensor cahaya
+          lightVal.setText(String.valueOf(sensorEvent.values[0]) + " lx");
+
+      }else if(sensorEvent.sensor.getType() == Sensor.TYPE_PROXIMITY){
+          // apabila terdapat masukan data dari sensor jarak
+          proxVal.setText(String.valueOf(sensorEvent.values[0]) + " cm");
+
+      }else{
+          Log.d("Error", "Unknown sensor type");
+      }
+  }
+  
+  @Override
+  public void onAccuracyChanged(Sensor sensor, int i) {
+        
+  }
+}
+```
+
+10. Setelahnya, daftarkan masing-masing sensor ke `registerListener` dengan menambahkan baris berikut pada fungsi `onResume`. Tanpa adanya baris berikut, aplikasi akan mengabaikan masukan data dari sensor. 
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import ...
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      ...
+  }
+  
+  @Override
+  public void onSensorChanged(SensorEvent sensorEvent) {
+      ...
+  }
+  
+  @Override
+  public void onAccuracyChanged(Sensor sensor, int i) {
+      ...  
+  }
+  
+  @Override
+  protected void onResume() {
+      super.onResume();
+
+      sensorManager.registerListener(this, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
+      sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+      sensorManager.registerListener(this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+  }
+}
+```
+
+11. Terakhir, tambahkan baris berikut untuk mengakhiri penggunaan sensor pada fungsi `onPause`. Hal ini perlu dilakukan karena sensor tidak secara otomatis menonaktifkan dirinya ketika layar mati, berimbas ke pemborosan baterai.
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import ...
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+  
+  ...
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+      ...
+  }
+  
+  @Override
+  public void onSensorChanged(SensorEvent sensorEvent) {
+      ...
+  }
+  
+  @Override
+  public void onAccuracyChanged(Sensor sensor, int i) {
+      ...  
+  }
+  
+  @Override
+  protected void onResume() {
+      ...
+  }
+  
+  @Override
+  protected void onPause() {
+      super.onPause();
+      sensorManager.unregisterListener(this);
+  }
+}
+```
+
+Sehingga berikut adalah baris program keseluruhan dari kelas MainActivity : 
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
+
+    private SensorManager sensorManager;
+    private Sensor accSensor;
+    private Sensor lightSensor;
+    private Sensor proximitySensor;
+
+    private TextView accType;
+    private TextView lightType;
+    private TextView proxType;
+    private TextView xAccVal;
+    private TextView yAccVal;
+    private TextView zAccVal;
+    private TextView proxVal;
+    private TextView lightVal;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        accType = findViewById(R.id.accType);
+        lightType = findViewById(R.id.lightType);
+        proxType = findViewById(R.id.proxType);
+        xAccVal = findViewById(R.id.xAccVal);
+        yAccVal = findViewById(R.id.yAccVal);
+        zAccVal = findViewById(R.id.zAccVal);
+        proxVal = findViewById(R.id.proxVal);
+        lightVal = findViewById(R.id.lightVal);
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        accSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+
+        accType.setText(accSensor.getName());
+        lightType.setText(lightSensor.getName());
+        proxType.setText(proximitySensor.getName());
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+
+        if(sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+            xAccVal.setText(String.valueOf(sensorEvent.values[0]));
+            yAccVal.setText(String.valueOf(sensorEvent.values[1]));
+            zAccVal.setText(String.valueOf(sensorEvent.values[2]));
+
+        }else if(sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT){
+            lightVal.setText(String.valueOf(sensorEvent.values[0]) + " lx");
+
+        }else if(sensorEvent.sensor.getType() == Sensor.TYPE_PROXIMITY){
+            proxVal.setText(String.valueOf(sensorEvent.values[0]) + " cm");
+
+        }else{
+            Log.d("Error", "Unknown sensor type");
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+        
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        sensorManager.registerListener(this, accSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+}
+
+```

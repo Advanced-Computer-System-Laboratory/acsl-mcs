@@ -182,6 +182,10 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
+Pastikan tampilan layout terlihat seperti pada gambar berikut : <br />
+<img src="images/hasilLayout.png">
+<br />
+
 3. Tambahkan *dependencies* yang dibutuhkan pada kelas MainActivity.java dengan menuliskan baris-baris berikut : 
 ```java
 package com.acsl.NAMA_PACKAGE;
@@ -527,3 +531,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 }
 
 ```
+
+Berikut adalah tangkapan layar dari hasil percobaan Bab ini : <br />
+<img src="images/result.jpeg">
+<br />

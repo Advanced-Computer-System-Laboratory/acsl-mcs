@@ -17,10 +17,6 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 ## Teori
 ### Accelerometer
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Fahmisbas/acsl/master/ConstraintLayout%2C%20Style%20%26%20Theme/images/anchor%20point.gif">
-</p>
-
 ## Codelab
 1. Buatlah project baru pada Android Studio dengan kriteria sebagai berikut : 
 
@@ -186,7 +182,30 @@ Pada percobaan bab ini kalian akan memahamai cara mengakses sensor  akselerasi, 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
+3. Tambahkan *dependencies* yang dibutuhkan pada kelas MainActivity.java dengan menuliskan baris-baris berikut : 
+```java
+package com.example.NAMA_PACKAGE;
 
+import ...
+
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+  
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+  }
+}
+```
 
 
 

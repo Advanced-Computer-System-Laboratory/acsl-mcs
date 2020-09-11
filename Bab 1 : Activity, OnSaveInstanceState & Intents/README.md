@@ -384,7 +384,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 Sekarang jalankan programnya dan lakukan perpindahan activity.
 
 <p align="left">
-  <img src="images/intentExplicit.gif">
+  <img src="images/IntentExplicit.gif">
 </p>
 
 Activity baru tidak menampilkan apa apa, karena kita belum memasukkan komponen UI yang di perlukan.

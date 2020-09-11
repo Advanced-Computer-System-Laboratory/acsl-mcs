@@ -387,8 +387,6 @@ Sekarang jalankan programnya dan lakukan perpindahan activity.
   <img src="images/IntentExplicit.gif">
 </p>
 
-Activity baru tidak menampilkan apa apa, karena kita belum memasukkan komponen UI yang di perlukan.
-
 10.  Kita sudah berhasil melakukan perpindahan activity. Selanjutnya kita akan melakukan perpindahan activity sekaligus membawa data menggunakan method `putExtra()` dengan parameter *key-value*.
 Sehingga akan terlihat seperti ini.
 

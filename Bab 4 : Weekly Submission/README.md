@@ -17,8 +17,15 @@ Maka pada Bab 4, anda diwajibkan untuk membuat submissi berupa aplikasi dengan s
 * Seluruh *layout* wajib diterapkan dengan ConstraintLayout yang sudah dipelajari pada Bab 2. 
 
 <p align="center">
-<img align="left" src="images/listHalaman.png">
+<img align="center" src="images/listHalaman.png">
 </p>
 
-## Format Pengiriman
-Aplikasi 
+
+
+## Pengiriman Submission
+* File ZIP hasil ekspor aplikasi dikirimkan ke alamat email masing-masing PJ shift dengan subjek email MCSPM_NAMA_NPM_NAMAAPLIKASI. 
+* Submission harus dikirimkan pada durasi minggu submission tersebut. Submission akan direspon oleh PJ hingga hari Jum'at pukul 23.59 WIB. Submission yang tidak memenuhi syarat diatas akan ditolak oleh PJ dan praktikan wajib mengirim ulang submission yang sudah memenuhi syarat. 
+* Apabila sampai pada hari Jum'at 23.59 WIB status submission praktikan adalah ditolak atau praktikan tidak mengirimkan submssion pada rentang waktu yang ditentukan maka nilai minggu submission praktikan adalah 0.
+* Perlu diperhatikan bahwa poin nilai submission sangat mempengaruhi nilai akhir praktikan.
+
+

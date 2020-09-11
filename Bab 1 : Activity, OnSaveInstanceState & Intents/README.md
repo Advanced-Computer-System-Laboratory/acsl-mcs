@@ -14,23 +14,22 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada Bab ini kalian akan memahami komponen utama dalam aplikasi android yaitu activity, dan dapat menggunakan Intent untuk melakukan navigasi antar Activity.
-
+Pada bab ini kalian akan memahami komponen utama dalam aplikasi android yaitu activity, dan dapat menggunakan Intent untuk melakukan navigasi antar activity.
 ## Teori
 ### Pengenalan Activity
-Activity dapat di katakan sebagai halaman/layar dalam aplikasi android. Terdapat berbagai macam komponen UI (User Interface) di dalamnya seperti tombol, gambar, list, dan text yang di definisikan di dalam file layout berformat _xml_. Pengguna dapat berinteraksi dengan komponen-komponen tersebut seperti mengubah text atau menekan tombol untuk memicu sebuah event. Sebuah Activity terdiri dari file Java Class `.java` dan file layout `.xml`.
+Activity dapat di katakan sebagai halaman/layar dalam aplikasi android. Terdapat berbagai macam komponen UI (User Interface) di dalamnya seperti tombol, gambar, list, dan text yang di definisikan di dalam file layout berformat _xml_. Pengguna dapat berinteraksi dengan komponen-komponen tersebut seperti mengubah text atau menekan tombol untuk memicu sebuah event. Sebuah activity terdiri dari file Java Class `.java` dan file layout `.xml`.
 
-Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
+Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook, di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
 
-### Activity Lifecycle
+### Activity Lifecycle  
 Setiap activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :
 <p align="center">
   <img align="center" src="images/ActivityLifecycle.png" width="460">
 </p>
 
-*Activity Lifecycle* merupakan rangkaian *state* dari activity. Kita dapat mengatur _behaviour_ activity berdasarkan state yang sedang aktif menggunakan _method callback_. Terdapat 6 _Method Callback_ di dalam activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
+*Activity Lifecycle* merupakan rangkaian *state* dari activity. Kita dapat mengatur _behaviour_ activity berdasarkan state yang sedang aktif menggunakan _method callback_. Terdapat 6 _method callback_ di dalam activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
 
-Contoh penggunaan nya adalah ketika aplikasi pertama kali di buka, activity utama akan di jalankan dan memasuki state *Create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalam nya seperti menampilkan layout menggunakan `setContentView()`. Method `onCreate()` wajib di miliki oleh sebuah activity untuk melakukan inisialisasi awal.
+Contoh penggunaan nya adalah ketika aplikasi pertama kali di buka, activity utama akan di jalankan dan memasuki state *create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalam nya seperti menampilkan layout menggunakan `setContentView()`. Method `onCreate()` wajib di miliki oleh sebuah activity untuk melakukan inisialisasi awal.
 
 Penjelasan lebih lanjut mengenai _Activity Lifecycle_ dapat di lihat di dalam link ini : https://developer.android.com/guide/components/activities/activity-lifecycle
 
@@ -70,7 +69,7 @@ Maka tampilan nya akan seperti ini.
   <img width="560" src="images/New Project-IDE.PNG">
 </p>
 
-Kita akan menulis kode di dua buah file dengan format .`java` dan `.xml` yaitu __MainActivity.java__ dan __activity_main.xml__, dua kombinasi yang membentuk sebuah activity. Android Studio sudah menyediakan secara otomatis saat kita membuat project baru dengan memilih *Empty Activity* dan menjadikan nya activity utama di dalam __AndroidManifest.xml__.
+Kita akan menulis kode di dua buah file dengan format .`java` dan `.xml` yaitu __MainActivity.java__ dan __activity_main.xml__, dua kombinasi yang membentuk sebuah activity. Android Studio sudah menyediakan secara otomatis saat kita membuat project baru dengan memilih _Empty Activity_ dan menjadikan nya activity utama di dalam __AndroidManifest.xml__.
 
 <p align="left">
   <img width="560" src="images/Main Launcher.PNG">
@@ -93,14 +92,13 @@ Sekarang buka __activity_main.xml__ dan kondisikan layoutnya seperti di bawah in
 
 _*Ikuti arahan PJ dalam pemnbuatan layout._
 
-Terdapat dua komponen UI di dalam aplikasi android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah ViewGroup.
-ViewGroup digunakan untuk menampung View seperti *TextView, ImageView, Button dll* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai child-view.
+Terdapat dua komponen UI di dalam aplikasi android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dll* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
 
 *ConstraintLayout* digunakan untuk mengatur posisi _child-view_ secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
 
 Pembahasan mengenai _ViewGroup_ dan _View_ lebih lanjut dapat di lihat di dalam link ini : https://developer.android.com/guide/topics/ui/declaring-layout.
 
-2. Perhatikan highlight kuning  pada `android:text`. Hightlight menandakan sebuah peringatan dalam hal ini kita meng-*hardcode* nilai pada `android:text`. Kita dapat menghilangkan nya dengan cara klik pada highlight tersebut, lalu tekan *alt+enter*  dan pilih *extract string resource*. Klik tombol *OK*. 
+2. Perhatikan highlight kuning  pada `android:text`. Hightlight menandakan sebuah peringatan dalam hal ini kita meng-_hardcode_ nilai pada `android:text`. Kita dapat menghilangkan nya dengan cara klik pada highlight tersebut, lalu tekan *alt+enter*  dan pilih *extract string resource*. Klik tombol *OK*. 
 
 <p align="left">
   <img src="images/ExtractStringResource.PNG">
@@ -247,12 +245,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
 ```
 
-Hal yang perlu di ingat bahwa *TextView* hanya menerima *String*. Karena variable `count` bertipe *Integer* maka kita perlu mengkonversikan nya kedalam *String* menggunakan `Integer.toString()`.
+Hal yang perlu di ingat adalah *TextView* hanya menerima *String*. Karena variable `count` bertipe *Integer* maka kita perlu mengkonversikan nya kedalam *String* menggunakan `Integer.toString()`.
 
-Sekarang jalankan program nya menggunakan emulator atau smartphone, pastikan USB Debugging sudah di aktifkan.
+Sekarang jalankan program nya menggunakan emulator atau smartphone. Pastikan USB Debugging sudah di aktifkan.
 Tampilan nya akan seperti ini. 
 
--- Image --
+<p align="left">
+  <img src="images/MyFirstApp.PNG">
+</p>
 
 Tekan tombol tambah dan kurang, maka `tvResult` akan menampilkan hasilnya.
 
@@ -309,8 +309,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 ```   
 Sekarang coba di jalankan kembali dan ubah orientasi. Nilai yang tampil di `tvResult` tidak akan berubah.
 
--- GIF --
-
+<p align="left">
+  <img src="images/MyFirstAppRotate.PNG">
+</p>
 
 7. Selanjutnya kita akan menggunakan __Intent__ untuk melakukan navigasi ke activity baru (Explicit).
 
@@ -328,7 +329,10 @@ Buat dengan kriteria sebagai berikut:
 | Language | **Java** |
 
 8. Buka layout __activity_new.xml__ dan kondisikan layoutnya seperti di bawah ini.
---image--
+
+<p align="left">
+  <img  src="images/NewActivityDisplay.PNG">
+</p>
 
 9. Selanjutnya buka class __MainActivity__, buat variabel instance sebagai berikut.
 ```java
@@ -354,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 ```
-Masukan kode ini di dalam blok _switch_ yang berada di dalam method `onClick()`.
+Masukan kode berikut ke dalam blok _switch_ yang berada di dalam method `onClick()`.
 
 ```java
 import ...
@@ -379,11 +383,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 ```
 Sekarang jalankan programnya dan lakukan perpindahan activity.
 
--- GIF --
+<p align="left">
+  <img src="images/intentExplicit.gif">
+</p>
 
-Kita sudah berhasil melakukan perpindahan activity.
+Activity baru tidak menampilkan apa apa, karena kita belum memasukkan komponen UI yang di perlukan.
 
-10. Kita juga dapat melakukan perpindahan activity sekaligus membawa data menggunakan method `putExtra()` dengan parameter *key-value*.
+10.  Kita sudah berhasil melakukan perpindahan activity. Selanjutnya kita akan melakukan perpindahan activity sekaligus membawa data menggunakan method `putExtra()` dengan parameter *key-value*.
 Sehingga akan terlihat seperti ini.
 
 ```java
@@ -516,8 +522,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 ```
 Jalankan program nya dan lakukan navigasi. Maka aplikasi akan otomatis membuka browser dan membuka Google.
 
- -- GIF --
- 
+<p align="left">
+  <img src="images/IntentImplicit.gif">
+</p>
 
 Kita sudah berhasil membuat aplikasi penghitung sederhana dan melakukan navigasi menggunakan __Intent__. Maka Keseluruhan kode pada __MainActivity__ dan __NewActivity__ akan terlihat seperti ini :
 

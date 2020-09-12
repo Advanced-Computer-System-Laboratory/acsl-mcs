@@ -384,10 +384,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 Sekarang jalankan programnya dan lakukan perpindahan activity.
 
 <p align="left">
-  <img src="images/intentExplicit.gif">
+  <img src="images/IntentExplicit.gif">
 </p>
-
-Activity baru tidak menampilkan apa apa, karena kita belum memasukkan komponen UI yang di perlukan.
 
 10.  Kita sudah berhasil melakukan perpindahan activity. Selanjutnya kita akan melakukan perpindahan activity sekaligus membawa data menggunakan method `putExtra()` dengan parameter *key-value*.
 Sehingga akan terlihat seperti ini.
@@ -468,6 +466,10 @@ public class NewActivity extends AppCompatActivity {
 
 Jalankan kembali program nya dan lakukan perpindahan activity.
 Maka yang akan tampil di __NewActivity__ adalah data yang di kirim melalui intent.
+
+<p align="left">
+  <img src="images/IntentPutExtra.gif">
+</p>
 
 12. Yang terkhir, kita akan melakukan _Intent implicit_ untuk melakukan navigasi ke aplikasi lain.
 Kali ini kita akan melakukannya dengan browser. Sekarang buka class __MainActivity__ dan buat variabel instance sebagai berikut :

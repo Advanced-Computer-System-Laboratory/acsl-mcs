@@ -18,20 +18,19 @@
 Pada Bab ini kalian akan mempelajari cara menampilkan data dalam bentuk list menggunakan _RecyclerView_, kemudian menerima dan memproses event click pada item list.
 
 ## Teori
-RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan koleksi data, baik dalam bentuk _List, Grid ataupun Staggered grid._ RecyclerView memiliki performa yang lebih baik di bandingkan pendahulunya yaitu _ListView_, karena ia hanya akan memuat daftar item yang perlu di tampilkan, sehingga menjadikan nya efisien dalam penggunaan memori. 
+RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan koleksi data, baik dalam bentuk _List, Grid_ ataupun _Staggered grid._ RecyclerView memiliki performa yang lebih baik di bandingkan pendahulunya yaitu _ListView_, karena ia hanya akan memuat daftar item yang perlu di tampilkan, sehingga menjadikan nya efisien dalam penggunaan memori. 
 
 <p align="center">
   <img width="400" src="images/recyclerview vs listview.png">
 </p>
 
-Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur bagaimana koleksi data di tampilkan. Kita dapat menggunakan __LinearLayoutManager__ untuk menampilkan data dalam bentuk list (Vertically & Horizontally) dan __GridLayoutManager__ untuk menampilkan data dalam bentuk grid.
+Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur bagaimana koleksi data di tampilkan. Kita dapat menggunakan __LinearLayoutManager__ untuk menampilkan data dalam bentuk list (Vertically & Horizontally) dan __GridLayoutManager__ untuk menampilkan data dalam bentuk grid. Sumber data yang ingin di tampilkan dapat berupa _Array, List, dan Map._ 
 
 <p align="center">
   <img width="460" src="images/RecyclerView.png">
 </p>
 
-RecyclerView membutuhkan sebuah komponen _Adapter_ untuk dapat bekerja. _Adapter_ di gunakan untuk membuat tampilan individual layout item, kemudian menampilkan koleksi data di dalam layout item tersebut. Koleksi data (Dataset) yang di gunakan dapat berupa _Array, List, dan Map._ Views yang terdapat pada layout item di inisialisai di dalam class `ViewHolder`, setiap _ViewHolder_ bertugas untuk menampilkan satu item.
-Misalnya, jika di dalam list menampilkan koleksi musik, maka masing-masing ViewHolder mewakili satu album. 
+RecyclerView membutuhkan komponen _Adapter_ untuk dapat bekerja. _Adapter_ di gunakan untuk memuat tampilan individual _item_ pada list. Views yang terdapat pada _layout_ item di inisialisai di dalam class `ViewHolder`. Setiap _ViewHolder_ bertugas untuk menampilkan satu item.
 
 ## Setup Project Baru
 Kita akan mengimpementasi teori diatas dengan membuat aplikasi yang berisikan list gambar dan nama-nama perangkat jaringan.
@@ -54,9 +53,9 @@ dependencies {
    implementation "androidx.recyclerview:recyclerview:1.1.0"
 }
 ```
-2. Karena gambar yang akan di tampilkan kedalam list berasal dari internet, kita perlu menggunakan _third party library_ untuk dapat mendownload dan menampilkan gambar tersebut. Library yang kita gunakan adalah _Glide_. 
+2. Karena gambar yang akan di tampilkan kedalam list berasal dari internet, kita perlu menggunakan _Third party library_ untuk dapat mendownload dan menampilkan gambar tersebut. Library yang kita gunakan adalah _Glide_. 
 
-Tambahkan Glide ke dalam __app/build.gradle(Module.app)__.
+Tambahkan Glide ke dalam __app/build.gradle(Module.app)__ di dalam blok `dependencies`.
 ```gradle
 dependencies {
    ...
@@ -92,7 +91,7 @@ Selanjutnya lakukan “sync now”.
   <img width="500" src="images/build gradle.PNG">
 </p>
 
-Apabila terjadi error pastikan tidak terdapat _typo_.
+Apabila terjadi error pastikan tidak terdapat _salah ketik_.
 
 
 3. Buka __activity_main.xml__ dan kondisikan seperti yang di bawah ini.
@@ -227,12 +226,12 @@ public class NetworkDeviceData {
    }
 }
 ```
-7. Kita sudah memiliki koleksi data, berikutnya kita perlu membuat _Adapter RecyclerView_. Buat kelas baru dengan nama __ListNetworkDeviceAdapter__.
+7. Kita sudah memiliki koleksi data. Berikutnya kita perlu membuat _Adapter RecyclerView_. Buat kelas baru dengan nama __ListNetworkDeviceAdapter__.
 <p align="left">
   <img width="500" src="images/create adapter class.PNG">
 </p>
 
-Kita perlu mewarisi `RecyclerView.Adapter` seperti berikut.
+Kita perlu meng-extends `RecyclerView.Adapter` seperti berikut.
 ```java
 public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDeviceAdapter.ViewHolder> {
 
@@ -276,7 +275,7 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
   <img width="500" src="images/create view holder.png">
 </p>
 
-Berikutnya extends `RecyclerView.ViewHolder` dan buat constructor nya dengan cara tekan __alt+enter__ pada class tersebut lalu pilih _create constructor matching super_.
+Berikutnya extends `RecyclerView.ViewHolder` pada class `ViewHolder` tersebut lalu buat constructor nya dengan cara, tekan __alt+enter__ pada class tersebut lalu pilih _create constructor matching super_.
 <p align="left">
   <img width="500" src="images/constructor matching super.png">
 </p>
@@ -341,7 +340,7 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
 ```
 
 Agar dapat menampilkan layout item di dalam RecyclerView, kita perlu menggunakan `LayoutInflater` yang di _assign_  ke dalam objek `view`.
-Lalu objek tersebut di gunakan oleh `ViewHolder` untuk melakukan _casting_ view dengan `findViewById()` agar dapat menampilkan koleksi data di dalam method `onBindViewHolder()`.
+Lalu objek tersebut di gunakan oleh `ViewHolder` untuk melakukan _casting_ view dengan `findViewById()`.
 
 11. Selanjutnya kita perlu menampilkan data di dalam method `onBindViewHolder()` dengan menambah kode sebagai berikut.
 ```java
@@ -407,7 +406,6 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
 
        Glide.with(holder.itemView.getContext())
                .load(networkDevice.getImageUrl())
-               .apply(new RequestOptions().override(100,100))
                .into(holder.imgDevice);
 
        holder.tvName.setText(networkDevice.getName());
@@ -460,7 +458,7 @@ public class MainActivity extends AppCompatActivity {
    }
 }
 ```
-Perhatikan kode di dalam method `initRecyclerView()`. Kita membuat objek adapter dan memberi koleksi data kedalam constructor nya. RecyclerView yang telah di inisialisasi di atur tampilan nya menggunakan __LinearLayoutManager__ agar menampilkan koleksi data dalam bentuk list., kemudian RecyclerView tersebut memanggil `setAdapter()` dan memasukan object adapter yang telah di buat.
+Perhatikan kode di dalam method `initRecyclerView()`. Kita membuat objek adapter dan memberi koleksi data kedalam constructor nya. __RecyclerView__ yang telah di inisialisasi di atur tampilan nya menggunakan __LinearLayoutManager__ agar menampilkan koleksi data dalam bentuk list. Kemudian __RecyclerView__ tersebut memanggil `setAdapter()` dan memasukan object adapter yang telah di buat.
 
 14. Sebelum kita menjalankan programnya, kita perlu membuat _request_ kepada sistem Android untuk menggunakan internet, karena gambar yang akan di kita tampilkan berasal dari internet. Request tersebut dapat di lakukan di dalam berkas __AndroidManifest.xml__.
 
@@ -612,7 +610,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Kita mengggunakan interface tersebut agar respon click yang kita terima dapat di proses di dalam `MainActivity`. Sekarang jalankan kembali programnya,  apabila item pada list di tekan, aplikasi akan memunculkan pesan Toast yang  menampilkan nama perangkat jaringan yang di tekan.
+Kita mengggunakan interface tersebut agar respon click yang kita terima dapat di proses di dalam `MainActivity`. Sekarang jalankan kembali programnya.  apabila item pada list di tekan, aplikasi akan memunculkan pesan __Toast__ yang  menampilkan nama perangkat jaringan yang di tekan.
 
 -- GIF --
 

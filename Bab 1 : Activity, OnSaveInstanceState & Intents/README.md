@@ -467,6 +467,10 @@ public class NewActivity extends AppCompatActivity {
 Jalankan kembali program nya dan lakukan perpindahan activity.
 Maka yang akan tampil di __NewActivity__ adalah data yang di kirim melalui intent.
 
+<p align="left">
+  <img src="images/IntentPutExtra.gif">
+</p>
+
 12. Yang terkhir, kita akan melakukan _Intent implicit_ untuk melakukan navigasi ke aplikasi lain.
 Kali ini kita akan melakukannya dengan browser. Sekarang buka class __MainActivity__ dan buat variabel instance sebagai berikut :
 ```java

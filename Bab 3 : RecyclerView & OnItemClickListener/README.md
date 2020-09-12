@@ -18,7 +18,7 @@
 Pada Bab ini kalian akan mempelajari cara menampilkan data dalam bentuk list menggunakan _RecyclerView_, kemudian menerima dan memproses event click pada item list.
 
 ## Teori
-RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan koleksi data. Baik dalam bentuk _List, Grid_ ataupun _Staggered grid._ RecyclerView memiliki performa yang lebih baik di bandingkan pendahulunya yaitu _ListView_, karena ia hanya akan memuat daftar item yang perlu di tampilkan, sehingga menjadikan nya efisien dalam penggunaan memori. 
+RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan koleksi data, baik dalam bentuk _List, Grid_ ataupun _Staggered grid._ RecyclerView memiliki performa yang lebih baik di bandingkan pendahulunya yaitu _ListView_, karena ia hanya akan memuat daftar item yang perlu di tampilkan, sehingga menjadikan nya efisien dalam penggunaan memori. 
 
 <p align="center">
   <img width="400" src="images/recyclerview vs listview.png">

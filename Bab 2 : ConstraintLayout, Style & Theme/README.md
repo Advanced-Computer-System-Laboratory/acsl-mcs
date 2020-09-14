@@ -42,7 +42,7 @@ Contoh _nested layout_ :
 Dengan _ConstraintLayout_ kita dapat mengatur layout menggunakan _Visual Layout Editor_ lebih mudah. Hanya dengan menarik _anchor point_ (Top, Bottom, Left, Right) yang terdapat pada view, lalu dihubungkan dengan parent atau view lainnya. 
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Fahmisbas/acsl/master/ConstraintLayout%2C%20Style%20%26%20Theme/images/anchor%20point.gif">
+  <img src="images/anchor point.gif">
 </p>
 
 Yang perlu di perhatikan saat menggunakan _ConstraintLayout_ adalah, _achor point_ yang terdapat pada view baik vertikal maupun horizontal harus terhubung dengan _anchor point_ yang dimiliki view lainnya ataupun sisi dari parent.

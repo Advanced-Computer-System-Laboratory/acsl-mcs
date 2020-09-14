@@ -30,8 +30,7 @@ Dalam implementasi nya, RecylerView membutuhkan _LayoutManager_ untuk mengatur b
   <img width="460" src="images/RecyclerView.png">
 </p>
 
-RecyclerView membutuhkan komponen _Adapter_ untuk dapat bekerja. _Adapter_ di gunakan untuk memuat tampilan individual _item_ pada list. Views yang terdapat pada _layout_ item di inisialisai di dalam class `ViewHolder`. Setiap _ViewHolder_ bertugas untuk menampilkan satu item.
-
+RecyclerView membutuhkan komponen _Adapter_ untuk dapat bekerja. _Adapter_ di gunakan untuk memuat tampilan individual _item_ pada list. 
 ## Setup Project Baru
 Kita akan mengimpementasi teori diatas dengan membuat aplikasi yang berisikan list gambar dan nama-nama perangkat jaringan.
 

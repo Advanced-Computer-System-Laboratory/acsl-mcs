@@ -24,7 +24,7 @@ Bluetooth merupakan protokol terstandarisasi untuk mengirim dan menerima data me
 </p>
 
 ### HC-05
-HC-05 merupakan modul Bluetooth SPP (Serial Port Protocol) yang menerapkan komunikasi serial UART dengan perangkat MCU. Modul HC-05 dapat dioperasikan dengan tegangan 3.6-6V dengan baud rate 9600 pada *data mode*  dan baud rate 38400 pada *command mode*.
+HC-05 merupakan modul Bluetooth SPP (Serial Port Protocol) yang menerapkan komunikasi serial UART dengan perangkat MCU. Modul HC-05 dapat dioperasikan pada tegangan 3.6-6V dengan baud rate 9600 pada *data mode*  dan baud rate 38400 pada *command mode*.
 
 <p align="center">
 <img src="images/kit_bluetooth_hc05.jpg" align="center"><br />

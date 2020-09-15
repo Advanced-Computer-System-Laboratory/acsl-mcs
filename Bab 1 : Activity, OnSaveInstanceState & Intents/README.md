@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         
         btnAdd = findViewById(R.id.btn_add);
         tvResult = findViewById(R.id.tv_result);
-        btnSubstract = findViewById(R.id.btn_substract);
+        btnSubstract = findViewById(R.id.btn_subtract);
     }
 }
 ```
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
        btnAdd = findViewById(R.id.btn_add);
        tvResult = findViewById(R.id.tv_result);
-       btnSubstract = findViewById(R.id.btn_substract);
+       btnSubstract = findViewById(R.id.btn_subtract);
 
        btnAdd.setOnClickListener(this);
        btnSubstract.setOnClickListener(this);
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 count++;
                 tvResult.setText(Integer.toString(count));
                 break;
-            case R.id.btn_substract:
+            case R.id.btn_subtract:
                 count--;
                 if (count < 0) {
                     count = 0;
@@ -549,7 +549,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnAdd = findViewById(R.id.btn_add);
         tvResult = findViewById(R.id.tv_result);
-        btnSubstract = findViewById(R.id.btn_substract);
+        btnSubstract = findViewById(R.id.btn_subtract);
         btnMoveActivity = findViewById(R.id.btn_moveActivity);
         btnToBrowser = findViewById(R.id.btn_toBrowser);
 
@@ -577,7 +577,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 count++;
                 tvResult.setText(Integer.toString(count));
                 break;
-            case R.id.btn_substract:
+            case R.id.btn_subtract:
                 count--;
                 if (count < 0) {
                     count = 0;

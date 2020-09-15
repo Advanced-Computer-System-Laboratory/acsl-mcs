@@ -14,12 +14,12 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada bab ini kalian akan memahami komponen utama dalam aplikasi android yaitu activity, dan dapat menggunakan Intent untuk melakukan navigasi antar activity.
+Pada bab ini kalian akan memahami komponen utama dalam aplikasi Android yaitu Activity, dan dapat menggunakan Intent untuk melakukan navigasi antar Activity.
 ## Teori
 ### Pengenalan Activity
-Activity dapat di katakan sebagai halaman/layar dalam aplikasi android. Terdapat berbagai macam komponen UI (User Interface) di dalamnya seperti tombol, gambar, list, dan text yang di definisikan di dalam file layout berformat _xml_. Pengguna dapat berinteraksi dengan komponen-komponen tersebut seperti mengubah text atau menekan tombol untuk memicu sebuah event. Sebuah activity terdiri dari file Java Class `.java` dan file layout `.xml`.
+Activity dapat di katakan sebagai halaman/layar dalam aplikasi Android. Terdapat berbagai macam komponen UI (User Interface) di dalamnya seperti tombol, gambar, list, dan text yang di definisikan di dalam file layout berformat _xml_. Pengguna dapat berinteraksi dengan komponen-komponen tersebut seperti mengubah text atau menekan tombol untuk memicu sebuah event. Sebuah Activity terdiri dari file Java Class `.java` dan file layout `.xml`.
 
-Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook, di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
+Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook, di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap Activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar Activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
 
 ### Activity Lifecycle  
 Setiap activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :
@@ -27,21 +27,21 @@ Setiap activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah
   <img align="center" src="images/ActivityLifecycle.png" width="460">
 </p>
 
-*Activity Lifecycle* merupakan rangkaian *state* dari activity. Kita dapat mengatur _behaviour_ activity berdasarkan state yang sedang aktif menggunakan _method callback_. Terdapat 6 _method callback_ di dalam activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
+*Activity Lifecycle* merupakan rangkaian *state* dari Activity. Kita dapat mengatur _behaviour_ Activity berdasarkan state yang sedang aktif menggunakan _Method Callback_. Terdapat 6 _Method Callback_ di dalam Activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
 
-Contoh penggunaan nya adalah ketika aplikasi pertama kali di buka, activity utama akan di jalankan dan memasuki state *create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalam nya seperti menampilkan layout menggunakan `setContentView()`. Method `onCreate()` wajib di miliki oleh sebuah activity untuk melakukan inisialisasi awal.
+Contoh penggunaan nya adalah ketika aplikasi pertama kali di buka, Activity utama akan di jalankan dan memasuki state *Create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalam nya seperti menampilkan layout menggunakan `setContentView()`. Method `onCreate()` wajib di miliki oleh sebuah Activity untuk melakukan inisialisasi awal.
 
 Penjelasan lebih lanjut mengenai _Activity Lifecycle_ dapat di lihat di dalam link ini : https://developer.android.com/guide/components/activities/activity-lifecycle
 
 ### OnSavedInstanceState
-Apabila sebuah activity mengalami perubahan konfigurasi seperti perpindahan orientasi layar, maka activity akan di hancurkan dengan memanggil `onDestroy()`. Selanjutnya activity perlu di buat kembali dengan memanggil `onCreate()` untuk melakukan inisialisasi dengan orientasi yang berbeda. Ini menyebabkan data yang di simpan sebelumnya akan hilang. Untuk mengatasi hal tersebut kita dapat menggunakan method `onSaveInstanceState()`.
+Apabila sebuah Activity mengalami perubahan konfigurasi seperti perpindahan orientasi layar, maka Activity akan di hancurkan dengan memanggil `onDestroy()`. Selanjutnya Activity perlu di buat kembali dengan memanggil `onCreate()` untuk melakukan inisialisasi dengan orientasi yang berbeda. Ini menyebabkan data yang di simpan sebelumnya akan hilang. Untuk mengatasi hal tersebut kita dapat menggunakan method `onSaveInstanceState()`.
 
 ### Intent
 Intent adalah sebuah object yang dapat digunakan untuk melakukan komunikasi antar komponen aplikasi seperti _Activity, Content Providers, Broadcast Receivers dan Services_. Intent memiliki dua tipe, yaitu 
 _Explicit_ dan _Implicit_.
 
 #### Intent Explicit
-Di gunakan untuk memulai komponen di dalam aplikasi seperti activity.
+Di gunakan untuk memulai komponen di dalam aplikasi seperti Activity.
 
 #### Intent Implicit
 Di gunakan untuk memulai komponen di luar aplikasi, seperti kamera atau map.
@@ -69,7 +69,7 @@ Maka tampilan nya akan seperti ini.
   <img width="560" src="images/New Project-IDE.PNG">
 </p>
 
-Kita akan menulis kode di dua buah file dengan format .`java` dan `.xml` yaitu __MainActivity.java__ dan __activity_main.xml__, dua kombinasi yang membentuk sebuah activity. Android Studio sudah menyediakan secara otomatis saat kita membuat project baru dengan memilih _Empty Activity_ dan menjadikan nya activity utama di dalam __AndroidManifest.xml__.
+Kita akan menulis kode di dua buah file dengan format .`java` dan `.xml` yaitu __MainActivity.java__ dan __activity_main.xml__, dua kombinasi yang membentuk sebuah Activity. Android Studio sudah menyediakan secara otomatis saat kita membuat project baru dengan memilih _Empty Activity_ dan menjadikan nya Activity utama di dalam __AndroidManifest.xml__.
 
 <p align="left">
   <img width="560" src="images/Main Launcher.PNG">
@@ -92,9 +92,9 @@ Sekarang buka __activity_main.xml__ dan kondisikan layoutnya seperti di bawah in
 
 _*Ikuti arahan PJ dalam pemnbuatan layout._
 
-Terdapat dua komponen UI di dalam aplikasi android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dll* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
+Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dll* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
 
-*ConstraintLayout* digunakan untuk mengatur posisi _child-view_ secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
+*ConstraintLayout* digunakan untuk mengatur posisi _Child-View_ secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
 
 Pembahasan mengenai _ViewGroup_ dan _View_ lebih lanjut dapat di lihat di dalam link ini : https://developer.android.com/guide/topics/ui/declaring-layout.
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 ```
-Kita baru saja menampung _view_ ke dalam variabel menggunakan `findViewById()`.
+Kita baru saja menampung _View_ ke dalam variabel menggunakan `findViewById()`.
 
 4. Implement Interface `OnClickListener` pada class __MainActivity__.
 
@@ -313,7 +313,7 @@ Sekarang coba di jalankan kembali dan ubah orientasi. Nilai yang tampil di `tvRe
   <img src="images/MyFirstAppRotate.PNG">
 </p>
 
-7. Selanjutnya kita akan menggunakan __Intent__ untuk melakukan navigasi ke activity baru (Explicit).
+7. Selanjutnya kita akan menggunakan __Intent__ untuk melakukan navigasi ke Activity baru (Explicit).
 
 Buat Activity baru dengan cara click menu __File__ pada toolbar lalu __New -> Activity. -> Empty Activity.__
 <p align="left">
@@ -381,13 +381,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 ```
-Sekarang jalankan programnya dan lakukan perpindahan activity.
+Sekarang jalankan programnya dan lakukan perpindahan Activity.
 
 <p align="left">
   <img src="images/IntentExplicit.gif">
 </p>
 
-10.  Kita sudah berhasil melakukan perpindahan activity. Selanjutnya kita akan melakukan perpindahan activity sekaligus membawa data menggunakan method `putExtra()` dengan parameter *key-value*.
+10.  Kita sudah berhasil melakukan perpindahan Activity. Selanjutnya kita akan melakukan perpindahan Activity sekaligus membawa data menggunakan method `putExtra()` dengan parameter *key-value*.
 Sehingga akan terlihat seperti ini.
 
 ```java
@@ -435,7 +435,7 @@ public class NewActivity extends AppCompatActivity {
     }
 }
 ```
-kita akan menggunakan `tvTitle` untuk menampilkan data.
+Kita akan menggunakan `tvTitle` untuk menampilkan data.
 Sekarang tambahkan kode ini :
 ```java
 String dataReceived = getIntent().getStringExtra("Extra_text");
@@ -522,7 +522,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     
 }
 ```
-Jalankan program nya dan lakukan navigasi. Maka aplikasi akan otomatis membuka browser dan membuka Google.
+Jalankan program nya dan lakukan navigasi. Maka aplikasi akan otomatis membuka Browser dan membuka Google.
 
 <p align="left">
   <img src="images/IntentImplicit.gif">

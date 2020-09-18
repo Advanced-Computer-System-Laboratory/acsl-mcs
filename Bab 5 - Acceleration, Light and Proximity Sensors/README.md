@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-4. Tambahkan baris berikut untuk mendeklarasikan variable yang dibutuhkan. Variable `sensorManager` berfungsi sebagai representasi keseluruhan sensor yang tertanam pada perangkat Android. Variable `accSensor` berfungsi sebagai representasi sensor Accelerometer, `lightSensor` sebagai representasi sensor cahaya, dan `proximitySensor` sebagai representasi sensor jarak (*proximity*). Variable `accType` hingga `lightVal` berfungsi sebagai representasi `TextView` pada layout `activity_main`.
+4. Deklarasikan variable yang dibutuhkan dengan menambahkan baris kode berikut : 
 
 ```java
 package com.acsl.NAMA_PACKAGE;
@@ -260,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 ```
+Variable `sensorManager` berfungsi sebagai representasi keseluruhan sensor yang tertanam pada perangkat Android. Variable `accSensor` berfungsi sebagai representasi sensor Accelerometer, `lightSensor` sebagai representasi sensor cahaya, dan `proximitySensor` sebagai representasi sensor jarak (*proximity*). Variable `accType` hingga `lightVal` berfungsi sebagai representasi `TextView` pada layout `activity_main`.
 
 5. Selanjutnya tambahkan baris dibawah untuk melakukan *assingment* pada beberapa variable yang bertugas sebagai representasi `TextView` pada layout `activity_main`. 
 

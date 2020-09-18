@@ -123,6 +123,9 @@ public class BluetoothSerialMonitor {
   private Handler activityHandler;
 }
 ```
-Variable `mBluetoothAdapter` berfungsi sebagai representasi modul Bluetooth yang tertanam pada perangkat smartphone. Variable `mBluetoothSocket` berfungsi sebagai representasi socket RFCOMM antara perangkat smartphone dan HC05. Variable `myUUID` berfungsi sebagai UUID ()
+* Variable `mBluetoothAdapter` berfungsi sebagai representasi modul Bluetooth yang tertanam pada perangkat smartphone. 
+* Variable `mBluetoothSocket` berfungsi sebagai representasi socket RFCOMM antara perangkat smartphone dan HC05. 
+* Variable `myUUID` berfungsi sebagai *unique identifier* dari perangkat Android, bertindak selayaknya sebuah nama. 
+* Variable `blueListener` berfungsi sebagai representasi kelas pengguna dari BluetoothSerialMonitor, dalam kasus ini adalah `MainActivity`. Variable 
 
 

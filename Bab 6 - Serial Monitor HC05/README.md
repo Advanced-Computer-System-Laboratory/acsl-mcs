@@ -80,4 +80,49 @@ Interface `BluetoothSerialMonitorListener` berfungsi sebagai kontrak yang harus 
 
 5. Buatlah sebuah kelas baru dengan cara klik kanan pada folder package -> New -> Java Class. Akan muncul sebuah dialog *New Java Class* dan pilih Class. Beri nama kelas tersebut `BluetoothSerialMonitor`.
 
+6. Tambahkan *dependencies* yang dibutuhkan pada kelas `BluetoothSerialMonitor` dengan menuliskan baris-baris berikut : 
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.os.Handler;
+
+import java.io.IOException;
+import java.util.Set;
+import java.util.UUID;
+
+public class BluetoothSerialMonitor {
+
+}
+```
+
+7. Deklarasikan variable yang dibutuhkan oleh kelas `BluetoothSerialMonitor` dengan menambahkan baris kode berikut : 
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import android.os.Handler;
+
+import java.io.IOException;
+import java.util.Set;
+import java.util.UUID;
+
+public class BluetoothSerialMonitor {
+  private boolean connected = true;
+  private BluetoothAdapter mBluetoothAdapter = null;
+  private BluetoothSocket mBluetoothSocket = null;
+  private static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+  private BluetoothSerialMonitorListener blueListener;
+  private Handler activityHandler;
+
+}
+```
+
+
+
 

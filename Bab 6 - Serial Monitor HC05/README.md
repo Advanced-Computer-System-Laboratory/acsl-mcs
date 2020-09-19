@@ -192,7 +192,7 @@ public class BluetoothSerialMonitor {
 }
 ```
 
-Fungsi `connectToDevice` berfungsi untuk melakukan koneksi dengan perangkat HC05 menggunakan protokol RFCOMM mode Insecure.
+Fungsi `connectToDevice` berfungsi untuk melakukan koneksi dengan perangkat HC05 menggunakan protokol RFCOMM mode Insecure. Pada 
 
 9. Definisikan *constructor* dari kelas `BluetoothSerialMonitor` dengan menambahkan baris berikut :
 
@@ -255,3 +255,4 @@ public class BluetoothSerialMonitor {
   }
 }
 ```
+

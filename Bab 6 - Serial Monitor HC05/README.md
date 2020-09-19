@@ -12,7 +12,7 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada percobaan ini kita akan mempraktikan komunikasi Bluetooth antara perangkat Android dan NodeMCU menggunakan modul HC05. Hasil akhir dari Codelab pada Bab ini adalah praktikan dapat mengirimkan pesan dari NodeMCU dengan bantuan modul HC05 ke perangkat Android melalui kanal Bluetooth secara satu arah, menjadikan perangkat Android bertindak selayaknya sebuah *Serial Monitor*. Codelab Bab ini menerapkan konsep *multi-threading* pada bagian akuisisi data pada perangkat Android. Pengkabelan antara perangkat NodeMCU dan HC05 untuk Bab 6 dapat dilihat pada laman berikut : ....
+Pada percobaan ini kita akan mempraktikan komunikasi Bluetooth antara perangkat Android dan NodeMCU menggunakan modul HC05. Hasil akhir dari Codelab pada Bab ini adalah praktikan dapat mengirimkan pesan dari NodeMCU dengan bantuan modul HC05 ke perangkat Android melalui kanal Bluetooth secara satu arah, menjadikan perangkat Android bertindak selayaknya sebuah *Serial Monitor*. Codelab Bab ini menerapkan konsep *multi-threading* pada bagian akuisisi data pada perangkat Android serta konsep . Pengkabelan antara perangkat NodeMCU dan HC05 untuk Bab 6 dapat dilihat pada laman berikut : ....
 
 ## Teori
 ### Bluetooth
@@ -104,14 +104,7 @@ public class BluetoothSerialMonitor {
 ```java
 package com.acsl.NAMA_PACKAGE;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.os.Handler;
-
-import java.io.IOException;
-import java.util.Set;
-import java.util.UUID;
+import ...
 
 public class BluetoothSerialMonitor {
   private boolean connected = true;
@@ -128,4 +121,47 @@ public class BluetoothSerialMonitor {
 * Variable `myUUID` berfungsi sebagai *unique identifier* dari perangkat Android, bertindak selayaknya sebuah nama. 
 * Variable `blueListener` berfungsi sebagai representasi kelas pengguna dari BluetoothSerialMonitor, dalam kasus ini adalah `MainActivity`. Variable 
 
+8. Buatlah fungsi `connectToDevice` dengan menambahkan baris kode dibawah ini : 
+```java
+package com.acsl.NAMA_PACKAGE;
 
+import ...
+
+public class BluetoothSerialMonitor {
+  ...
+
+  private void connectToDevice(String deviceName) throws Exception{
+      boolean devicesFoundStatus = false;
+
+      // Mendapatkan list perangkat Bluetooth yang paired
+      Set<BluetoothDevice> listPairedDevices = mBluetoothAdapter.getBondedDevices();
+
+      // Apabila terdapat perangkat Bluetooth terpasang (paired)
+      if(listPairedDevices.size() > 0){
+
+          // lakukan perulangan terhadap list perangkat Bluetooth terpasang (paired)
+          for(BluetoothDevice bt : listPairedDevices){
+
+              // apabila dari salah satu 
+              if(bt.getName().equals(deviceName)){
+                  devicesFoundStatus = true;
+                  try {
+                      if (mBluetoothSocket == null || !connected) {
+                          BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(bt.getAddress());
+                          mBluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(myUUID);
+                          BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
+                          mBluetoothSocket.connect();
+                      }
+                  } catch (IOException e){
+                      throw new Exception("Inisialisasi RFCOMM gagal!");
+                  }
+              }
+          }
+
+          if(!devicesFoundStatus){
+              throw new Exception("Lakukan pairing dengan perangkat "+deviceName+" terlebih dahulu!");
+          }
+      }
+  }
+}
+```

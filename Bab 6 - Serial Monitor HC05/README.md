@@ -12,7 +12,7 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada percobaan ini kita akan mempraktikan komunikasi Bluetooth antara perangkat Android dan NodeMCU menggunakan modul HC05. Hasil akhir dari Codelab pada Bab ini adalah praktikan dapat mengirimkan pesan dari NodeMCU dengan bantuan modul HC05 ke perangkat Android melalui kanal Bluetooth secara satu arah, menjadikan perangkat Android bertindak selayaknya sebuah *Serial Monitor*. Codelab Bab ini menerapkan konsep *multi-threading* pada bagian akuisisi data pada perangkat Android serta konsep . Pengkabelan antara perangkat NodeMCU dan HC05 untuk Bab 6 dapat dilihat pada laman berikut : ....
+Pada percobaan ini kita akan mempraktikan komunikasi Bluetooth antara perangkat Android dan NodeMCU menggunakan modul HC05. Hasil akhir dari Codelab pada Bab ini adalah praktikan dapat mengirimkan pesan dari NodeMCU dengan bantuan modul HC05 ke perangkat Android melalui kanal Bluetooth secara satu arah, menjadikan perangkat Android bertindak selayaknya sebuah *Serial Monitor*. Codelab Bab ini menerapkan konsep *multi-threading* pada bagian akuisisi data pada perangkat Android. Pengkabelan antara perangkat NodeMCU dan HC05 untuk Bab 6 dapat dilihat pada laman berikut : ....
 
 ## Teori
 ### Bluetooth
@@ -154,13 +154,10 @@ public class BluetoothSerialMonitor {
                       // memulai proses koneksi dengan perangkat HC05
                       if (mBluetoothSocket == null || !connected) {
 
-                          /**
-                            membuat representasi perangkat HC05 pada variable "device" 
-                            dengan memberikan argumen bt.getAdress() berupa alamat MAC 
-                            dari perangkat HC05. 
-                          **/
+                          /** membuat representasi perangkat HC05 pada variable "device" 
+                              dengan memberikan argumen bt.getAdress() berupa alamat MAC 
+                              dari perangkat HC05. **/
                           BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(bt.getAddress());
-
                            
                           // Inisialisasi kanal RFCOMM mode Insecure dengan perangkat HC05 
                           mBluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(myUUID);
@@ -172,27 +169,45 @@ public class BluetoothSerialMonitor {
                           mBluetoothSocket.connect();
                       }
                   
-                  // apabila terjadi masalah dalam proses komunikasi 
+                  // apabila terjadi masalah dalam percobaan koneksi
                   } catch (IOException e){
 
-                      // lemparkan Exception bahwa terjadi kegagalan dengan perangkat HC05!
-                      throw new Exception("Inisialisasi RFCOMM gagal!");
+                      // tampilkan pesan pada layar bahwa percobaan koneksi dengan perangkat HC05 gagal
+                      if(!firstAttempt){
+                          postToBlueListener("Inisialisasi RFCOMM gagal! reconnecting...");
+                          firstAttempt = true;
+                      }
+                      
+                      // dan lakukan percobaan koneksi ulang sampai berhasil
+                      connectToDevice();
                   }
+
+                  // keluar dari perulangan apabila sudah menemukan perangkat HC05
+                  break;
               }
           }
 
           // apabila perangkat HC05 tidak ditemukan pada list perangkat Bluetooth terpasang (paired)
           if(!devicesFoundStatus){
 
-              // lemparkan Exception bahwa perangkat HC05 tidak ditemukan !
-              throw new Exception("Lakukan pairing dengan perangkat "+deviceName+" terlebih dahulu!");
+              // tampilkan pesan pada layar bahwa perangkat HC05 tidak ditemukan !
+              postToBlueListener("Lakukan pairing dengan perangkat "+deviceName+" terlebih dahulu!");
+
+          // apabila perangkat HC05 ditemukan dan koneksi berhasil
+          }else if(devicesFoundStatus && connected){
+
+                // maka tampilkan pesan pada layar bahwa koneksi berhasil 
+                postToBlueListener("Koneksi Berhasil! mulailah mengirim pesan!");
+
+                // dan mulai lakukan akusisi pesan dari HC05
+                getSerialMessage();
           }
       }
   }
 }
 ```
 
-Fungsi `connectToDevice` berfungsi untuk melakukan koneksi dengan perangkat HC05 menggunakan protokol RFCOMM mode Insecure. Pada 
+Method `connectToDevice` berfungsi untuk melakukan koneksi dengan perangkat HC05 menggunakan protokol RFCOMM mode Insecure. 
 
 9. Definisikan *constructor* dari kelas `BluetoothSerialMonitor` dengan menambahkan baris berikut :
 
@@ -219,33 +234,26 @@ public class BluetoothSerialMonitor {
         // apabila tidak terdapat modul Bluetooth terpasang pada sistem
         if(mBluetoothAdapter == null) {
 
-            // maka lemparkan Exception bahwa modul Bluetooth tidak ditemukan
+            // maka tampilkan pesan pada layar bahwa modul Bluetooth tidak ditemukan
             throw new Exception("Module Bluetooth tidak ditemukan!");
         }
 
         // namun jika modul Bluetooth pada sistem didapat
         else {
 
-            /**
-              maka periksa apakah pengguna sudah mengaktifkan Bluetooth pada perangkat.
-              apabila Bluetooth sudah diaktifkan ... 
-            **/
+            /** maka periksa apakah pengguna sudah mengaktifkan Bluetooth pada perangkat.
+              apabila Bluetooth sudah diaktifkan ... **/
             if(mBluetoothAdapter.isEnabled()){
-                try{
-                    // maka lakukan percobaan koneksi dengan perangkat HC05
-                    connectToDevice(deviceName);
 
-                // jika terjadi masalah dalam koneksi dengan perangkat HC05
-                }catch (Exception e){
-
-                    // maka lemparkan Exception
-                    throw new Exception(e);
-                }
+                /** maka lakukan percobaan koneksi dengan perangkat HC05 dengan
+                    dengan membuat Thread baru **/
+                new Thread(new discoverAndConnect()).start();
 
             // namun apabila ternyata Bluetooth belum diaktifkan
             }else{
-                // lemparkan Exception berupa perintah untuk mengaktifkan Bluetoot terlebih dahulu
-                throw new Exception("Aktifkan Bluetooth anda terlebih dahulu!");
+
+                // maka tampilkan pesan pada layar untuk mengaktifkan Bluetoot terlebih dahulu
+                postToBlueListener("Aktifkan Bluetooth anda terlebih dahulu!");
             }
         }
     }

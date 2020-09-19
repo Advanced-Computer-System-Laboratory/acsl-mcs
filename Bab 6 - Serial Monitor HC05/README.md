@@ -121,7 +121,7 @@ public class BluetoothSerialMonitor {
 * Variable `myUUID` berfungsi sebagai *unique identifier* dari perangkat Android, bertindak selayaknya sebuah nama. 
 * Variable `blueListener` berfungsi sebagai representasi kelas pengguna dari BluetoothSerialMonitor, dalam kasus ini adalah `MainActivity`. Variable 
 
-8. Buatlah fungsi `connectToDevice` dengan menambahkan baris kode dibawah ini : 
+8. Buatlah method `connectToDevice` dengan menambahkan baris kode dibawah ini : 
 ```java
 package com.acsl.NAMA_PACKAGE;
 
@@ -130,6 +130,7 @@ import ...
 public class BluetoothSerialMonitor {
   ...
 
+  // Method connectToDevice menerima argumen nama perangkat pada parameter deviceName
   private void connectToDevice(String deviceName) throws Exception{
       boolean devicesFoundStatus = false;
 
@@ -142,26 +143,115 @@ public class BluetoothSerialMonitor {
           // lakukan perulangan terhadap list perangkat Bluetooth terpasang (paired)
           for(BluetoothDevice bt : listPairedDevices){
 
-              // apabila dari salah satu 
+              // apabila terdapat perangkat HC05 pada list
               if(bt.getName().equals(deviceName)){
+
+                  // tandai bahwa perangkat HC05 ditemukan
                   devicesFoundStatus = true;
+
                   try {
+
+                      // memulai proses koneksi dengan perangkat HC05
                       if (mBluetoothSocket == null || !connected) {
+
+                          /**
+                            membuat representasi perangkat HC05 pada variable "device" 
+                            dengan memberikan argumen bt.getAdress() berupa alamat MAC 
+                            dari perangkat HC05. 
+                          **/
                           BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(bt.getAddress());
+
+                           
+                          // Inisialisasi kanal RFCOMM mode Insecure dengan perangkat HC05 
                           mBluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(myUUID);
+
+                          // menghentikan proses discovery modul Bluetooth
                           BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
+
+                          // memulai koneksi dengan perangkat HC05
                           mBluetoothSocket.connect();
                       }
+                  
+                  // apabila terjadi masalah dalam proses komunikasi 
                   } catch (IOException e){
+
+                      // lemparkan Exception bahwa terjadi kegagalan dengan perangkat HC05!
                       throw new Exception("Inisialisasi RFCOMM gagal!");
                   }
               }
           }
 
+          // apabila perangkat HC05 tidak ditemukan pada list perangkat Bluetooth terpasang (paired)
           if(!devicesFoundStatus){
+
+              // lemparkan Exception bahwa perangkat HC05 tidak ditemukan !
               throw new Exception("Lakukan pairing dengan perangkat "+deviceName+" terlebih dahulu!");
           }
       }
+  }
+}
+```
+
+Fungsi `connectToDevice` berfungsi untuk melakukan koneksi dengan perangkat HC05 menggunakan protokol RFCOMM mode Insecure.
+
+9. Definisikan *constructor* dari kelas `BluetoothSerialMonitor` dengan menambahkan baris berikut :
+
+```java
+package com.acsl.NAMA_PACKAGE;
+
+import ...
+
+public class BluetoothSerialMonitor {
+  ...
+
+  /**
+    Constructor merupakan method yang akan dipanggil ketika proses inisialisasi kelas BluetoothSerialMonitor .
+    Kelas BluetoothSerialMonitor akan meminta 3 argumen yaitu objek kelas pengguna, Handler dari kelas pengguna,
+    beserta nama perangkat yang akan dihubungkan.
+  **/
+  public BluetoothSerialMonitor(BluetoothSerialMonitorListener blueListener, Handler handler, String deviceName) throws Exception{
+        this.blueListener = blueListener;
+        this.activityHandler = handler;
+
+        // mendapatkan representasi modul Bluetooth yang tertanam pada sistem
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        // apabila tidak terdapat modul Bluetooth terpasang pada sistem
+        if(mBluetoothAdapter == null) {
+
+            // maka lemparkan Exception bahwa modul Bluetooth tidak ditemukan
+            throw new Exception("Module Bluetooth tidak ditemukan!");
+        }
+
+        // namun jika modul Bluetooth pada sistem didapat
+        else {
+
+            /**
+              maka periksa apakah pengguna sudah mengaktifkan Bluetooth pada perangkat.
+              apabila Bluetooth sudah diaktifkan ... 
+            **/
+            if(mBluetoothAdapter.isEnabled()){
+                try{
+                    // maka lakukan percobaan koneksi dengan perangkat HC05
+                    connectToDevice(deviceName);
+
+                // jika terjadi masalah dalam koneksi dengan perangkat HC05
+                }catch (Exception e){
+
+                    // maka lemparkan Exception
+                    throw new Exception(e);
+                }
+
+            // namun apabila ternyata Bluetooth belum diaktifkan
+            }else{
+                // lemparkan Exception berupa perintah untuk mengaktifkan Bluetoot terlebih dahulu
+                throw new Exception("Aktifkan Bluetooth anda terlebih dahulu!");
+            }
+        }
+    }
+
+  private void connectToDevice(String deviceName) throws Exception{
+      ...
   }
 }
 ```

@@ -19,7 +19,7 @@ Pada bab ini kalian akan memahamai penggunaan _ConstraintLayout_ yaitu salah sat
 
 ## Teori
 ### ConstraintLayout
-_ConstraintLayout_ merupakan sebuah _layout_ yang banyak di gunakan oleh pengembang aplikasi android karena memiliki beberapa kelebihan, salah satunya adalah dapat mengatur _view_ secara flexible tanpa memerlukan _nested layout_ (Kelompok tampilan bertingkat) sehingga tercipta hierarki tampilan datar.
+_ConstraintLayout_ merupakan sebuah _layout_ yang banyak di gunakan oleh pengembang aplikasi Android karena memiliki beberapa kelebihan, salah satunya adalah dapat mengatur _View_ secara flexible tanpa memerlukan _nested layout_ (Kelompok tampilan bertingkat) sehingga tercipta hierarki tampilan datar.
 
 Contoh _nested layout_ :
 ```xml
@@ -39,13 +39,13 @@ Contoh _nested layout_ :
 </LinearLayout>
 ```
 
-Dengan _ConstraintLayout_ kita dapat mengatur layout menggunakan _Visual Layout Editor_ lebih mudah. Hanya dengan menarik _anchor point_ (Top, Bottom, Left, Right) yang terdapat pada view, lalu dihubungkan dengan parent atau view lainnya. 
+Dengan _ConstraintLayout_ kita dapat mengatur layout menggunakan _Visual Layout Editor_ lebih mudah. Hanya dengan menarik _anchor point_ (Top, Bottom, Left, Right) yang terdapat pada View, lalu dihubungkan dengan Parent atau View lainnya. 
 
 <p align="center">
   <img src="images/anchor point.gif">
 </p>
 
-Yang perlu di perhatikan saat menggunakan _ConstraintLayout_ adalah, _achor point_ yang terdapat pada view baik vertikal maupun horizontal harus terhubung dengan _anchor point_ yang dimiliki view lainnya ataupun sisi dari parent.
+Yang perlu di perhatikan saat menggunakan _ConstraintLayout_ adalah, _Achor Point_ yang terdapat pada _View_ baik vertikal maupun horizontal harus terhubung dengan _Anchor Point_ yang dimiliki _View_ lainnya ataupun sisi dari _Parent_.
 
 <p align="center">
   <img width="150" src="images/cosntraint.png">
@@ -54,7 +54,7 @@ Yang perlu di perhatikan saat menggunakan _ConstraintLayout_ adalah, _achor poin
 Salah satu kelebihan menggunakan _Visual Layout Editor_ adalah kode yg di butuhkan __layout.xml__ akan otomatis di _generate_ oleh Android Studio, sehingga tidak menjadi masalah apabila tidak ingin membuat layout di dalam _Text Editor_. _ConstraintLayout_ juga dapat membuat tampilan UI pada aplikasi menjadi responsif (Cocok untuk bermacam macam ukuran device).
 
 ### Style
-Saat membangun sebuah layout terkadang kita menemukan _view_ yang memiliki atribut sama dengan _view_ lain nya, yang di buat dengan cara duplikasi. Hal tersebut tidaklah efisien dan memperbesar kode sehingga akan sulit untuk melakukan perubahan. Contoh nya adalah seperti ini :
+Saat membangun sebuah layout terkadang kita menemukan _View_ yang memiliki atribut sama dengan _View_ lain nya, yang di buat dengan cara duplikasi. Hal tersebut tidaklah efisien dan memperbesar kode sehingga akan sulit untuk melakukan perubahan. Contoh nya adalah seperti ini :
 
 `activity_main.xml`
 ```xml
@@ -82,7 +82,7 @@ Saat membangun sebuah layout terkadang kita menemukan _view_ yang memiliki atrib
    app:layout_constraintTop_toBottomOf="@id/title_1" />
 ```
 
-Solusi dari permasalahan tersebut adalah dengan menggunakan _Style_. _Style_ dapat mendefinisikan atribut umum yang gunakan oleh _view_ seperti _font color, font size, background color_ dan banyak lagi. Untuk membuat Style baru dapat di lakukan di __res/values/style.xml__. Berikut adalah contoh implementasinya :
+Solusi dari permasalahan tersebut adalah dengan menggunakan _Style_. _Style_ dapat mendefinisikan atribut umum yang gunakan oleh _View_ seperti _Font Color, Font Size, Background Color_ dan banyak lagi. Untuk membuat _Style_ baru dapat di lakukan di __res/values/style.xml__. Berikut adalah contoh implementasinya :
 
 `style.xml`
 ```xml
@@ -109,10 +109,10 @@ Solusi dari permasalahan tersebut adalah dengan menggunakan _Style_. _Style_ dap
    app:layout_constraintStart_toStartOf="parent"
    app:layout_constraintTop_toBottomOf="@id/title_1" />
 ```
-Style  dapat di gunakan oleh satu atau lebih view, sehingga kode akan lebih ringkas dan lebih mudah untuk membuat perubahan tanpa harus melakukan nya secara satu satu.
+_Style_ dapat di gunakan oleh satu atau lebih _View_, sehingga kode akan lebih ringkas dan lebih mudah untuk membuat perubahan tanpa harus melakukan nya secara manual.
 
 ### Theme
-Theme adalah jenis _style_ yang diterapkan pada _activity_ dan _application_. Saat kita menerapkan _style_ sebagai _theme_, maka seluruh _view_ pada _activity_ akan menerapkan setiap atribut style yang di dukungnya. Berikut contoh dari theme.
+Theme adalah jenis _Style_ yang diterapkan pada _Activity_ dan _Application_. Saat kita menerapkan _Style_ sebagai _Theme_, maka seluruh _View_ pada _Activity_ akan menerapkan setiap atribut _Style_ yang di dukungnya. Berikut contoh dari _Theme_.
 
 `style.xml`
 ```xml
@@ -122,14 +122,14 @@ Theme adalah jenis _style_ yang diterapkan pada _activity_ dan _application_. Sa
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 ```
-Perhatikan kode di atas. Kita menerapkan style sebagai theme dengan mendeklarasikan __Theme.AppCompat.Light.DarkActionBar__ sebagai parent `parent="Theme.AppCompat.Light.DarkActionBar`. Untuk dapat menggunakan theme kita perlu mendefinisikan nya di dalam berkas __AndroidManifest.xml__ di dalam tag `<application>`.
+Perhatikan kode di atas. Kita menerapkan _Style_ sebagai _Theme_ dengan mendeklarasikan __Theme.AppCompat.Light.DarkActionBar__ sebagai _Parent_ `parent="Theme.AppCompat.Light.DarkActionBar`. Untuk dapat menggunakan _Theme_ kita perlu mendefinisikan nya di dalam berkas __AndroidManifest.xml__ di dalam tag `<application>`.
 
 ```xml 
 android:theme="@style/AppTheme" 
 ```
 
 ## Setup Project Baru
-Kita akan mengimpementasi teori diatas dengan membangun layout Login Screen. Sekarang buka Android Studio dan buat project baru dengan kriteria sebagai berikut.
+Kita akan mengimpementasi teori diatas dengan membangun layout _Login Screen_. Sekarang buka Android Studio dan buat project baru dengan kriteria sebagai berikut.
 
 | Field     | Isian |
 | ---      | ---       |
@@ -151,7 +151,7 @@ __klik kanan__ pada folder __values__ lalu __-> New -> Values Resource File.__
   <img width="560" src="images/dimens file.PNG">
 </p>
 
-Kita akan mendefinisikan atribut dimensi di dalam __dimens.xml__ yang nantinya akan di gunakan oleh view, dengan memberinya nama dan nilai di dalam tag `<dimen>`.
+Kita akan mendefinisikan atribut dimensi di dalam __dimens.xml__ yang nantinya akan di gunakan oleh _View_, dengan memberinya nama dan nilai di dalam tag `<dimen>`.
 Sekarang buka  __dimens.xml__ dan masukan kode di bawah ini di dalam tag `<resource>`.
 ```xml
     <dimen name="horizontal_margin">20dp</dimen>
@@ -210,7 +210,7 @@ Sekarang buka  __dimens.xml__ dan masukan kode di bawah ini di dalam tag `<resou
 ```
 Perhatikan penggunaan _dimens_ dan _colors_. _dimens_ di gunakan untuk mendefinisikan ukuran sedangkan sedangkan _colors_ untuk mendefinisikan warna. 
 
-Jika ingin memiliki atribut pada view tertentu, dalam hal ini _Button_ maka kita perlu mewariskan __Widget.AppCompat.Button__ seperti ini `parent="Widget.AppCompat.Button"` letakkan sesudah nama style. 
+Jika ingin memiliki atribut pada _View_ tertentu, dalam hal ini _Button_ maka kita perlu mewariskan __Widget.AppCompat.Button__ seperti ini `parent="Widget.AppCompat.Button"` letakkan sesudah nama _Style_. 
 
 6. Sekarang, buka __activity_main.xml|__ dan ganti dengan kode di bawah ini.
 ```xml
@@ -279,10 +279,10 @@ Maka tampilan nya akan seperti ini.
 
 _*Penjelasan lebih lanjut mengenai ConstraintLayout dan penggunaan Visual Layout Editor akan di lakukan pada saat praktikum_.
 
-Perhatikan penggunaan style di dalam __activity_main.xml__. Kita dapat memanggil style dan menggunakan atribut yang di milikinya untuk lebih dari satu view. 
-Apabila kita mengubah atau menambah nilai atribut style, maka view yg menggunakan style tersebut akan ikut menyesuaikan.
+Perhatikan penggunaan _Style_ di dalam __activity_main.xml__. Kita dapat memanggil _Style_ dan menggunakan atribut yang di milikinya untuk lebih dari satu _View_. 
+Apabila kita mengubah atau menambah nilai atribut _Style_, maka _View_ yg menggunakan _Style_ tersebut akan ikut menyesuaikan.
 
-7. Sekarang Buka __style.xml__, Kita akan menambahkan atribut baru di dalam _theme_.
+7. Sekarang Buka __style.xml__, Kita akan menambahkan atribut baru di dalam _Theme_.
 
 Berikut adalah Theme yang di buat oleh Android Studio secara otomatis saat kita membuat project baru.
 ```xml
@@ -295,11 +295,11 @@ Berikut adalah Theme yang di buat oleh Android Studio secara otomatis saat kita 
 ```
 Sedikit penjelasan mengenai atribut yang di gunakan.
 
-- __ColorPrimary__ : untuk memberikan warna pada app bar dan elemen UI primer lainnya .
-- __ColorPrimaryDark__ : varian ColorPrimary yang lebih gelap, digunakan untuk status bar (di Android 5.0+).
-- __ColorAccent__ : warna sekunder untuk kontrol seperti checkbox dan text fields.
+- __ColorPrimary__ : Untuk memberikan warna pada app bar dan elemen UI primer lainnya .
+- __ColorPrimaryDark__ : Varian _ColorPrimary_ yang lebih gelap, digunakan untuk _status bar_ (di Android 5.0+).
+- __ColorAccent__ : Warna sekunder untuk kontrol seperti _checkbox_ dan _text fields_.
 
-Sekarang kita akan menambahkan atribut baru di dalam theme tersebut, yaitu `android:windowBackground` yang berfungsi untuk memberikan warna background pada activity.
+Sekarang kita akan menambahkan atribut baru di dalam _Theme_ tersebut, yaitu `android:windowBackground` yang berfungsi untuk memberikan warna background pada Activity.
 sehingga  `AppTheme` akan terlihat seperti ini : 
 ```xml
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -315,7 +315,7 @@ Selanjutnya kita perlu memastikan bahwa `AppTheme` sudah di definisikan di dalam
   <img width="560" src="images/applied theme.PNG">
 </p>
 
-Background pada _activity_ akan berubah menjadi warna yang di gunakan colorAccent.
+Background pada _Activity_ akan berubah menjadi warna yang di gunakan colorAccent.
 
 <p align="center">
   <img width="150" src="images/theme bg color.PNG">

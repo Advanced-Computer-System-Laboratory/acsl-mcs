@@ -22,12 +22,12 @@ Activity dapat di katakan sebagai halaman/layar dalam aplikasi Android. Terdapat
 Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook, di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap Activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar Activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
 
 ### Activity Lifecycle  
-Setiap activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :
+Setiap Activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :
 <p align="center">
   <img align="center" src="images/ActivityLifecycle.png" width="460">
 </p>
 
-*Activity Lifecycle* merupakan rangkaian *state* dari Activity. Kita dapat mengatur _behaviour_ Activity berdasarkan state yang sedang aktif menggunakan _Method Callback_. Terdapat 6 _Method Callback_ di dalam Activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
+*Activity Lifecycle* merupakan rangkaian *state* dari Activity. Kita dapat mengatur _Behaviour_ Activity berdasarkan state yang sedang aktif menggunakan _Method Callback_. Terdapat 6 _Method Callback_ di dalam Activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
 
 Contoh penggunaan nya adalah ketika aplikasi pertama kali di buka, Activity utama akan di jalankan dan memasuki state *Create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalam nya seperti menampilkan layout menggunakan `setContentView()`. Method `onCreate()` wajib di miliki oleh sebuah Activity untuk melakukan inisialisasi awal.
 
@@ -37,7 +37,7 @@ Penjelasan lebih lanjut mengenai _Activity Lifecycle_ dapat di lihat di dalam li
 Apabila sebuah Activity mengalami perubahan konfigurasi seperti perpindahan orientasi layar, maka Activity akan di hancurkan dengan memanggil `onDestroy()`. Selanjutnya Activity perlu di buat kembali dengan memanggil `onCreate()` untuk melakukan inisialisasi dengan orientasi yang berbeda. Ini menyebabkan data yang di simpan sebelumnya akan hilang. Untuk mengatasi hal tersebut kita dapat menggunakan method `onSaveInstanceState()`.
 
 ### Intent
-Intent adalah sebuah object yang dapat digunakan untuk melakukan komunikasi antar komponen aplikasi seperti _Activity, Content Providers, Broadcast Receivers dan Services_. Intent memiliki dua tipe, yaitu 
+Intent adalah sebuah object yang dapat digunakan untuk melakukan komunikasi antar komponen aplikasi seperti _Activity, Content Provider, Broadcast Receiver dan Service_. Intent memiliki dua tipe, yaitu 
 _Explicit_ dan _Implicit_.
 
 #### Intent Explicit
@@ -77,7 +77,6 @@ Kita akan menulis kode di dua buah file dengan format .`java` dan `.xml` yaitu _
 
 Activity yang sudah di buat harus terdaftar di dalam __AndroidManifest.xml__ dengan menggunakan tag `<activity>` agar dapat di kenali dan di jalankan oleh sistem. 
 
-
 <hr/>
 
 ## Codelab
@@ -92,7 +91,7 @@ Sekarang buka __activity_main.xml__ dan kondisikan layoutnya seperti di bawah in
 
 _*Ikuti arahan PJ dalam pemnbuatan layout._
 
-Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dll* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
+Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dan lain-lain* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
 
 *ConstraintLayout* digunakan untuk mengatur posisi _Child-View_ secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
 
@@ -110,7 +109,7 @@ Lakukan pada semua `android:text` yang di highlight. Nilai yang di *extract* aka
   <img width="560" src="images/StringRes.PNG">
 </p>
 
-3. Selanjutnya buka __MainActivity__ lalu buat variabel instance sebagai berikut.
+3. Selanjutnya buka __MainActivity__ lalu buat deklarasikan variabel sebagai berikut.
 
 ```java
   private Button btnAdd;
@@ -471,8 +470,8 @@ Maka yang akan tampil di __NewActivity__ adalah data yang di kirim melalui inten
   <img src="images/IntentPutExtra.gif">
 </p>
 
-12. Yang terkhir, kita akan melakukan _Intent implicit_ untuk melakukan navigasi ke aplikasi lain.
-Kali ini kita akan melakukannya dengan browser. Sekarang buka class __MainActivity__ dan buat variabel instance sebagai berikut :
+12. Yang terkhir, kita akan melakukan _Intent Implicit_ untuk melakukan navigasi ke aplikasi lain.
+Kali ini kita akan melakukannya dengan browser. Sekarang buka class __MainActivity__ dan deklarasikan variabel baru sebagai berikut :
 ```java
 private Button btnToBrowser;
 ```

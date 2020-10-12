@@ -209,8 +209,8 @@ Kondisikan class tersebut seperti di bawah ini.
 ```java
 public class NetworkDeviceData {
 
-/* variabel “networkDevices” berfungsi untuk menampung data dalam jumlah yang banyak 
-   berdasarkan atribut yang di miliki class NetwokDevice. */
+  /* Variabel “networkDevices” berfungsi untuk menampung data berdasarkan atribut yang di miliki class NetwokDevice 
+  dalam jumlah yang banyak. */
    
    private static ArrayList<NetworkDevice> networkDevices = new ArrayList<>();
 

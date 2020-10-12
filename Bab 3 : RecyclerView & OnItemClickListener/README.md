@@ -503,7 +503,7 @@ Sekarang jalankan programnya, maka tampilan nya akan seperti ini.
 <p align="left">
   <img  src="images/NetworkDevicesApp.PNG">
 </p>
-\
+
 15. Kita sudah berhasil membuat aplikasi yang berisikan daftar gambar dan nama-nama perangkat jaringan.
 Sekarang  tinggal menambahkankan kode untuk mendeteksi dan memproses _click event_ pada item list.
 

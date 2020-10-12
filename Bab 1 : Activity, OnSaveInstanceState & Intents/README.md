@@ -91,13 +91,13 @@ Sekarang buka __activity_main.xml__ dan kondisikan layoutnya seperti di bawah in
 
 _*Ikuti arahan PJ dalam pemnbuatan layout._
 
-Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dan lain-lain* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
+Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dan lain-lain* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai Child-View.
 
-*ConstraintLayout* digunakan untuk mengatur posisi _Child-View_ secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
+*ConstraintLayout* digunakan untuk mengatur posisi Child-View secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
 
 Pembahasan mengenai _ViewGroup_ dan _View_ lebih lanjut dapat di lihat di dalam link ini : https://developer.android.com/guide/topics/ui/declaring-layout.
 
-2. Perhatikan highlight kuning  pada `android:text`. Hightlight menandakan sebuah peringatan dalam hal ini kita meng-_hardcode_ nilai pada `android:text`. Kita dapat menghilangkan nya dengan cara klik pada highlight tersebut, lalu tekan *alt+enter*  dan pilih *extract string resource*. Klik tombol *OK*. 
+2. Perhatikan highlight kuning  pada `android:text`. Hightlight menandakan sebuah peringatan, dalam hal ini kita meng-_hardcode_ nilai pada `android:text`. Kita dapat menghilangkan nya dengan cara klik pada highlight tersebut, lalu tekan *alt+enter*  dan pilih *extract string resource*. Klik tombol *OK*. 
 
 <p align="left">
   <img src="images/ExtractStringResource.PNG">
@@ -109,7 +109,7 @@ Lakukan pada semua `android:text` yang di highlight. Nilai yang di *extract* aka
   <img width="560" src="images/StringRes.PNG">
 </p>
 
-3. Selanjutnya buka __MainActivity__ lalu buat deklarasikan variabel sebagai berikut.
+3. Selanjutnya buka __MainActivity__ lalu deklarasikan variabel sebagai berikut.
 
 ```java
   private Button btnAdd;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
 ```
 
-Hal yang perlu di ingat adalah *TextView* hanya menerima *String*. Karena variable `count` bertipe *Integer* maka kita perlu mengkonversikan nya kedalam *String* menggunakan `Integer.toString()`.
+Hal yang perlu di ingat adalah, *TextView* hanya menerima *String*. Karena variable `count` bertipe *Integer* maka kita perlu mengkonversikan nya kedalam *String* menggunakan `Integer.toString()`.
 
 Sekarang jalankan program nya menggunakan emulator atau smartphone. Pastikan USB Debugging sudah di aktifkan.
 Tampilan nya akan seperti ini. 
@@ -255,7 +255,7 @@ Tampilan nya akan seperti ini.
 
 Tekan tombol tambah dan kurang, maka `tvResult` akan menampilkan hasilnya.
 
-6. Sekarang coba ganti orientasi layar, maka nilai `tvResult` akan kembali ke 0. Agar nilainya tidak berubah kita dapat memanfaatkan method `onSaveInstanceState`. Override method `onSaveInstanceState()` dengan cara __click kanan__ di dalam __MainActivity__, kemudian __Generate -> Override Methods__. Cari dan pilih method `onSaveInstanceState()` dengan parameter _Bundle outState_ dan _return type void_ kemudian Tekan tombol "OK".
+6. Sekarang coba ganti orientasi layar, maka nilai `tvResult` akan kembali ke 0. Agar nilainya tidak berubah kita dapat memanfaatkan method `onSaveInstanceState`. _Override_ method `onSaveInstanceState()` dengan cara __click kanan__ di dalam __MainActivity__, kemudian __Generate -> Override Methods__. Cari dan pilih method `onSaveInstanceState()` dengan parameter _Bundle outState_ dan _return type void_ kemudian Tekan tombol "OK".
 
 <p align="left">
   <img width="260" src="images/Override-onSaveInstanceState.PNG">
@@ -333,7 +333,7 @@ Buat dengan kriteria sebagai berikut:
   <img  src="images/NewActivityDisplay.PNG">
 </p>
 
-9. Selanjutnya buka class __MainActivity__, buat variabel instance sebagai berikut.
+9. Selanjutnya buka class __MainActivity__, dan deklarasikan variabel baru sebagai berikut.
 ```java
 private Button btnMoveActivity;
 ```
@@ -411,8 +411,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 ```
-11. Agar activity yang di tuju dapat menerima data, kita perlu menulis beberapa baris kode.
-Buka class __NewActivity__ dan buat variabel instance sebagai berikut.
+11. Agar Activity yang di tuju dapat menerima data, kita perlu menulis beberapa baris kode.
+Buka class __NewActivity__ dan deklarasikan variabel baru sebagai berikut.
 ```java
 private TextView tvTitle;
 ```

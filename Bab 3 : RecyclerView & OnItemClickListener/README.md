@@ -146,7 +146,7 @@ Kondisikan layoutnya seperti di bawah ini.
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
-5. Berikutnya buat class model dengan nama __NetworkDevice__ dengan cara __Klik kanan pada nama package -> new -> Java Class__
+5. Berikutnya buat class model dengan nama __NetworkDevice__ dengan cara __Klik Kanan pada nama Package -> New -> Java Class__
 <p align="left">
   <img width="350" src="images/create model class.PNG">
 </p>

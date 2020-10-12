@@ -210,7 +210,7 @@ Kondisikan class tersebut seperti di bawah ini.
 public class NetworkDeviceData {
 
 /* variabel “networkDevices” berfungsi untuk menampung data dalam jumlah yang banyak 
-   berdasarkan atribut yang di miliki class _NetwokDevice_. */
+   berdasarkan atribut yang di miliki class NetwokDevice. */
    
    private static ArrayList<NetworkDevice> networkDevices = new ArrayList<>();
 

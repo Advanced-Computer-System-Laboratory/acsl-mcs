@@ -15,7 +15,7 @@
 <br/><br/><br/><br/>
 
 ## Tujuan
-Pada Bab ini kalian akan mempelajari cara menampilkan data dalam bentuk list menggunakan _RecyclerView_, kemudian menerima dan memproses event click pada item list.
+Pada Bab ini kalian akan mempelajari cara menampilkan data dalam bentuk list menggunakan _RecyclerView_, kemudian menerima dan memproses _click event_  pada item list.
 
 ## Teori
 RecyclerView merupakan sebuah _ViewGroup_ yang digunakan untuk menampilkan koleksi data, baik dalam bentuk _List, Grid_ ataupun _Staggered grid._ RecyclerView memiliki performa yang lebih baik di bandingkan pendahulunya yaitu _ListView_, karena ia hanya akan memuat daftar item yang perlu di tampilkan, sehingga menjadikan nya efisien dalam penggunaan memori. 
@@ -52,7 +52,7 @@ dependencies {
    implementation "androidx.recyclerview:recyclerview:1.1.0"
 }
 ```
-2. Karena gambar yang akan di tampilkan kedalam list berasal dari internet, kita perlu menggunakan _Third party library_ untuk dapat mendownload dan menampilkan gambar tersebut. Library yang kita gunakan adalah _Glide_. 
+2. Karena gambar yang akan di tampilkan kedalam list berasal dari internet, kita perlu menggunakan _Third Party Library_ atau library pihak ketiga untuk dapat mendownload dan menampilkan gambar tersebut. Library yang kita gunakan adalah _Glide_. 
 
 Tambahkan Glide ke dalam __app/build.gradle(Module.app)__ di dalam blok `dependencies`.
 ```gradle
@@ -151,7 +151,7 @@ Kondisikan layoutnya seperti di bawah ini.
   <img width="350" src="images/create model class.PNG">
 </p>
 
-Setelah itu tambahkan variabel instance sebagai berikut 
+Setelah itu deklarasikan variabel baru sebagai berikut :
 ```java
 private String imageUrl;
 private String name;
@@ -165,7 +165,7 @@ NetworkDevice(String name, String imageUrl) {
    this.imageUrl = imageUrl;
 }
 ```
-Buat getter dengan cara __Klik kanan__ di dalam __NetworkDevice__ kemudian __generate -> getter__.
+Buat getter dengan cara __Klik kanan__ di dalam __NetworkDevice__ kemudian __Generate -> Getter__.
 
 <p align="left">
   <img width="200" src="images/generate.jpg">
@@ -209,6 +209,9 @@ Kondisikan class tersebut seperti di bawah ini.
 ```java
 public class NetworkDeviceData {
 
+/* variabel “networkDevices” berfungsi untuk menampung data dalam jumlah yang banyak 
+   berdasarkan atribut yang di miliki class _NetwokDevice_. */
+   
    private static ArrayList<NetworkDevice> networkDevices = new ArrayList<>();
 
    public static ArrayList<NetworkDevice> getNetworkDevices() {
@@ -269,12 +272,12 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
 }
 ```
 
-8. Sekarang kita membutuhkan class `ViewHolder`. Tekan __alt+enter__ pada `ViewHolder` untuk membuat class tersebut.
+8. Sekarang kita membutuhkan class `ViewHolder` untuk menampung View yang terdapat pada layout _item_netdevice.xml_. Tekan __alt+enter__ pada `ViewHolder` untuk membuat class tersebut.
 <p align="left">
   <img width="500" src="images/create view holder.png">
 </p>
 
-Berikutnya extends `RecyclerView.ViewHolder` pada class `ViewHolder` tersebut lalu buat constructor nya dengan cara, tekan __alt+enter__ pada class tersebut lalu pilih _create constructor matching super_.
+Berikutnya extends `RecyclerView.ViewHolder` pada class `ViewHolder` tersebut lalu buat Constructor nya dengan cara, tekan __alt+enter__ pada class tersebut lalu pilih _Create constructor matching super_.
 <p align="left">
   <img width="500" src="images/constructor matching super.png">
 </p>
@@ -308,7 +311,7 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
 }
 ```
 
-9. Selanjutnya buat sebuah ArrayList dan constructor untuk menerima koleksi data.
+9. Selanjutnya buat sebuah ArrayList dan Constructor untuk menerima koleksi data.
 ```java
 public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDeviceAdapter.ViewHolder> {
 
@@ -457,7 +460,7 @@ public class MainActivity extends AppCompatActivity {
    }
 }
 ```
-Perhatikan kode di dalam method `initRecyclerView()`. Kita membuat objek adapter dan memberi koleksi data kedalam constructor nya. __RecyclerView__ yang telah di inisialisasi di atur tampilan nya menggunakan __LinearLayoutManager__ agar menampilkan koleksi data dalam bentuk list. Kemudian __RecyclerView__ tersebut memanggil `setAdapter()` dan memasukan object adapter yang telah di buat.
+Perhatikan kode di dalam method `initRecyclerView()`. Kita membuat objek adapter dan memberi koleksi data kedalam Constructor nya. __RecyclerView__ yang telah di inisialisasi di atur tampilan nya menggunakan __LinearLayoutManager__ agar menampilkan koleksi data dalam bentuk list secara vertikal. Kemudian __RecyclerView__ tersebut memanggil `setAdapter()` dan memasukan objek adapter yang telah di buat.
 
 14. Sebelum kita menjalankan programnya, kita perlu membuat _request_ kepada sistem Android untuk menggunakan internet, karena gambar yang akan di kita tampilkan berasal dari internet. Request tersebut dapat di lakukan di dalam berkas __AndroidManifest.xml__.
 
@@ -497,10 +500,12 @@ Sehingga __AndroidManifest.xml__ akan terlihat seperti ini.
 
 Sekarang jalankan programnya, maka tampilan nya akan seperti ini.
 
---Image--
-
+<p align="left">
+  <img  src="images/NetworkDevicesApp.PNG">
+</p>
+\
 15. Kita sudah berhasil membuat aplikasi yang berisikan daftar gambar dan nama-nama perangkat jaringan.
-Sekarang  tinggal menambahkankan kode untuk mendeteksi dan memproses event klik pada item list.
+Sekarang  tinggal menambahkankan kode untuk mendeteksi dan memproses _click event_ pada item list.
 
 Buka kembali ke class __ListNetworkDeviceAdapter__ dan tambahkan sebuah `interface` di dalamnya.
 ```java
@@ -518,7 +523,7 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
 ...
 ```
 
-16. Buat instance dari interface tersebut.
+16. Deklarasikan variabel dari interface tersebut.
 ```java
 public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDeviceAdapter.ViewHolder> {
     
@@ -554,7 +559,7 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
 }
 ```
 
-Selanjutnya masukan kode ini di dalam method `onBindViewHolder()`.
+Selanjutnya masukan kode berikut di dalam method `onBindViewHolder()`.
 ```java
 public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDeviceAdapter.ViewHolder> {
 
@@ -588,7 +593,7 @@ public class ListNetworkDeviceAdapter extends RecyclerView.Adapter<ListNetworkDe
     }
 }
 ```
-17. Kita sudah berhasil membuat interface. Sekarang kembali ke __MainActivity__ dan tambahkan kode ini di dalam method `initRecyclerView()`.
+17. Kita sudah berhasil membuat Interface. Sekarang kembali ke __MainActivity__ dan tambahkan kode berikut di dalam method `initRecyclerView()`.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -609,10 +614,11 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Kita mengggunakan interface tersebut agar respon click yang kita terima dapat di proses di dalam `MainActivity`. Sekarang jalankan kembali programnya.  apabila item pada list di tekan, aplikasi akan memunculkan pesan __Toast__ yang  menampilkan nama perangkat jaringan yang di tekan.
+Kita mengggunakan Interface tersebut agar respon click yang kita terima dapat di proses di dalam `MainActivity`. Sekarang jalankan kembali programnya.  apabila item pada list di tekan, aplikasi akan memunculkan pesan __Toast__ yang  menampilkan nama perangkat jaringan yang di tekan.
 
--- GIF --
-
+<p align="left">
+  <img src="images/ToastMessage.gif">
+</p>
 
 
 

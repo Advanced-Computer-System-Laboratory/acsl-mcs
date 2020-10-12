@@ -255,7 +255,7 @@ Tampilan nya akan seperti ini.
 
 Tekan tombol tambah dan kurang, maka `tvResult` akan menampilkan hasilnya.
 
-6. Sekarang coba ganti orientasi layar, maka nilai `tvResult` akan kembali ke 0. Agar nilainya tidak berubah kita dapat memanfaatkan method `onSaveInstanceState`. _Override_ method `onSaveInstanceState()` dengan cara __click kanan__ di dalam __MainActivity__, kemudian __Generate -> Override Methods__. Cari dan pilih method `onSaveInstanceState()` dengan parameter _Bundle outState_ dan _return type void_ kemudian Tekan tombol "OK".
+6. Sekarang coba ganti orientasi layar, maka nilai `tvResult` akan kembali ke 0. Agar nilainya tidak berubah kita dapat memanfaatkan method `onSaveInstanceState`. _Override_ method `onSaveInstanceState()` dengan cara __Klik kanan__ di dalam __MainActivity__, kemudian __Generate -> Override Methods__. Cari dan pilih method `onSaveInstanceState()` dengan parameter _Bundle outState_ dan _return type void_ kemudian Tekan tombol "OK".
 
 <p align="left">
   <img width="260" src="images/Override-onSaveInstanceState.PNG">

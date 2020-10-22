@@ -21,7 +21,7 @@ Pada bab ini kalian akan memahamai penggunaan _ConstraintLayout_ yaitu salah sat
 ### ConstraintLayout
 _ConstraintLayout_ merupakan sebuah _layout_ yang banyak di gunakan oleh pengembang aplikasi Android karena memiliki beberapa kelebihan, salah satunya adalah dapat mengatur _View_ secara flexible tanpa memerlukan _nested layout_ (Kelompok tampilan bertingkat) sehingga tercipta hierarki tampilan datar.
 
-Contoh _nested layout_ :
+Contoh _Nested Layout_ :
 ```xml
 <LinearLayout>
     <LinearLayout>
@@ -38,6 +38,17 @@ Contoh _nested layout_ :
     </LinearLayout>
 </LinearLayout>
 ```
+Contoh Hirearki Datar menggunakan ConstraintLayout :
+```xml
+<androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView/>
+    <EditText/>
+    <TextView/>
+    <EditText/>
+    <TextView/>
+    <EditText/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
 
 Dengan _ConstraintLayout_ kita dapat mengatur layout menggunakan _Visual Layout Editor_ lebih mudah. Hanya dengan menarik _anchor point_ (Top, Bottom, Left, Right) yang terdapat pada View, lalu dihubungkan dengan Parent atau View lainnya. 
 
@@ -51,7 +62,7 @@ Yang perlu di perhatikan saat menggunakan _ConstraintLayout_ adalah, _Achor Poin
   <img width="150" src="images/cosntraint.png">
 </p>
 
-Salah satu kelebihan menggunakan _Visual Layout Editor_ adalah kode yg di butuhkan __layout.xml__ akan otomatis di _generate_ oleh Android Studio, sehingga tidak menjadi masalah apabila tidak ingin membuat layout di dalam _Text Editor_. _ConstraintLayout_ juga dapat membuat tampilan UI pada aplikasi menjadi responsif (Cocok untuk bermacam macam ukuran device).
+Salah satu kelebihan menggunakan _Visual Layout Editor_ adalah kode yg di butuhkan __layout.xml__ akan otomatis di _generate_ oleh Android Studio, sehingga tidak menjadi masalah apabila tidak ingin membuat layout di dalam _Code Editor_. _ConstraintLayout_ juga dapat membuat tampilan UI pada aplikasi menjadi responsif (Cocok untuk bermacam macam ukuran device).
 
 ### Style
 Saat membangun sebuah layout terkadang kita menemukan _View_ yang memiliki atribut sama dengan _View_ lain nya, yang di buat dengan cara duplikasi. Hal tersebut tidaklah efisien dan memperbesar kode sehingga akan sulit untuk melakukan perubahan. Contoh nya adalah seperti ini :
@@ -284,7 +295,7 @@ Apabila kita mengubah atau menambah nilai atribut _Style_, maka _View_ yg menggu
 
 7. Sekarang Buka __style.xml__, Kita akan menambahkan atribut baru di dalam _Theme_.
 
-Berikut adalah Theme yang di buat oleh Android Studio secara otomatis saat kita membuat project baru.
+Berikut adalah _Theme_ yang di buat oleh Android Studio secara otomatis saat kita membuat project baru.
 ```xml
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

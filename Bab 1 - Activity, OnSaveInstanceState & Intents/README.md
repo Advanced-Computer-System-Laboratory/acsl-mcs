@@ -22,12 +22,12 @@ Activity dapat di katakan sebagai halaman/layar dalam aplikasi Android. Terdapat
 Activity merepresentasikan satu halaman/layar. Kita dapat mengambil contoh aplikasi Facebook, di mana aplikasi tersebut memiliki beberapa activity yaitu _Profile, Beranda, dan Pesan_. Setiap Activity merupakan komponen yang independen sehingga untuk melakukan navigasi antar Activity di butuhkan sebuah mekanisme. Hal tersebut dapat di penuhi dengan *Intent* yang akan di bahas di bab ini.
 
 ### Activity Lifecycle  
-Setiap activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :
+Setiap Activity memiliki apa yang di sebut dengan *Activity Lifecycle*. Lihatlah diagram di bawah :
 <p align="center">
   <img align="center" src="images/ActivityLifecycle.png" width="460">
 </p>
 
-*Activity Lifecycle* merupakan rangkaian *state* dari Activity. Kita dapat mengatur _behaviour_ Activity berdasarkan state yang sedang aktif menggunakan _Method Callback_. Terdapat 6 _Method Callback_ di dalam Activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
+*Activity Lifecycle* merupakan rangkaian *state* dari Activity. Kita dapat mengatur _Behaviour_ Activity berdasarkan state yang sedang aktif menggunakan _Method Callback_. Terdapat 6 _Method Callback_ di dalam Activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
 
 Contoh penggunaan nya adalah ketika aplikasi pertama kali di buka, Activity utama akan di jalankan dan memasuki state *Create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalam nya seperti menampilkan layout menggunakan `setContentView()`. Method `onCreate()` wajib di miliki oleh sebuah Activity untuk melakukan inisialisasi awal.
 
@@ -37,7 +37,7 @@ Penjelasan lebih lanjut mengenai _Activity Lifecycle_ dapat di lihat di dalam li
 Apabila sebuah Activity mengalami perubahan konfigurasi seperti perpindahan orientasi layar, maka Activity akan di hancurkan dengan memanggil `onDestroy()`. Selanjutnya Activity perlu di buat kembali dengan memanggil `onCreate()` untuk melakukan inisialisasi dengan orientasi yang berbeda. Ini menyebabkan data yang di simpan sebelumnya akan hilang. Untuk mengatasi hal tersebut kita dapat menggunakan method `onSaveInstanceState()`.
 
 ### Intent
-Intent adalah sebuah object yang dapat digunakan untuk melakukan komunikasi antar komponen aplikasi seperti _Activity, Content Providers, Broadcast Receivers dan Services_. Intent memiliki dua tipe, yaitu 
+Intent adalah sebuah object yang dapat digunakan untuk melakukan komunikasi antar komponen aplikasi seperti _Activity, Content Provider, Broadcast Receiver dan Service_. Intent memiliki dua tipe, yaitu 
 _Explicit_ dan _Implicit_.
 
 #### Intent Explicit
@@ -77,7 +77,6 @@ Kita akan menulis kode di dua buah file dengan format .`java` dan `.xml` yaitu _
 
 Activity yang sudah di buat harus terdaftar di dalam __AndroidManifest.xml__ dengan menggunakan tag `<activity>` agar dapat di kenali dan di jalankan oleh sistem. 
 
-
 <hr/>
 
 ## Codelab
@@ -92,13 +91,13 @@ Sekarang buka __activity_main.xml__ dan kondisikan layoutnya seperti di bawah in
 
 _*Ikuti arahan PJ dalam pemnbuatan layout._
 
-Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dll* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai _Child-View_.
+Terdapat dua komponen UI di dalam aplikasi Android yaitu **ViewGroup** dan **View**. *ConstraintLayout* yang kita gunakan merupakan sebuah _ViewGroup_. _ViewGroup_ digunakan untuk menampung _View_ seperti *TextView, ImageView, Button dan lain-lain* agar dapat di kelompokan dan di atur bagaimana mereka di posisikan. Sebut saja View di dalam ViewGroup sebagai Child-View.
 
-*ConstraintLayout* digunakan untuk mengatur posisi _Child-View_ secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
+*ConstraintLayout* digunakan untuk mengatur posisi Child-View secara flexibel sehingga memudahkan kita untuk membuat layout yang complex tanpa perlu adanya nested layout (kelompok tampilan bertingkat). Untuk penjelasan lebih lanjut akan di lakukan di bab 2. 
 
 Pembahasan mengenai _ViewGroup_ dan _View_ lebih lanjut dapat di lihat di dalam link ini : https://developer.android.com/guide/topics/ui/declaring-layout.
 
-2. Perhatikan highlight kuning  pada `android:text`. Hightlight menandakan sebuah peringatan dalam hal ini kita meng-_hardcode_ nilai pada `android:text`. Kita dapat menghilangkan nya dengan cara klik pada highlight tersebut, lalu tekan *alt+enter*  dan pilih *extract string resource*. Klik tombol *OK*. 
+2. Perhatikan highlight kuning  pada `android:text`. Hightlight menandakan sebuah peringatan, dalam hal ini kita meng-_hardcode_ nilai pada `android:text`. Kita dapat menghilangkan nya dengan cara klik pada highlight tersebut, lalu tekan *alt+enter*  dan pilih *extract string resource*. Klik tombol *OK*. 
 
 <p align="left">
   <img src="images/ExtractStringResource.PNG">
@@ -110,7 +109,7 @@ Lakukan pada semua `android:text` yang di highlight. Nilai yang di *extract* aka
   <img width="560" src="images/StringRes.PNG">
 </p>
 
-3. Selanjutnya buka __MainActivity__ lalu buat variabel instance sebagai berikut.
+3. Selanjutnya buka __MainActivity__ lalu deklarasikan variabel sebagai berikut.
 
 ```java
   private Button btnAdd;
@@ -245,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
 ```
 
-Hal yang perlu di ingat adalah *TextView* hanya menerima *String*. Karena variable `count` bertipe *Integer* maka kita perlu mengkonversikan nya kedalam *String* menggunakan `Integer.toString()`.
+Hal yang perlu di ingat adalah, *TextView* hanya menerima *String*. Karena variable `count` bertipe *Integer* maka kita perlu mengkonversikan nya kedalam *String* menggunakan `Integer.toString()`.
 
 Sekarang jalankan program nya menggunakan emulator atau smartphone. Pastikan USB Debugging sudah di aktifkan.
 Tampilan nya akan seperti ini. 
@@ -256,7 +255,7 @@ Tampilan nya akan seperti ini.
 
 Tekan tombol tambah dan kurang, maka `tvResult` akan menampilkan hasilnya.
 
-6. Sekarang coba ganti orientasi layar, maka nilai `tvResult` akan kembali ke 0. Agar nilainya tidak berubah kita dapat memanfaatkan method `onSaveInstanceState`. Override method `onSaveInstanceState()` dengan cara __click kanan__ di dalam __MainActivity__, kemudian __Generate -> Override Methods__. Cari dan pilih method `onSaveInstanceState()` dengan parameter _Bundle outState_ dan _return type void_ kemudian Tekan tombol "OK".
+6. Sekarang coba ganti orientasi layar, maka nilai `tvResult` akan kembali ke 0. Agar nilainya tidak berubah kita dapat memanfaatkan method `onSaveInstanceState`. _Override_ method `onSaveInstanceState()` dengan cara __Klik kanan__ di dalam __MainActivity__, kemudian __Generate -> Override Methods__. Cari dan pilih method `onSaveInstanceState()` dengan parameter _Bundle outState_ dan _return type void_ kemudian Tekan tombol "OK".
 
 <p align="left">
   <img width="260" src="images/Override-onSaveInstanceState.PNG">
@@ -334,7 +333,7 @@ Buat dengan kriteria sebagai berikut:
   <img  src="images/NewActivityDisplay.PNG">
 </p>
 
-9. Selanjutnya buka class __MainActivity__, buat variabel instance sebagai berikut.
+9. Selanjutnya buka class __MainActivity__, dan deklarasikan variabel baru sebagai berikut.
 ```java
 private Button btnMoveActivity;
 ```
@@ -412,8 +411,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 ```
-11. Agar activity yang di tuju dapat menerima data, kita perlu menulis beberapa baris kode.
-Buka class __NewActivity__ dan buat variabel instance sebagai berikut.
+11. Agar Activity yang di tuju dapat menerima data, kita perlu menulis beberapa baris kode.
+Buka class __NewActivity__ dan deklarasikan variabel baru sebagai berikut.
 ```java
 private TextView tvTitle;
 ```
@@ -471,8 +470,8 @@ Maka yang akan tampil di __NewActivity__ adalah data yang di kirim melalui inten
   <img src="images/IntentPutExtra.gif">
 </p>
 
-12. Yang terkhir, kita akan melakukan _Intent implicit_ untuk melakukan navigasi ke aplikasi lain.
-Kali ini kita akan melakukannya dengan browser. Sekarang buka class __MainActivity__ dan buat variabel instance sebagai berikut :
+12. Yang terkhir, kita akan melakukan _Intent Implicit_ untuk melakukan navigasi ke aplikasi lain.
+Kali ini kita akan melakukannya dengan browser. Sekarang buka class __MainActivity__ dan deklarasikan variabel baru sebagai berikut :
 ```java
 private Button btnToBrowser;
 ```

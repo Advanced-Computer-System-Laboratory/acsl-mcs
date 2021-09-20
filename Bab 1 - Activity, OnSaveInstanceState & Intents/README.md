@@ -29,7 +29,7 @@ Setiap Activity memiliki apa yang disebut dengan *Activity Lifecycle*. Lihatlah 
 
 *Activity Lifecycle* merupakan rangkaian *State* dari Activity. Kita dapat mengatur _Behaviour_ Activity berdasarkan state yang sedang aktif menggunakan _Method Callback_. Terdapat 6 _Method Callback_ di dalam Activity yaitu `onCreate()` , `onStart()` , `onResume()` , `onPause()` , `onStop()` , dan `onDestroy()`.
 
-Contoh penggunaan nya adalah ketika Aplikasi pertama kali dibuka, Activity utama akan dijalankan dan memasuki state *Create*. Maka `onCreate()` akan di panggil dan menjalankan kode di dalamnya seperti menampilkan Layout menggunakan `setContentView()`.  `onCreate()` wajib di miliki oleh sebuah Activity untuk melakukan inisialisasi awal.
+Contoh penggunaan nya adalah ketika Aplikasi pertama kali dibuka, Activity utama akan dijalankan dan memasuki state *Create*. Maka `onCreate()` akan dipanggil dan menjalankan kode di dalamnya seperti menampilkan Layout menggunakan `setContentView()`.  `onCreate()` wajib dimiliki oleh sebuah Activity untuk melakukan inisialisasi awal.
 
 Penjelasan lebih lanjut mengenai _Activity Lifecycle_ dapat dilihat di dalam link ini : https://developer.android.com/guide/components/activities/activity-lifecycle
 
@@ -103,7 +103,7 @@ Pembahasan mengenai ViewGroup dan View lebih lanjut dapat dilihat di dalam link 
   <img src="images/ExtractStringResource.PNG">
 </p>
 
-Lakukan pada semua `android:text` yang dihighlight. Nilai yang di *extract* akan dimasukan ke dalam `string.xml` yang berada di __res/values__. 
+Lakukan pada semua `android:text` yang dihighlight. Nilai yang di-extract akan dimasukan ke dalam `string.xml` yang berada di __res/values__. 
 
 <p align="left">
   <img width="560" src="images/StringRes.PNG">

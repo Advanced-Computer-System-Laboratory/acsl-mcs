@@ -1,0 +1,44 @@
+# BAB 6 - Database menggunakan Room 
+
+<img align="left" src="../images/logo.png" width="400">
+<img align="left" src="../images/logo_ug.jpg" width="60">
+<a href="https://github.com/fahmisbas">
+  <img align="right" src="../images/Github.png" width="30">
+</a>
+<a href="https://www.linkedin.com/in/fahmisbas/">
+  <img align="right" src="../images/LinkedIn.png" width="30">
+</a>
+<img align="right" src="../images/FahmiSulaimanBaswedan.png" width="200">
+<br/><br/><br/><br/>
+
+## Tujuan
+Dapat menyimpan data secara persisten menggunakan database lokal.
+## Teori
+### Database
+Database digunakan untuk menyimpan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri.  Data yang dimanipulasi bersifat persisten.
+### Room 
+`Room` adalah sebuah library yang dapat digunakan untuk menyederhanakan dan mengoptimalkan penggunaan database SQLite. 
+
+### Komponen pada Room
+
+
+
+
+## Codelab
+1. Buatlah Project baru di Android Studio dengan ktriteria berikut :
+
+| Field     | Isian |
+| ---      | ---       |
+| Nama Project  | **NoteApp**   |
+| Target & Minimum Target SDK  | **Phone and Tablet, API level 21**  |
+| Tipe Activity | **Empty Activity** |
+| Activity Name | **MainActivity** | 
+| Language | **Java** |
+
+2. Buka file `activit_main.xml` kemudian ganti keseluruhan kode dengan yang di bawah ini :
+
+
+## LP
+
+
+## LA

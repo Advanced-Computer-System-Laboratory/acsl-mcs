@@ -1,4 +1,4 @@
-# BAB 6 - Room
+# BAB 6 - Room 
 
 <img align="left" src="../images/logo.png" width="400">
 <img align="left" src="../images/logo_ug.jpg" width="60">
@@ -14,13 +14,18 @@
 ## Tujuan
 Dapat menyimpan data secara persisten menggunakan database lokal.
 ## Teori
-### Room
-Database merupakan kumpulan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri. Data yang berada di dalam database bersifat persisten karena ditulis langsung di dalam Disk atau SSD. 
+### Database dengan Room
+Database merupakan kumpulan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri. Data yang disimpan di dalam database bersifat persisten karena ditulis langsung di dalam Disk atau SSD. 
 
-Penyimpanan data secara lokal dalam Aplikasi Android biasa ditangani oleh SQLite, namun penggunaan SQLite secara langsung sudah mulai ditinggalkan karena sudah hadir library yang dapat memanfaatkan SQLite dengan lebih optimal yaitu Room. Room adalah library yang digunakan untuk menyederhanakan penggunaan SQLite. Dengan menggunakan Room, proses transaksi database menjadi lebih ringkas.
+Penyimpanan data secara lokal dalam Aplikasi Android biasa ditangani oleh SQLite, namun penggunaan SQLite secara langsung sudah mulai ditinggalkan karena sudah hadir library yang dapat memanfaatkan SQLite dengan lebih optimal yaitu Room. Room adalah library yang digunakan untuk menyederhanakan penggunaan SQLite. Dengan menggunakan Room, proses transaksi di dalam SQLite menjadi lebih ringkas.
 
 ### Komponen pada Room
 
+__Database__ - Sebagai perantara koneksi ke database.
+
+__DAO (Data Access Object)__ - Tempat mengakses database.
+
+__Entity__ - Representasi tabel pada database.
 
 
 

@@ -14,10 +14,12 @@
 ## Tujuan
 Dapat menyimpan data secara persisten menggunakan database lokal.
 ## Teori
-### Database
-Database digunakan untuk menyimpan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri.  Data yang dimanipulasi bersifat persisten.
-### Room 
-`Room` adalah sebuah library yang dapat digunakan untuk menyederhanakan dan mengoptimalkan penggunaan database SQLite. 
+### Database dan Room
+Database digunakan untuk menyimpan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri. Data yang berada di dalam database bersifat persisten karena ditulis langsung di dalam Disk atau SSD. 
+
+Penyimpanan data secara lokal dalam Aplikasi Android biasa ditangani oleh SQLite, namun penggunaan SQLite secara langsung sudah mulai ditinggalkan karena sudah hadir library yang dapat memanfaatkan SQLite dengan lebih optimal yaitu Room.
+
+Room adalah library yang digunakan untuk menyederhanakan penggunaan SQLite. Dengan menggunakan Room, proses transaksi database menjadi lebih ringkas.
 
 ### Komponen pada Room
 

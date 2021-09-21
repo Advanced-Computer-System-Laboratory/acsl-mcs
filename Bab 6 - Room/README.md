@@ -1,4 +1,4 @@
-# BAB 6 - Database menggunakan Room 
+# BAB 6 - Room
 
 <img align="left" src="../images/logo.png" width="400">
 <img align="left" src="../images/logo_ug.jpg" width="60">

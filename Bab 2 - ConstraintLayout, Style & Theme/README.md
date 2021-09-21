@@ -208,7 +208,7 @@ Sekarang buka `dimens.xml` dan masukan kode di bawah ini di dalam tag `<resource
    <item name="android:layout_width">@dimen/button_width_default</item>
    <item name="android:layout_height">wrap_content</item>
    <item name="android:textColor">@color/colorWhite</item>
-   <item name="android:background">@color/colorGreen</item>
+   <item name="android:backgroundTint">@color/colorGreen</item>
 </style>
 
 <style name="LoginButton.small">

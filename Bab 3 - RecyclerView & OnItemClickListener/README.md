@@ -153,7 +153,7 @@ Kondisikan layoutnya seperti di bawah ini.
 
 Setelah itu deklarasikan variabel baru sebagai berikut :
 ```java
-public class CarBreedModel {
+public class CatBreedModel {
 
     private String imageUrl;
     private String breedName;
@@ -164,12 +164,12 @@ public class CarBreedModel {
 Buat __Constructor__ untuk meng inisialisasi variabel.
 ```java
 ...
-public class CarBreedModel {
+public class CatBreedModel {
     
     private String imageUrl;
     private String breedName;
 
-    CarBreedModel(String breedName, String imagUrl) {
+    CatBreedModel(String breedName, String imagUrl) {
         this.imageUrl = imageUrl;
         this.breedName = breedName;
     }
@@ -190,12 +190,12 @@ Tekan tombol OK.
 
 Sehingga kode pada `CatBreedModel` menjadi seperti ini.
 ```java
-public class CarBreedModel {
+public class CatBreedModel {
 
     private String imageUrl;
     private String breedName;
 
-    CarBreedModel(String breedName, String imageUrl) {
+    CatBreedModel(String breedName, String imageUrl) {
         this.imageUrl = imageUrl;
         this.breedName = breedName;
     }

@@ -15,15 +15,18 @@
 Dapat menyimpan data secara persisten menggunakan database lokal.
 ## Teori
 ### Database dengan Room
-Database merupakan kumpulan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri. Data yang disimpan di dalam database bersifat persisten karena ditulis langsung di dalam Disk atau SSD. 
+Database merupakan kumpulan data terstruktur yang dapat diambil, disimpan, diubah, dihapus dan ditelusuri. Data disimpan bersifat persisten karena ditulis langsung di dalam Disk atau SSD sehingga tetap tersedia saat dibutuhkan, tidak seperti data yang disimpan di dalam memory yang hilang saat berganti sesi.
 
-Penyimpanan data secara lokal dalam Aplikasi Android biasa ditangani oleh SQLite, namun penggunaan SQLite secara langsung sudah mulai ditinggalkan karena sudah hadir library yang dapat memanfaatkan SQLite dengan lebih optimal yaitu Room. Room adalah library yang digunakan untuk menyederhanakan penggunaan SQLite. Dengan menggunakan Room, proses transaksi di dalam SQLite menjadi lebih ringkas.
+Terdapat berbagai macam software pengelola database diantaranya adalah MySql, Oracle, dan SQLite. Penyimpanan database dalam Aplikasi Android biasa ditangani oleh SQLite, namun penggunaan SQLite secara langsung sudah mulai ditinggalkan karena sudah hadir library yang dapat memanfaatkan SQLite dengan lebih optimal yaitu Room. Room adalah library yang digunakan untuk menyederhanakan penggunaan SQLite. Dengan menggunakan Room, proses transaksi di dalam SQLite menjadi lebih ringkas.
+
+Terdapat 4 operasi yang dapat dilakukan di database yaitu CRUD atau Create, Read, Update & Delete.
+
 
 ### Komponen pada Room
 
 __Database__ - Sebagai perantara koneksi ke database.
 
-__DAO (Data Access Object)__ - Tempat mengakses database.
+__DAO (Data Access Object)__ - Kumpulan operasi untuk meng-akses data.
 
 __Entity__ - Representasi tabel pada database.
 

@@ -19,7 +19,6 @@ Database merupakan kumpulan data terstruktur yang dapat diambil, disimpan, diuba
 
 Terdapat berbagai macam software pengelola database diantaranya adalah MySql, Oracle, dan SQLite. Penyimpanan database dalam Aplikasi Android biasa ditangani oleh SQLite, namun penggunaan SQLite secara langsung sudah mulai ditinggalkan karena sudah hadir library yang dapat memanfaatkan SQLite dengan lebih optimal yaitu Room. Room adalah library yang digunakan untuk menyederhanakan penggunaan SQLite. Dengan menggunakan Room, proses transaksi di dalam SQLite menjadi lebih ringkas.
 
-Terdapat 4 operasi yang dapat dilakukan di database yaitu CRUD atau Create, Read, Update & Delete.
 
 
 ### Komponen pada Room

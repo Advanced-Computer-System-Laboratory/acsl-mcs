@@ -360,8 +360,14 @@ Background pada _Activity_ akan berubah menjadi warna yang digunakan colorAccent
 </p>
 
 
+##LP
+1. Jelaskan apa yang disebut dengan RecyclerView!
+2. Jelaskan kegunaan dari LayoutManager!
+3. Jelaskan kegunaan dari Adapter pada RecyclerView!
+4. Sebutkan pustaka pihak ketiga (Third Party Library) yang dapat digunakan untuk memuat gambar yang berasal dari internet! 
 
-
+##LA
+1. Jelaskan secara ringkas mengenai materi yang sudah di ajarkan!
 
 
 

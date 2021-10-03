@@ -617,6 +617,14 @@ public class NewActivity extends AppCompatActivity {
 ```
 
 
+## LP
+1. Sebutkan dan jelaskan 3 jenis layout di dalam Android Studio!
+2. Jelaskan apa itu Style!
+3. Jelaskan perbedaan dari Style & Theme!
+4. Jelaskan kegunaan dari berkas colors.xml, dimens.xml dan string.xml!
+
+## LA
+Buatlah kesimpulan mengenai materi yang sudah di ajarkan!
 
 
 

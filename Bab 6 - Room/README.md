@@ -72,9 +72,10 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 ```
 
-4. Kemudian masukan kode berikut di dalam `NoteEntity`.
+4. Kemudian kondisikan berkas `NoteEntity` seperti di bawah ini.
 
 ```java
+//Mendefinisikan nama tabel
 @Entity(tableName = "note_table")
 public class NoteEntity {
 
@@ -95,6 +96,10 @@ public class NoteEntity {
         return note_id;
     }
 
+    public void setNote_id(int note_id) {
+        this.note_id = note_id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -105,7 +110,7 @@ public class NoteEntity {
 }
 ```
 
-5. Setelah entity terbuat selanjutnya kita akan membuat __DAO__. Buat `interface` baru dengan nama `NoteDAO`, kemudian lakukan import berkas-berkas berikut.
+5. Setelah entity terbuat selanjutnya membuat __DAO__. Buat `interface` baru dengan nama `NoteDAO`, kemudian lakukan import berkas-berkas berikut.
 
 ```java
 import androidx.room.Dao;
@@ -117,30 +122,30 @@ import androidx.room.Query;
 import java.util.List;
 ```
 
-6. Selanjutnya masukan kode berikut di dalam `NoteDao`.
+6. Selanjutnya kondisikan berkas `NoteDao` seperti di bawah ini.
 
 ```Java
 @Dao
 public interface NoteDao {
 
-    //operasi untuk mendapatkan semua data yang tersimpan di dalam tabel note_table.
+    //Operasi untuk mendapatkan semua data yang tersimpan di dalam tabel note_table.
     @Query("SELECT * FROM note_table")
     List<NoteEntity> getAll();
 
     
-    //OnConlictStrategy.REPLACE digunakan untuk menimpa data yang sudah ada. 
+    //OnConlictStrategy.REPLACE digunakan untuk menimpa atau mengganti data yang sudah ada. 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    //operasi untuk memasukkan data kedalam tabel note_table.
+    //Operasi untuk memasukkan data kedalam tabel note_table.
     void insert(NoteEntity note);
 
-    //operasi untuk menghapus data di dalam tabel note_table.
+    //Operasi untuk menghapus data di dalam tabel note_table.
     @Delete
     void delete(NoteEntity note);
 
 }
 ```
 
-7. Setelah __Entity__ dan __DAO__ terbuat, berikutnya kita akan membuat  __Database__. Buat `class` baru dengan nama `NoteDatabase`. Kemudian Masukan kode berikut.
+7. Setelah __Entity__ dan __DAO__ terbuat, berikutnya buat  __Database__. Buat `class` baru dengan nama `NoteDatabase` kemudian kondisikan berkas tersebut seperti di bawah ini.
 
 ```Java
 /*
@@ -151,7 +156,7 @@ public interface NoteDao {
 @Database(entities = {NoteEntity.class}, version = 1)
 public abstract class NoteDatabase extends RoomDatabase  {
 
-    //untuk memanggil DAO
+    //Untuk memanggil DAO
     public abstract NoteDao getNoteDao();
 
     private static NoteDatabase noteDB;
@@ -165,6 +170,7 @@ public abstract class NoteDatabase extends RoomDatabase  {
     }
 
     private static NoteDatabase buildDatabaseInstance(Context context) {
+      //databaseBuilder() digunakan untuk membangun database.
         return Room.databaseBuilder(context,
                 NoteDatabase.class, //class abstrak yang dianotasikan @Database
                 "NoteDB.db") // nama dari file database
@@ -173,7 +179,142 @@ public abstract class NoteDatabase extends RoomDatabase  {
 }
 ```
 
-8. 
+8. Buka `activity_main.xml` kemudian masukan kode berikut.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Judul"/>
+
+    <EditText
+        android:id="@+id/edt_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Konten"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Simpan"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"/>
+
+</LinearLayout>
+
+```
+
+9. Selanjutnya kita akan mengimplementasi penggunaan database. Buka `MainActivity` dan lakukan import pada berkas-berkas berikut.
+
+```java
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import java.lang.ref.WeakReference;
+```
+
+10. Tambahkan kode berikut di dalam  `MainActivity`. Melakukan inisialisasi pada setiap objek.
+```java
+public class MainActivity extends AppCompatActivity {
+
+    private NoteDatabase noteDatabase;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        noteDatabase = NoteDatabase.getInstance(MainActivity.this);
+        EditText edtTitle = findViewById(R.id.edt_title);
+        EditText edtContent = findViewById(R.id.edt_content);
+        Button btnSave = findViewById(R.id.btn_save);
+        RecyclerView rvNote = findViewById(R.id.rv_note);
+
+    }
+}
+```
+
+11. Tambahkan operasi menyimpan data.
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+    ...
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ...
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NoteEntity note = new NoteEntity(edtTitle.getText().toString(),
+                        edtContent.getText().toString());
+
+                // menambahkan thread baru untuk memasukan data
+                new InsertTask(MainActivity.this,note).execute();
+            }
+        });
+    }
+
+    private class InsertTask extends AsyncTask<Void,Void,Boolean> {
+
+        private NoteEntity note;
+        private WeakReference<MainActivity> activityReference;
+
+
+        // WeakReference agar dapat mengakses properti yang berada di MainActivity.
+        InsertTask(MainActivity context, NoteEntity note) {
+            activityReference = new WeakReference<>(context);
+            this.note = note;
+        }
+
+        // Memasukan data ke dalam database menggunakan background thread.
+        @Override
+        protected Boolean doInBackground(Void... objs) {
+            activityReference.get().noteDatabase.getNoteDao().insert(note);
+            return true;
+        }
+
+        // Method ini dapat digunakan setelah pekerjaan di background thread selesai dan menggunakan main thread kembali.
+        @Override
+        protected void onPostExecute(Boolean bool) {
+            Toast.makeText(activityReference.get(), "Berhasil ditambahkan", Toast.LENGTH_LONG).show();
+            finish();
+            startActivity(getIntent());
+        }
+    }
+}
+```
+
 
 ## LP
 

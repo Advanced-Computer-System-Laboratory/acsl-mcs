@@ -238,7 +238,7 @@ import android.widget.Toast;
 import java.lang.ref.WeakReference;
 ```
 
-10. Tambahkan kode berikut di dalam  `MainActivity`. Melakukan inisialisasi pada setiap objek.
+10. Tambahkan kode berikut di dalam  `MainActivity`. 
 ```java
 public class MainActivity extends AppCompatActivity {
 
@@ -306,14 +306,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Method ini dapat digunakan setelah pekerjaan di background thread selesai dan menggunakan main thread kembali.
         @Override
-        protected void onPostExecute(Boolean bool) {
-            Toast.makeText(activityReference.get(), "Berhasil ditambahkan", Toast.LENGTH_LONG).show();
-            finish();
-            startActivity(getIntent());
+        protected void onPostExecute(Boolean isSuccess) {
+            if (isSuccess) {
+                Toast.makeText(activityReference.get(), "Berhasil ditambahkan", Toast.LENGTH_LONG).show();
+                finish();
+                startActivity(getIntent());
+            }
         }
     }
 }
 ```
+
+12. Setelah menyimpan data kita perlu menampilkan data menggunakan `RecyclerView`. Buat kelas baru dengan nama `NoteListAdapter`. 
 
 
 ## LP

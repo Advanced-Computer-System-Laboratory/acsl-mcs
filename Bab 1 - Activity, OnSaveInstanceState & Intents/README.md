@@ -624,7 +624,7 @@ public class NewActivity extends AppCompatActivity {
 4. Jelaskan kegunaan dari berkas colors.xml, dimens.xml dan string.xml!
 
 ## LA
-Buatlah kesimpulan mengenai materi yang sudah di ajarkan!
+Buatlah kesimpulan mengenai materi yang sudah diajarkan!
 
 
 

@@ -2,13 +2,15 @@
 
 <img align="left" src="../images/logo.png" width="400">
 <img align="left" src="../images/logo_ug.jpg" width="60">
+
 <a href="https://github.com/fahmisbas">
   <img align="right" src="../images/Github.png" width="30">
 </a>
 <a href="https://www.linkedin.com/in/fahmisbas/">
   <img align="right" src="../images/LinkedIn.png" width="30">
 </a>
-<img align="right" src="../images/FahmiSulaimanBaswedan.png" width="200">
+<img align="right" src="../images/FahmiSulaimanBaswedan.png" width="250">
+
 <br/><br/><br/><br/>
 
 ## Tujuan

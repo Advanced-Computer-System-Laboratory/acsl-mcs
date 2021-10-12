@@ -367,7 +367,7 @@ Background pada _Activity_ akan berubah menjadi warna yang digunakan colorAccent
 4. Sebutkan pustaka pihak ketiga (Third Party Library) yang dapat digunakan untuk memuat gambar yang berasal dari internet! 
 
 ## LA
-1. Jelaskan secara ringkas mengenai materi yang sudah di ajarkan!
+1. Jelaskan secara ringkas mengenai materi yang sudah diajarkan!
 
 
 

@@ -32,7 +32,7 @@ __DAO (Data Access Object)__ - Kumpulan operasi untuk meng-akses data. Create, R
 __Entity__ - Representasi tabel pada database.
 
 <p align="center">
-  <img src="images/room_architecture.png">
+  <img src="images/room_architecture.png" width="350">
 </p>
 
 

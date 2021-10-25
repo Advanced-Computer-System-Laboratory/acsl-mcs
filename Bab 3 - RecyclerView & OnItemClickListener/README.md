@@ -623,6 +623,14 @@ public class MainActivity extends AppCompatActivity {
 
 Kita mengggunakan Interface tersebut agar respon klik yang kita terima dapat diproses di dalam `MainActivity`. Sekarang jalankan kembali programnya, apabila item pada list ditekan, Aplikasi akan memunculkan pesan `Toast` yang  menampilkan nama perangkat ras kucing yang ditekan.
 
+## LP
+1. Jelaskan apa itu SharedPreference!
+2. Apa yang dimaksud dengan data persistent?
+3. Pada kasus apa SharedPreference digunakan?
+4. Apa yang dimaksud dengan data primitif!
+
+## LA
+1. Jelaskan secara ringkas mengenai materi yang sudah diajarkan!
 
 
 

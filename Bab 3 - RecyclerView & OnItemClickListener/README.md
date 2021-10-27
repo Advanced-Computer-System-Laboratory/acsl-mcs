@@ -169,7 +169,7 @@ public class CatBreedModel {
     private String imageUrl;
     private String breedName;
 
-    CatBreedModel(String breedName, String imagUrl) {
+    CatBreedModel(String breedName, String imageUrl) {
         this.imageUrl = imageUrl;
         this.breedName = breedName;
     }

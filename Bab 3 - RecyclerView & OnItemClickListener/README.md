@@ -369,6 +369,8 @@ public class CatBreedAdapter extends RecyclerView.Adapter<CatBreedAdapter.ViewHo
         Glide.with(holder.itemView.getContext())
                 .load(catBreed.getImageUrl())
                 .into(holder.imgCat);
+                
+        holder.tvBreedName.setText(catBreed.getBreedName())
     }
     
    ...

@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-6. Tambahkan Method `pindahActivity()` agar mempermudah dalam melakukan perpindahan Activity tanpa perlu menulis kembali di berbagai tempat.
+6. Tambahkan Method `pindahActivity()` agar mempermudah dalam melakukan perpindahan Activity hanya dengan memanggil method tersebut.
 
 ```java
 public class MainActivity extends AppCompatActivity {

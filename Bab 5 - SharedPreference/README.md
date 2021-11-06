@@ -18,7 +18,7 @@ Dapat menyimpan data berukuran kecil secara persisten.
 ### SharedPreference
 `SharedPreference` merupakan objek yang dapat digunakan untuk meyimpan data berukuran kecil secara persisten, seperti data E-mail dan Kata sandi. Metode penyimpanannya juga cukup mudah, yaitu dengan menggunakan pasangan _key-value_. `SharedPreference` hanya dapat digunakan untuk menyimpan String, Double, Integer, Long, atau Boolean sederhana dan tidak direkomendasikan untuk menyimpan data yang kompleks. Untuk menyimpan data yang besar dapat menggunakan SQLite.
 
-Terdapat dua Method yang dapat digunakan dalam membuat `SharedPreference` yaitu `getSharedPreference()` dan `getPreference()`. 
+Terdapat dua method yang dapat digunakan dalam membuat `SharedPreference` yaitu `getSharedPreference()` dan `getPreference()`. 
 
 - `getSharedPreference()` memiliki dua parameter yaitu nama dari  `SharedPreference` dan cakupannya. `SharedPreference` dapat dipanggil menggunakan nama yang sudah didefinisikan di dalam parameter. 
 
@@ -31,7 +31,7 @@ Terdapat dua Method yang dapat digunakan dalam membuat `SharedPreference` yaitu 
 ### Membuat SharedPreference
 
 Buat objek `SharedPreference` kemudian beri cakupan Private di dalam parameter.
-Buat `SharedPrefence.Editor` dengan memanggil `edit()` pada objek `SharedPreference` yang telah dibuat. Masukan data dengan editor menggunakan Method `putInt()` dan `putString()`. Gunakan Method `commit()` atau `apply()` untuk menyimpan data.
+Buat `SharedPrefence.Editor` dengan memanggil `edit()` pada objek `SharedPreference` yang telah dibuat. Masukan data dengan editor menggunakan method `putInt()` dan `putString()`. Gunakan method `commit()` atau `apply()` untuk menyimpan data.
 
 ```java
  SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -43,7 +43,7 @@ Buat `SharedPrefence.Editor` dengan memanggil `edit()` pada objek `SharedPrefere
 
 ### Membaca Data dari SharedPreference
 
-Untuk mengambil nilai dari `SharedPreference`, panggil Method seperti `getInt()` dan `getString()`, dengan memberikan key untuk nilai yang diinginkan, dan bisa juga memberi nilai default jika key tidak ada.
+Untuk mengambil nilai dari `SharedPreference`, panggil method seperti `getInt()` dan `getString()`, dengan memberikan key untuk nilai yang diinginkan, dan bisa juga memberi nilai default jika key tidak ada.
 
 ```java
  SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-4. Tambahkan event klik pada `btnSimpan` dan panggill Method `simpanIdentitas()` di dalamnya.
+4. Tambahkan event klik pada `btnSimpan` dan panggill method `simpanIdentitas()` di dalamnya.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-5. Tambahkan Method `simpanIdentitas()` yang digunakan untuk menyimpan data ke dalam `SharedPreferences` menggunakan Method `apply()`
+5. Tambahkan method `simpanIdentitas()` yang digunakan untuk menyimpan data ke dalam `SharedPreferences` menggunakan method `apply()`
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-6. Tambahkan Method `pindahActivity()` agar mempermudah dalam melakukan perpindahan Activity hanya dengan memanggil method tersebut.
+6. Tambahkan method `pindahActivity()` agar mempermudah dalam melakukan perpindahan Activity hanya dengan memanggil method tersebut.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-7. Tambahkan kode berikut di dalam Method `onCreate()` agar dapat memeriksa apakah data sudah tersimpan di dalam `SharedPreference` atau belum. Apabila sudah tersimpan lakukan perpindahan Activity.
+7. Tambahkan kode berikut di dalam method `onCreate()` agar dapat memeriksa apakah data sudah tersimpan di dalam `SharedPreference` atau belum. Apabila sudah tersimpan lakukan perpindahan Activity.
 
 ```java
 public class MainActivity extends AppCompatActivity {

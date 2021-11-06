@@ -171,14 +171,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void simpanIdentitas() {
         String nama = edtNama.getText().toString();
-        int npm = Integer.parseInt(edtNpm.getText().toString());
+        String npm = edtNpm.getText().toString();
 
-        SharedPreferences.Editor editor = mahasiswaPref.edit();
-        editor.putString(PREF_NAME_KEY, nama);
-        editor.putInt(PREF_NPM_KEY, npm);
-        editor.apply();
+        //Melakukan check apakah editText nama dan npm tidak kosong
+        if (!nama.isEmpty() && !npm.isEmpty()) {
+            // Mengubah String menjadi Integer
+            int npmInt = Integer.parseInt(npm);
 
-        pindahActivity();
+            //menyimpan nama dan npm ke dalam SharedPreference
+            SharedPreferences.Editor editor = mahasiswaPref.edit();
+            editor.putString(PREF_NAME_KEY, nama);
+            editor.putInt(PREF_NPM_KEY, npmInt);
+            editor.apply();
+
+            //lakukan pindah activity
+            pindahActivity();
+        } else {
+            Toast.makeText(this, "Npm atau Nama masih kosong!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 ```

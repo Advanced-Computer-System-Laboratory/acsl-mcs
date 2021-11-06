@@ -16,7 +16,7 @@
 Dapat menyimpan data berukuran kecil secara persisten.
 ## Teori
 ### SharedPreference
-`SharedPreference` merupakan objek yang dapat digunakan untuk meyimpan data berukuran kecil secara persisten, seperti data E-mail dan Kata Sandi. Metode penyimpanannya juga cukup mudah, yaitu dengan menggunakan pasangan _key-value_. `SharedPreference` hanya dapat digunakan untuk menyimpan String, Double, Integer, Long, atau Boolean sederhana dan tidak direkomendasikan untuk menyimpan data yang kompleks. Untuk menyimpan data yang besar dapat menggunakan SQLite.
+`SharedPreference` merupakan objek yang dapat digunakan untuk meyimpan data berukuran kecil secara persisten, seperti data E-mail dan Kata sandi. Metode penyimpanannya juga cukup mudah, yaitu dengan menggunakan pasangan _key-value_. `SharedPreference` hanya dapat digunakan untuk menyimpan String, Double, Integer, Long, atau Boolean sederhana dan tidak direkomendasikan untuk menyimpan data yang kompleks. Untuk menyimpan data yang besar dapat menggunakan SQLite.
 
 Terdapat dua Method yang dapat digunakan dalam membuat `SharedPreference` yaitu `getSharedPreference()` dan `getPreference()`. 
 

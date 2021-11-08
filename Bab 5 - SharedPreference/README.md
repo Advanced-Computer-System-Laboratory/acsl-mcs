@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-4. Tambahkan event klik pada `btnSimpan` dan panggill method `simpanIdentitas()` di dalamnya.
+4. Tambahkan event klik pada `btnSimpan` dan panggil method `simpanIdentitas()`.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -143,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
         ...
 
+        //Mendeteksi klik menggunakan method setOnClickListener
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,10 +246,22 @@ public class MainActivity extends AppCompatActivity {
 
         ...
 
+           /*
+        Saat aplikasi pertama kali berjalan ia akan memeriksa data yang terdapat di SharedPreference
+        dengan menggunakan method getString() dan getInt().
+         */
+
         mahasiswaPref = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
-        String nama = mahasiswaPref.getString(PREF_NAME_KEY, null);
-        int npm = mahasiswaPref.getInt(PREF_NPM_KEY, 0);
-        if (nama != null && npm != 0) {  // Memeriksa apakah sudah ada data atau belum. Jika sudah ada maka pindah Activity
+
+        //Memberikan nilai null apabila data tidak ditemukan
+        String nama = mahasiswaPref.getString(PREF_NAME_KEY, null); //getString(key, default value)
+
+        //Memberikan nilai 0 apabila data tidak ditemukan
+        int npm = mahasiswaPref.getInt(PREF_NPM_KEY, 0); //getInt(key, default value)
+
+        // Jika nama bukan null dan npm bukan 0.
+        if (nama != null && npm != 0) {
+            // Jalankan method pindahActivity()
             pindahActivity();
         }
 

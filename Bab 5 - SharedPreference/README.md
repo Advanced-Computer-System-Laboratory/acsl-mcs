@@ -105,7 +105,7 @@ Untuk mengambil nilai dari `SharedPreference`, panggil method seperti `getInt()`
 ```
 
 <p align="left">
-  <img width="500" src="images/build gradle.PNG">
+  <img width="300" src="images/input.PNG">
 </p>
 
 
@@ -345,7 +345,12 @@ public class MahasiswaActivity extends AppCompatActivity {
 ```
 11. Jalankan aplikasi.
 
-## LP
 
+## LP
+1. Sebutkan pengertian dari database!
+2. Sebutkan dan jelaskan operasi-operasi dasar yang berkenaan dengan database!
+3. Jelaskan apa itu SQLite!
+4. Jelaskan apa itu Library Persistensi Room!
 
 ## LA
+Buatlah kesimpulan mengenai materi yang sudah diajarkan!

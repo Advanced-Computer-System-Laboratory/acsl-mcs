@@ -173,12 +173,25 @@ public class MainActivity extends AppCompatActivity {
         String nama = edtNama.getText().toString();
         String npm = edtNpm.getText().toString();
 
-        //Melakukan check apakah editText nama dan npm tidak kosong
+        //Jika nama belum diisi
+        if (nama.isEmpty()) {
+            //Munculkan error/peringatan
+            edtNama.setError("Nama tidak boleh kosong!");
+        }
+
+        //Jika npm belum diisi
+        if (npm.isEmpty()) {
+            //Munculkan error/peringatan
+            edtNpm.setError("Npm tidak boleh kosong!");
+        }
+
+        //Jika nama dan npm tidak kosong
         if (!nama.isEmpty() && !npm.isEmpty()) {
-            // Mengubah String menjadi Integer
+
+            //ubah npm menjadi integer
             int npmInt = Integer.parseInt(npm);
 
-            //menyimpan nama dan npm ke dalam SharedPreference
+            //simpan nama dan npm ke dalam SharedPreference
             SharedPreferences.Editor editor = mahasiswaPref.edit();
             editor.putString(PREF_NAME_KEY, nama);
             editor.putInt(PREF_NPM_KEY, npmInt);
@@ -186,8 +199,9 @@ public class MainActivity extends AppCompatActivity {
 
             //lakukan pindah activity
             pindahActivity();
-        } else {
-            Toast.makeText(this, "Npm atau Nama masih kosong!", Toast.LENGTH_SHORT).show();
+
+            //Munculkan pesan Toast, memberitahu user bahwa penyimpnanan berhasil
+            Toast.makeText(this, "Berhasil disimpan!", Toast.LENGTH_SHORT).show();
         }
     }
 }

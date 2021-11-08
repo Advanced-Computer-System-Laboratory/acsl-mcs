@@ -103,6 +103,12 @@ Untuk mengambil nilai dari `SharedPreference`, panggil method seperti `getInt()`
 
 </LinearLayout>
 ```
+
+<p align="left">
+  <img width="500" src="images/build gradle.PNG">
+</p>
+
+
 3. Buka berkas `MainActivity` dan inisialisai variabel berikut.
 ```Java
 public class MainActivity extends AppCompatActivity {
@@ -317,16 +323,18 @@ public class MahasiswaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mahasiswa);
-
+        
         TextView tvNama = findViewById(R.id.tv_nama);
         TextView tvNpm = findViewById(R.id.tv_npm);
 
-        SharedPreferences mahasiswaPref = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);  
+        //Memanggil SharedPreference
+        SharedPreferences mahasiswaPref = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
+        //Mendapatkan data dari SharedPreference menggunakan getString() dan getInt()
         String nama = mahasiswaPref.getString(PREF_NAME_KEY, null);
         int npm = mahasiswaPref.getInt(PREF_NPM_KEY, 0);
-
-
+        
+        
         if (nama != null && npm != 0) {
             tvNama.setText(nama);
             tvNpm.setText(String.valueOf(npm));

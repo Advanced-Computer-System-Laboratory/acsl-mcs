@@ -264,7 +264,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Membuat instance database, agar dapat digunakan.
         noteDatabase = NoteDatabase.getInstance(MainActivity.this);
+
+        //Inisialisasi views.
         EditText edtTitle = findViewById(R.id.edt_title);
         EditText edtContent = findViewById(R.id.edt_content);
         Button btnSave = findViewById(R.id.btn_save);
@@ -289,14 +292,14 @@ public class MainActivity extends AppCompatActivity {
 
         ...
         
-        //Menyimpan note
+        //Menyimpan note.
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NoteEntity note = new NoteEntity(edtTitle.getText().toString(),
                         edtContent.getText().toString());
 
-                // Menambahkan thread baru untuk memasukan data
+                // Menambahkan background thread agar dapat memasukkan data ke dalam database.
                 new InsertTask(MainActivity.this,note).execute();
             }
         });
@@ -308,20 +311,20 @@ public class MainActivity extends AppCompatActivity {
         private WeakReference<MainActivity> activityReference;
 
 
-        // WeakReference agar dapat mengakses properti yang berada di MainActivity.
+        //WeakReference agar dapat mengakses properti yang berada di MainActivity.
         InsertTask(MainActivity context, NoteEntity note) {
             activityReference = new WeakReference<>(context);
             this.note = note;
         }
 
-        // Memasukan data ke dalam database menggunakan background thread.
+        //Memasukan data ke dalam database menggunakan background thread.
         @Override
         protected Boolean doInBackground(Void... objs) {
             activityReference.get().noteDatabase.getNoteDao().insert(note);
             return true;
         }
 
-        // Method ini dapat digunakan setelah pekerjaan di background thread selesai dan menggunakan main thread kembali.
+        //Method ini dapat digunakan setelah pekerjaan di background thread selesai dan menggunakan main thread kembali.
         @Override
         protected void onPostExecute(Boolean isSuccess) {
             if (isSuccess) {
@@ -334,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-12. Setelah menyimpan data kita perlu menampilkannya menggunakan `RecyclerView`. Buat layout baru dengan nama `item_note.xml`. 
+12. Setelah menyimpan data kita perlu menampilkannya menggunakan `RecyclerView`. Buat layout baru dengan nama `item_note.xml` dan kondisikan layout tersebut seperti di bawah ini.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -397,7 +400,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 ```
-14. Kemudian kondisikan `NoteListAdapter` seperti di bawah ini.
+14. Kondisikan `NoteListAdapter` seperti di bawah ini.
 
 ```java
 public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
@@ -405,16 +408,19 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
     private ArrayList<NoteEntity> notes = new ArrayList<>();
     private OnItemClickListener onItemClickListener;
 
+    //Memasukkan data note kedalam RecyclerView.
     public NoteListAdapter(List<NoteEntity> notes) {
         this.notes.clear();
         this.notes.addAll(notes);
         notifyDataSetChanged();
     }
 
+    //Menginisialisai Interface OnItemClickListener agar dapat mengakses data note
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
+    //Memuat layout di RecyclerView.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -422,6 +428,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         return new ViewHolder(view);
     }
 
+    //Menampilkan note ke dalam view (TextView) dan menghadle klik pada item (Button). 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         NoteEntity note = notes.get(position);
@@ -437,11 +444,14 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         });
     }
 
+    //Menentukan berapa banyak data yang ditampilkan di RecyclerView.
     @Override
     public int getItemCount() {
-        return notes.size();
+        return notes.size(); //notes.size() mengembalikan jumlah data yang berada di list notes
     }
 
+
+    //Melakukan inisialisasi pada views
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView btnDelete;
         TextView tvTitle, tvContent;
@@ -460,7 +470,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
 }
 
 ```
-15.  Kemudian kembali ke `MainActivity` dan menambahkan fungsi hapus note. Kondisikan `MainActivity` seperti di bawah ini.
+15.  Kemudian kembali ke `MainActivity` dan tambahkan fungsi hapus note. Kondisikan `MainActivity` seperti di bawah ini.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -476,7 +486,7 @@ public class MainActivity extends AppCompatActivity {
 
         ...
 
-        //menampilkan note
+        //Menambahkan background thread agar dapat melakukan operasi delete
         new RetrieveTask(this).execute();
 
     }
@@ -486,7 +496,7 @@ public class MainActivity extends AppCompatActivity {
     private static class RetrieveTask extends AsyncTask<Void, Void, List<NoteEntity>> {
 
 
-    //Reference dari MainActivity agar dapat mengakses properti pada Activity 
+        //Reference dari MainActivity agar dapat mengakses properti pada Activity 
         private WeakReference<MainActivity> activityReference;
 
         
@@ -505,6 +515,7 @@ public class MainActivity extends AppCompatActivity {
                 return null;
         }
 
+        //Melakukan operasi foregound
         @Override
         protected void onPostExecute(List<NoteEntity> notes) {
             // Jika note bukan null dan ukuran dari list note lebih dari 0 (terdapat note)
@@ -514,7 +525,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity mainActivityReference = activityReference.get();
 
 
-                // membuat recyclerview adapter dan menampilkan data
+                //Membuat recyclerview adapter dan menampilkan data
                 mainActivityReference.adapter = new NoteListAdapter(notes);
                 mainActivityReference.rvNote.setLayoutManager(new LinearLayoutManager(activityReference.get()));
                 mainActivityReference.rvNote.setAdapter(activityReference.get().adapter);
@@ -526,7 +537,7 @@ public class MainActivity extends AppCompatActivity {
                         //Menghapus data
                         mainActivityReference.noteDatabase.getNoteDao().delete(note);
 
-                        //Menghancurkan Activity kemudian membuat Activity kembali. Seperti fungsi refresh.
+                        //Menghancurkan Activity kemudian membuat Activity kembali, seperti fungsi refresh.
                         mainActivityReference.finish();
                         mainActivityReference.startActivity(mainActivityReference.getIntent());
 
@@ -590,12 +601,10 @@ public class MainActivity extends AppCompatActivity {
                 NoteEntity note = new NoteEntity(edtTitle.getText().toString(),
                         edtContent.getText().toString());
 
-                // Menambahkan thread baru untuk memasukan data
                 new InsertTask(MainActivity.this, note).execute();
             }
         });
 
-        //Menghapus note
         new RetrieveTask(this).execute();
 
     }
@@ -607,7 +616,6 @@ public class MainActivity extends AppCompatActivity {
 
         private WeakReference<MainActivity> activityReference;
 
-        // only retain a weak reference to the activity
         RetrieveTask(MainActivity context) {
             activityReference = new WeakReference<>(context);
         }
@@ -627,15 +635,17 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity mainActivityReference = activityReference.get();
 
 
-                // membuat recyclerview adapter dan menampilkan data
                 mainActivityReference.adapter = new NoteListAdapter(notes);
                 mainActivityReference.rvNote.setLayoutManager(new LinearLayoutManager(activityReference.get()));
                 mainActivityReference.rvNote.setAdapter(activityReference.get().adapter);
 
-                mainActivityReference.adapter.setOnItemClickListener(new NoteListAdapter.OnItemClickListener() {
+                mainActivityReference.adapter.setOnItemClickListener(new 
+                
+                NoteListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemDelete(NoteEntity note) {
                         mainActivityReference.noteDatabase.getNoteDao().delete(note);
+
                         mainActivityReference.finish();
                         mainActivityReference.startActivity(mainActivityReference.getIntent());
 
@@ -654,20 +664,17 @@ public class MainActivity extends AppCompatActivity {
         private WeakReference<MainActivity> activityReference;
 
 
-        // WeakReference agar dapat mengakses properti yang berada di MainActivity.
         InsertTask(MainActivity context, NoteEntity note) {
             activityReference = new WeakReference<>(context);
             this.note = note;
         }
 
-        // Memasukan data ke dalam database menggunakan background thread.
         @Override
         protected Boolean doInBackground(Void... objs) {
             activityReference.get().noteDatabase.getNoteDao().insert(note);
             return true;
         }
 
-        // Method ini dapat digunakan setelah pekerjaan di background thread selesai dan menggunakan main thread kembali.
         @Override
         protected void onPostExecute(Boolean isSuccess) {
             if (isSuccess) {

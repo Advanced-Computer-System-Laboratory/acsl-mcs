@@ -543,7 +543,145 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-16. Jalankan Aplikasi.
+16. Maka keseluruhan kode pada `MainActivity` akan terlihat seperti ini.
+```java
+package com.acsl.noteapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    private NoteDatabase noteDatabase;
+    private RecyclerView rvNote;
+
+    private NoteListAdapter adapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        noteDatabase = NoteDatabase.getInstance(MainActivity.this);
+        EditText edtTitle = findViewById(R.id.edt_title);
+        EditText edtContent = findViewById(R.id.edt_content);
+        Button btnSave = findViewById(R.id.btn_save);
+        rvNote = findViewById(R.id.rv_note);
+
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NoteEntity note = new NoteEntity(edtTitle.getText().toString(),
+                        edtContent.getText().toString());
+
+                // Menambahkan thread baru untuk memasukan data
+                new InsertTask(MainActivity.this, note).execute();
+            }
+        });
+
+        //Menghapus note
+        new RetrieveTask(this).execute();
+
+    }
+
+
+    
+
+    private static class RetrieveTask extends AsyncTask<Void, Void, List<NoteEntity>> {
+
+        private WeakReference<MainActivity> activityReference;
+
+        // only retain a weak reference to the activity
+        RetrieveTask(MainActivity context) {
+            activityReference = new WeakReference<>(context);
+        }
+
+        @Override
+        protected List<NoteEntity> doInBackground(Void... voids) {
+            if (activityReference.get() != null)
+                return activityReference.get().noteDatabase.getNoteDao().getAll();
+            else
+                return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<NoteEntity> notes) {
+            if (notes != null && notes.size() > 0) {
+
+                MainActivity mainActivityReference = activityReference.get();
+
+
+                // membuat recyclerview adapter dan menampilkan data
+                mainActivityReference.adapter = new NoteListAdapter(notes);
+                mainActivityReference.rvNote.setLayoutManager(new LinearLayoutManager(activityReference.get()));
+                mainActivityReference.rvNote.setAdapter(activityReference.get().adapter);
+
+                mainActivityReference.adapter.setOnItemClickListener(new NoteListAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemDelete(NoteEntity note) {
+                        mainActivityReference.noteDatabase.getNoteDao().delete(note);
+                        mainActivityReference.finish();
+                        mainActivityReference.startActivity(mainActivityReference.getIntent());
+
+                        Toast.makeText(mainActivityReference, "Berhasil dihapus!", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+            }
+        }
+    }
+
+    private class InsertTask extends AsyncTask<Void, Void, Boolean> {
+
+        private NoteEntity note;
+        private WeakReference<MainActivity> activityReference;
+
+
+        // WeakReference agar dapat mengakses properti yang berada di MainActivity.
+        InsertTask(MainActivity context, NoteEntity note) {
+            activityReference = new WeakReference<>(context);
+            this.note = note;
+        }
+
+        // Memasukan data ke dalam database menggunakan background thread.
+        @Override
+        protected Boolean doInBackground(Void... objs) {
+            activityReference.get().noteDatabase.getNoteDao().insert(note);
+            return true;
+        }
+
+        // Method ini dapat digunakan setelah pekerjaan di background thread selesai dan menggunakan main thread kembali.
+        @Override
+        protected void onPostExecute(Boolean isSuccess) {
+            if (isSuccess) {
+                Toast.makeText(activityReference.get(), "Berhasil ditambahkan", Toast.LENGTH_LONG).show();
+                finish();
+                startActivity(getIntent());
+            }
+        }
+    }
+
+
+}
+```
+17. Jalankan Aplikasi.
 
 
 

@@ -8,7 +8,7 @@
 <a href="https://www.linkedin.com/in/fahmisbas/">
   <img align="right" src="../images/LinkedIn.png" width="30">
 </a>
-<img align="right" src="../images/FahmiSulaimanBaswedan.png" width="200">
+<img align="right" src="../images/FahmiSulaimanBaswedan.png" width="250">
 <br/><br/><br/><br/>
 
 ## Tujuan

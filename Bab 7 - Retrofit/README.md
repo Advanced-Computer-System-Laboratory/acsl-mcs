@@ -64,7 +64,7 @@ public class UserData{
 ```
 
 
-Pengambilan file JSON secara manual. 
+Melakukan request secara manual. 
 
 ```java
  try {

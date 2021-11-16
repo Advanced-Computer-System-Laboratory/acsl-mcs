@@ -695,6 +695,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 ## LP
-
+1. Jelaskan apa itu Web API!
+2. Sebutkan dan jelaskan method yang terdapat pada Http!
+3. Jelaskan apa itu JSON!
+4. Jelaskan kegunaan dari GSON!
 
 ## LA
+Buatlah kesimpulan mengenai materi yang sudah diajarkan!

@@ -14,7 +14,7 @@
     {
       "id": 3,
       "name": "Maine Coon",
-      "description" : "Maine coon adalah salah satu ras kucing tertua dan alami yang berasal dari Maine, Amerika Serikat. Ras ini dipercayai nenek moyangnya berasal dari ras anggora dan kucing hutan norwegia ",
+      "description" : "Maine coon adalah salah satu ras kucing tertua dan alami yang berasal dari Maine, Amerika Serikat. ",
       "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/maine%20coon.jpg"
     },
     {
@@ -32,13 +32,13 @@
      {
       "id": 6,
       "name": "Ragdoll",
-      "description" : "Ragdoll adalah salah satu ras kucing terbesar di dunia yang telah diakui oleh Guinness World Records. Ragdoll awalnya dikembangkan oleh Ann Baker dari Amerika Serikat.",
+      "description" : "Ragdoll adalah salah satu ras kucing terbesar di dunia yang telah diakui oleh Guinness World Records. ",
       "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/ragdoll.png"
     },
      {
       "id": 7,
       "name": "Siam",
-      "description" : "Kucing siam adalah salah satu ras kucing pertama yang diakui jelas sebagai kucing berjenis oriental. Sesuai dengan namanya, kucing siam berasal dari negara Siam, sehingga ras kucing ini sangat mudah ditemukan di negara Thailand.",
+      "description" : "Kucing siam adalah salah satu ras kucing pertama yang diakui jelas sebagai kucing berjenis oriental. ",
       "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/siam.jpeg"
     },
      {

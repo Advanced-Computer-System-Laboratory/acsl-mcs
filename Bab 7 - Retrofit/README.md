@@ -25,7 +25,7 @@ Retrofit merupakan library type-safe HTTP client untuk Android dan Java yang dib
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 ```
 
-Proses pengambilan data dari backend sebelum adanya Retrofit terbilang cukup kompleks. Dengan kehadiran GSON proses tersebut menjadi lebih ringkas.
+Proses pengambilan data dari backend secara manual terbilang cukup kompleks. Dengan kehadiran Retrofit dan GSON, proses tersebut menjadi lebih ringkas.
 
 
 Melakukan request menggunakan Retrofit.

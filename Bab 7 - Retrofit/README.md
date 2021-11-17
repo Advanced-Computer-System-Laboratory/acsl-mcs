@@ -164,7 +164,7 @@ import retrofit2.http.GET;
 
 public interface CatApi {
     
-    @GET
+    @GET("Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%207%20-%20Retrofit/cats.json")
     Call<List<CatModel>> getCats();
     
 }
@@ -180,7 +180,7 @@ public class GithubClientApi {
 
 
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com";
+    private static final String BASE_URL = "https://raw.githubusercontent.com/";
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

@@ -1,4 +1,4 @@
-# BAB 5 - Retrofit
+# BAB 7 - Retrofit
 <img align="left" src="../images/logo.png" width="400">
 <img align="left" src="../images/logo_ug.jpg" width="60">
 <a href="https://github.com/fahmisbas">

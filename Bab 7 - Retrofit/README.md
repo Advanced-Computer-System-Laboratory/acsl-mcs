@@ -411,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 ## LP
-...
-
+1. Jelaskan apa yang dimaksud dengan Background Thread!
+2. Jelaskan kegunaan dari Main/UI Thread!
 ## LA
-...
+Jelaskan apa yang terjadi jika kita men-download sebuah file dari server dengan menggunakan Main/UI Thread! 

@@ -118,7 +118,7 @@ implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 implementation 'com.squareup.retrofit2:converter-gson:2.9.0'   
 implementation 'com.github.bumptech.glide:glide:4.12.0'
 ```
-3. Buat `class` baru dengan nama `CatBreedModel` dan kondisikan `class` tersebut seperti di bawah ini. Ini merupkana `class` __POJO__ yang merupakan representasi dari __JSON__. 
+3. Buat `class` baru dengan nama `CatModel` dan kondisikan `class` tersebut seperti di bawah ini. Ini merupkana `class` __POJO__ yang merupakan representasi dari __JSON__. 
 
 ``` java
 import com.google.gson.annotations.SerializedName;

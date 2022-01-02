@@ -1,0 +1,50 @@
+[
+    {
+      "id": 1,
+      "name": "Bengal",
+      "description" : "Kucing bengal adalah keturunan keempat dari hasil persilangan antara kucing american shorthair dengan kucing asian leopard. ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/bengal.png"
+    },
+     {
+      "id": 2,
+      "name": "Britain Shorthair",
+      "description" : "Kucing bulu pendek britania adalah salah satu ras kucing tertua yang nenek moyang dipercayai memiliki hubungan dengan bangsa Romawi yang pernah dahulu menguasai Inggris.  ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/britain%20shorthair.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Maine Coon",
+      "description" : "Maine coon adalah salah satu ras kucing tertua dan alami yang berasal dari Maine, Amerika Serikat. ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/maine%20coon.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Munckhin",
+      "description" : "Kucing munchkin adalah salah satu ras kucing berkaki pendek yang terbentuk karena mutasi genetik alami. ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/munchkin.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Persia",
+      "description" : "Kucing persia adalah ras kucing domestik berbulu panjang dengan karakter wajah bulat dan moncong pendek.",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/persia.jpg"
+    },
+     {
+      "id": 6,
+      "name": "Ragdoll",
+      "description" : "Ragdoll adalah salah satu ras kucing terbesar di dunia yang telah diakui oleh Guinness World Records. ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/ragdoll.png"
+    },
+     {
+      "id": 7,
+      "name": "Siam",
+      "description" : "Kucing siam adalah salah satu ras kucing pertama yang diakui jelas sebagai kucing berjenis oriental. ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/siam.jpeg"
+    },
+     {
+      "id": 8,
+      "name": "accusamus beatae ad facilis cum similique qui sunt",
+      "description" : "Kucing sphynx adalah salah satu ras kucing yang memiliki bulu sangat pendek dan sedikit sekali. ",
+      "url": "https://raw.githubusercontent.com/Advanced-Computer-System-Laboratory/acsl-mcs/master/Bab%203%20-%20RecyclerView%20%26%20OnItemClickListener/cats/sphynx.jpg"
+    }
+]
